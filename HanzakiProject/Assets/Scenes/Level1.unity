@@ -17849,9 +17849,10 @@ GameObject:
   - 4: {fileID: 1294150627}
   - 33: {fileID: 1294150629}
   - 23: {fileID: 1294150628}
+  - 65: {fileID: 1294150630}
   m_Layer: 0
   m_Name: door wall 1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -17907,6 +17908,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1294150626}
   m_Mesh: {fileID: 4300002, guid: 0ae7711f8f097004da7617bf96ba338c, type: 3}
+--- !u!65 &1294150630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294150626}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.68, y: 8.41, z: 1.79}
+  m_Center: {x: 0.03, y: -0.12, z: 4.73}
 --- !u!1 &1302662356
 GameObject:
   m_ObjectHideFlags: 0
@@ -24649,6 +24662,21 @@ Prefab:
         type: 2}
       propertyPath: m_AABB.m_Extent.z
       value: 0.44855502
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014240909074, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: modelHeight
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 136000012690400436, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: m_Height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 136000012690400436, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}

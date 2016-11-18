@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public float xMovement;
     public float zMovement;
     public float modelWidth;
+    public float modelHeight;
     bool inAir;
 
     public bool onSlipperyTile;
@@ -63,10 +64,14 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
     {
-        SetMovement();
+        if(!Camera.main.GetComponent<CameraController>().inCutscene)
+        {
+            SetMovement();
+            Move();
+            CheckForDash();
+        }
+        
         CheckForWall();
-        Move();
-        CheckForDash();
         CheckForSlipperyTile();
         CheckVulnerability();
     }
@@ -278,15 +283,17 @@ public class PlayerController : MonoBehaviour
     //Make the player stop moving if it's humping a wall
     void CheckForWall()
     {
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), -transform.right);
+
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.right, out hit, modelWidth))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), -transform.right, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), -transform.right, out hit, modelWidth))
         {
             if (xMovement < 0)
             {
                 xMovement = 0;
             }
         }
-        if (Physics.Raycast(transform.position, transform.right, out hit, modelWidth))
+        if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), transform.right, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), transform.right, out hit, modelWidth))
         {
             if (xMovement > 0)
             {
@@ -295,14 +302,14 @@ public class PlayerController : MonoBehaviour
         }
         if(levelType == LevelType.TD)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, modelWidth))
+            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), transform.forward, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), transform.forward, out hit, modelWidth))
             {
                 if (zMovement > 0)
                 {
                     zMovement = 0;
                 }
             }
-            if (Physics.Raycast(transform.position, -transform.forward, out hit, modelWidth))
+            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), -transform.forward, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), -transform.forward, out hit, modelWidth))
             {
                 if (zMovement < 0)
                 {
