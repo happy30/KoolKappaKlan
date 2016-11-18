@@ -46,7 +46,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject pressAnyKeyObject;
 
     //sounds
-    AudioSource sound;
+    public AudioSource sound;
     public AudioClip buttonHover;
     public AudioClip openMenu;
 
@@ -157,7 +157,7 @@ public class MainMenuController : MonoBehaviour
 
         
 
-        scroll.transform.position = Vector3.Lerp(scroll.transform.position, new Vector3(scrollLocationX, scroll.transform.position.y, scroll.transform.position.z), optionsSlideTime * Time.deltaTime);
+        //scroll.transform.position = Vector3.Lerp(scroll.transform.position, new Vector3(scrollLocationX, scroll.transform.position.y, scroll.transform.position.z), optionsSlideTime * Time.deltaTime);
     }
 
     public void SetCursorPosition(int pos, bool goingDown)

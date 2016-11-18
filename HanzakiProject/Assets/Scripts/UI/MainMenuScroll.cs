@@ -39,7 +39,7 @@ public class MainMenuScroll : MonoBehaviour {
         if (mainMenuController.scrollActivated)
         {
             scrollObject.GetComponent<Animator>().SetBool("StartScrolling", true);
-            scroll.GetComponent<Cloth>().externalAcceleration = new Vector3(10f, 0, 30f);
+            scroll.GetComponent<Cloth>().externalAcceleration = new Vector3(1f, 0, 1f);
             Invoke("ResetAcceleration", 1.5f);
         }
     }

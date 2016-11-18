@@ -141,6 +141,7 @@ public class OptionsManager : MonoBehaviour
         {
             if((int)cursorPos < 9)
             {
+                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
                 if((int)cursorPos == 3)
                 {
                     cursorPos = (CursorPositions)9;
@@ -156,7 +157,8 @@ public class OptionsManager : MonoBehaviour
         {
             if ((int)cursorPos > 0)
             {
-                if((int)cursorPos == 9)
+                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                if ((int)cursorPos == 9)
                 {
                     cursorPos = (CursorPositions)3;
                 }
@@ -174,6 +176,7 @@ public class OptionsManager : MonoBehaviour
         {
             if ((int)cursorPos < 4)
             {
+                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
                 cursorPos += 4;
             }
         }
@@ -181,7 +184,8 @@ public class OptionsManager : MonoBehaviour
         {
             if ((int)cursorPos > 3 && (int)cursorPos < 8)
             {
-                if((int)cursorPos == 4)
+                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                if ((int)cursorPos == 4)
                 {
                     cursorPos = (CursorPositions)1;
                 }
@@ -193,6 +197,7 @@ public class OptionsManager : MonoBehaviour
             }
             else if((int)cursorPos == 8)
             {
+                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
                 cursorPos -= 5;
             }
         }
@@ -200,8 +205,6 @@ public class OptionsManager : MonoBehaviour
 
         if (PressAnyKeyPanel.activeSelf)
         {
-
-
             if(Input.anyKeyDown)
             {
                 foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
