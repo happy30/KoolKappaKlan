@@ -58,10 +58,15 @@ public class CutsceneController : MonoBehaviour
                 if (!IsInvoking("NextChar"))
                 {
                     Invoke("NextChar", scrollSpeed);
+                    if(scrollSpeed == 0.02f)
+                    {
+                        Invoke("NextChar", scrollSpeed);
+                        Invoke("NextChar", scrollSpeed);
+                    }
                 }
             }
             //Each character will appear on screen one by one, if we click we speed up that process. If all characters are on-screen go to next line
-            if (Input.GetKey(InputManager.Slash))
+            if (Input.GetKeyDown(InputManager.Slash))
             {
                 if (displayLine != fullDialogueLine)
                 {
@@ -69,7 +74,7 @@ public class CutsceneController : MonoBehaviour
                 }
                 else
                 {
-                    scrollSpeed = 0.02f;
+                    scrollSpeed = 0.05f;
                     SetNPCNameAndText();
                 }
             }
