@@ -52,7 +52,6 @@ public class GrapplingHook : MonoBehaviour {
             {
                 soundPlayed = false; 
                 sound.PlayOneShot(fireHook, 0.3f);
-                ui.UseSkill(2);
                 if (spawnedClaw != null)
                 {
                     Destroy(spawnedClaw);
@@ -108,6 +107,7 @@ public class GrapplingHook : MonoBehaviour {
             _line.SetPositions(linePositions);
             grabTimer += Time.deltaTime;
             hookCooldown = 3;
+            ui.UseSkill(2);
 
             
 

@@ -59,7 +59,13 @@ public class UIManager : MonoBehaviour {
     public Image[] activeIcons;
     public GameObject player;
 
-    public float katanaCD;
+    float katanaCD;
+    float shurikenCD;
+    float hookCD;
+    float bombCD;
+    float dashCD;
+
+
 	
 	void Awake()
 	{
@@ -91,25 +97,71 @@ public class UIManager : MonoBehaviour {
         if(activeIcons[0].fillAmount < 1f)
         {
             activeIcons[0].fillAmount += 1f / 0.5f * Time.deltaTime;
+            if(katanaCD < 0.5f)
+            {
+                katanaCD += Time.deltaTime;
+            }
+            else
+            {
+                activeIcons[0].fillAmount = 1;
+            }
         }
 
         //Shuriken
-        if (activeIcons[1].fillAmount < 1f)
+        if (activeIcons[1].fillAmount < 1f && stats.shurikenAmount > 0)
         {
-            activeIcons[1].fillAmount += 1f * Time.deltaTime;
+            activeIcons[1].fillAmount = shurikenCD;
+            if(shurikenCD < 1)
+            {
+                shurikenCD += Time.deltaTime;
+            }
+            else
+            {
+                activeIcons[1].fillAmount = 1;
+            }
+        }
+        else if(stats.shurikenAmount == 0)
+        {
+            activeIcons[1].fillAmount = 0;
         }
 
         //GrapplingHook
-        if (activeIcons[2].fillAmount < 1f)
+        if (activeIcons[2].fillAmount < 1f && player.GetComponent<GrapplingHook>().canHook)
         {
             Debug.Log("recharge");
-            activeIcons[2].fillAmount += 1f / 3f * Time.deltaTime;
+            activeIcons[2].fillAmount = (hookCD / 3);
+            
+        }
+        if (hookCD < 3)
+        {
+            hookCD += Time.deltaTime;
+        }
+        else
+        {
+            activeIcons[2].fillAmount = 1;
+        }
+
+        if (!player.GetComponent<GrapplingHook>().canHook)
+        {
+            activeIcons[2].fillAmount = 0;
         }
 
         //SmokeBomb
-        if (activeIcons[3].fillAmount < 1f)
+        if (activeIcons[3].fillAmount < 1f && stats.smokeBombAmount > 0)
         {
-            activeIcons[3].fillAmount += 1f / 1f * Time.deltaTime;
+            activeIcons[3].fillAmount = bombCD / 5;
+            if (bombCD < 5)
+            {
+                bombCD += Time.deltaTime;
+            }
+            else
+            {
+                activeIcons[3].fillAmount = 1;
+            }
+        }
+        else if (stats.smokeBombAmount == 0)
+        {
+            activeIcons[3].fillAmount = 0;
         }
 
         //Dash
@@ -266,8 +318,27 @@ public class UIManager : MonoBehaviour {
 
     public void UseSkill(int skill)
     {
-        Debug.Log("UseSKill" + skill);
         activeIcons[skill].fillAmount = 0;
+        if(skill == 0)
+        {
+            katanaCD = 0f;
+        }
+        else if(skill == 1)
+        {
+            shurikenCD = 0f;
+        }
+        else if(skill ==2)
+        {
+            hookCD = 0f;
+        }
+        else if (skill == 3)
+        {
+            bombCD = 0f;
+        }
+        else if (skill == 4)
+        {
+            dashCD = 0f;
+        }
     }
 
 }

@@ -82,7 +82,7 @@ public class HeartScript : MonoBehaviour {
             spawnedHeart.transform.SetParent(heartPanel.transform);
             spawnedHeart.GetComponent<Image>().sprite = heartSprite;
             spawnedHeart.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-            spawnedHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * 50, 0);
+            spawnedHeart.GetComponent<RectTransform>().anchoredPosition = new Vector2(-25 + i * 50, 0);
             heartList.Add(spawnedHeart);
         }
     }

@@ -36,7 +36,7 @@ public class SmokeBomb : MonoBehaviour
         if (reloading)
         {
             reloadTimer += Time.deltaTime;
-            if (reloadTimer > 1)
+            if (reloadTimer > 5)
             {
                 reloading = false;
                 reloadTimer = 0;
@@ -46,7 +46,8 @@ public class SmokeBomb : MonoBehaviour
 
     void ThrowSmokeBomb()
     {
+        stats.smokeBombAmount--;
         _playerController.GetInvulnerable();    
-        Destroy(spawnedParticleObject = (GameObject)Instantiate(particleObject, _playerController.transform.position, Quaternion.identity), 3);
+        Destroy(spawnedParticleObject = (GameObject)Instantiate(particleObject, _playerController.transform.position, Quaternion.identity), 4);
     }
 }

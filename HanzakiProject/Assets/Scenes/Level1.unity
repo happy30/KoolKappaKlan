@@ -16257,6 +16257,14 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1741766727}
+    - target: {fileID: 1000013731177460, guid: a58b41a6f66d8be4a96c161d6b300bec, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014041332904, guid: a58b41a6f66d8be4a96c161d6b300bec, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a58b41a6f66d8be4a96c161d6b300bec, type: 2}
   m_IsPrefabParent: 0
@@ -22623,6 +22631,7 @@ GameObject:
   - 114: {fileID: 1741766729}
   - 82: {fileID: 1741766735}
   - 114: {fileID: 1741766734}
+  - 114: {fileID: 1741766736}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -22946,6 +22955,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1741766736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1741766722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243a781cad112c75d0008dfa8d76c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: daf9781cad112c75d0008dfa8d76c639, type: 3}
+  textureRamp: {fileID: 0}
+  rampOffset: 0
 --- !u!1 &1746511539
 GameObject:
   m_ObjectHideFlags: 0
@@ -23938,11 +23961,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010979179118, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 36.2
+      value: -36.89
       objectReference: {fileID: 0}
     - target: {fileID: 4000010979179118, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.41
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 4000010979179118, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -23976,7 +23999,7 @@ Prefab:
     - target: {fileID: 137000012463148866, guid: 720fe15f77b7b204e811a33376149cf5,
         type: 2}
       propertyPath: m_AABB.m_Extent.y
-      value: 1.3586264
+      value: 1.3586261
       objectReference: {fileID: 0}
     - target: {fileID: 4000011815972446, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
       propertyPath: m_LocalRotation.y
@@ -24030,6 +24053,22 @@ Prefab:
       propertyPath: fireHook
       value: 
       objectReference: {fileID: 8300000, guid: 2c9e3e3d7747d0745b5e568d29f7fd7e, type: 3}
+    - target: {fileID: 114000012478805436, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: particleObject
+      value: 
+      objectReference: {fileID: 1000011605007380, guid: d85a4b75537d4ef4d9f7de29ddb85630,
+        type: 2}
+    - target: {fileID: 114000014240909074, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: playerMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d7fe20544cf4084bb4d49a14dec019f, type: 2}
+    - target: {fileID: 114000014240909074, guid: 720fe15f77b7b204e811a33376149cf5,
+        type: 2}
+      propertyPath: smokeBombSound
+      value: 
+      objectReference: {fileID: 8300000, guid: befcdfa722f74e94c9f2468378d3d5df, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
   m_IsPrefabParent: 0
@@ -25605,12 +25644,12 @@ Prefab:
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: shurikenAmount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: smokeBombAmount
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000011287304802, guid: 7730570bf5a171a4192f30078d62337d, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -25619,12 +25658,12 @@ Prefab:
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: health
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: maxHealth
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
@@ -25634,17 +25673,17 @@ Prefab:
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: grapplingHookUnlocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: shurikenUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013739929148, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}
       propertyPath: smokeBombUnlocked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013318581192, guid: 7730570bf5a171a4192f30078d62337d,
         type: 2}

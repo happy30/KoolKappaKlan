@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public float doubleTapTime;
     public float dashSpeed;
     public float dashCooldown;
+    public Material playerMat;
 
     public Vector3 playerRotation;
 
@@ -44,6 +46,10 @@ public class PlayerController : MonoBehaviour
     public bool invulnerable;
     public float invulnerableTime;
     float invulnerableTimer;
+
+    public bool invulnerableEffect;
+    public AudioSource sound;
+    public AudioClip smokeBombSound;
 
 
     //Gather components
@@ -54,6 +60,7 @@ public class PlayerController : MonoBehaviour
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
         optionsSettings = GameObject.Find("GameManager").GetComponent<OptionsSettings>();
         playerModel = GameObject.Find("PlayerModel");
+        sound = GetComponent<AudioSource>();
     }
 
     //Set the right controls
@@ -256,6 +263,10 @@ public class PlayerController : MonoBehaviour
     {
         _rb.velocity = playerModel.transform.forward * distance;
     }
+    public void Dash(float distance, float height)
+    {
+        _rb.velocity = playerModel.transform.forward * distance + new Vector3(0, height, 0);
+    }
 
     //Move the player and let it jump
     void Move()
@@ -366,12 +377,30 @@ public class PlayerController : MonoBehaviour
     {
         if(invulnerable)
         {
+            playerMat.color = Color.black;
+            Camera.main.GetComponent<Grayscale>().enabled = true;
+            if (!invulnerableEffect)
+            {
+                sound.PlayOneShot(smokeBombSound);
+                Camera.main.GetComponent<Grayscale>().rampOffset = 1;
+                invulnerableEffect = true;
+            }
+            if(Camera.main.GetComponent<Grayscale>().rampOffset > 0)
+            {
+                Camera.main.GetComponent<Grayscale>().rampOffset -= .5f * Time.deltaTime;
+            }
             invulnerableTimer += Time.deltaTime;
             if(invulnerableTimer > invulnerableTime)
             {
                 invulnerable = false;
                 invulnerableTimer = 0;
             }
+        }
+        else
+        {
+            Camera.main.GetComponent<Grayscale>().enabled = false;
+            invulnerableEffect = false;
+            playerMat.color = Color.white;
         }
     }
 
@@ -381,7 +410,7 @@ public class PlayerController : MonoBehaviour
         {
             stats.health -= damage;
             GameObject.Find("Canvas").GetComponent<HeartScript>().DrawHearts();
-            //knockback maybe.
+            Dash(-10f, 4);
         }
     }
 
