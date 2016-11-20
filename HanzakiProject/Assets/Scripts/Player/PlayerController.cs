@@ -186,6 +186,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Dash(dashSpeed);
                     dashCooldown = 2f;
+                    ui.UseSkill(4);
                 }
                 buttonCount = 0;
             }

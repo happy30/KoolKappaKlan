@@ -21,18 +21,22 @@ public class Katana : MonoBehaviour
     public float dashPower;
     public float coolDown;
 
+    public UIManager ui;
+
     void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         playerModel = GameObject.Find("PlayerModel").transform;
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     void Update()
     {
-        if (Input.GetKey(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
+        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
         {
             //Animator.playanimation
             playerController.Dash(dashPower);
+            ui.UseSkill(0);
             coolDown = 0.5f;
         }
 

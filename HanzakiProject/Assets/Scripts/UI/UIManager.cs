@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour {
 
+    public OptionsSettings options;
+
     public GameObject letterboxes;
     public GameObject topLetterbox;
     public GameObject bottomLetterbox;
@@ -27,9 +29,11 @@ public class UIManager : MonoBehaviour {
     public GameObject shurikenAmountCircle;
     public GameObject smokeBombAmountCircle;
 
+    public GameObject slashHotkeyObject;
     public GameObject shurikenHotkeyObject;
     public GameObject grapplingHookHotkeyObject;
     public GameObject smokeBombHotkeyObject;
+    public GameObject dashHotkeyObject;
 
     public GameObject slashIcon;
     public GameObject shurikenIcon;
@@ -51,6 +55,11 @@ public class UIManager : MonoBehaviour {
 
     public GameObject pickUpText;
     public GameObject unlockAbility;
+
+    public Image[] activeIcons;
+    public GameObject player;
+
+    public float katanaCD;
 	
 	void Awake()
 	{
@@ -58,6 +67,8 @@ public class UIManager : MonoBehaviour {
         quests = GameObject.Find("GameManager").GetComponent<QuestManager>();
         prog = GameObject.Find("GameManager").GetComponent<ProgressionManager>();
         _sound = GetComponent<AudioSource>();
+        player = GameObject.Find("Player");
+        options = GameObject.Find("GameManager").GetComponent<OptionsSettings>();
 
     
 	}
@@ -71,7 +82,45 @@ public class UIManager : MonoBehaviour {
     void Update()
     {
         CountConsumeables();
+        SetSkillIcon();
     }
+
+    void SetSkillIcon()
+    {
+        //Katana
+        if(activeIcons[0].fillAmount < 1f)
+        {
+            activeIcons[0].fillAmount += 1f / 0.5f * Time.deltaTime;
+        }
+
+        //Shuriken
+        if (activeIcons[1].fillAmount < 1f)
+        {
+            activeIcons[1].fillAmount += 1f * Time.deltaTime;
+        }
+
+        //GrapplingHook
+        if (activeIcons[2].fillAmount < 1f)
+        {
+            Debug.Log("recharge");
+            activeIcons[2].fillAmount += 1f / 3f * Time.deltaTime;
+        }
+
+        //SmokeBomb
+        if (activeIcons[3].fillAmount < 1f)
+        {
+            activeIcons[3].fillAmount += 1f / 1f * Time.deltaTime;
+        }
+
+        //Dash
+        if (activeIcons[4].fillAmount < 1f)
+        {
+            activeIcons[4].fillAmount += 1f / 2f * Time.deltaTime;
+        }
+
+    }
+
+
 	
     public void SetQuestsText()
     {
@@ -215,4 +264,12 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void UseSkill(int skill)
+    {
+        Debug.Log("UseSKill" + skill);
+        activeIcons[skill].fillAmount = 0;
+    }
+
 }
+
+

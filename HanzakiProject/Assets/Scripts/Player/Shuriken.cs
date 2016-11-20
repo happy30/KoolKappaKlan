@@ -12,12 +12,14 @@ public class Shuriken : MonoBehaviour {
 
     public GameObject shurikenObject;
     GameObject spawnedShurikenObject;
+    public UIManager ui;
 
 
 
     void Awake()
     {
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
 	
@@ -28,6 +30,7 @@ public class Shuriken : MonoBehaviour {
         {
             //Animatorplay blabla
             ThrowShuriken(attackPower);
+            ui.UseSkill(1);
             reloading = true;   
         }
         if(reloading)

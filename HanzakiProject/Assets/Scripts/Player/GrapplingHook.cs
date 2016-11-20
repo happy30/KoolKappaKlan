@@ -10,6 +10,7 @@ public class GrapplingHook : MonoBehaviour {
     StatsManager stats;
     public Rigidbody _rb;
     public Transform hook;
+    public UIManager ui;
     
 
     //Claw and rope
@@ -25,6 +26,11 @@ public class GrapplingHook : MonoBehaviour {
     float grabTimer;
     public float hookCooldown;
 
+    public AudioSource sound;
+    public AudioClip fireHook;
+    public AudioClip hootHit;
+    public bool soundPlayed;
+
     
     public Transform playerModel;
 
@@ -34,6 +40,8 @@ public class GrapplingHook : MonoBehaviour {
         _rb = GetComponent<Rigidbody>();
         _line = GetComponent<LineRenderer>();
         playerModel = GameObject.Find("PlayerModel").transform;
+        sound = GetComponent<AudioSource>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
     void Update ()
     {
@@ -42,6 +50,9 @@ public class GrapplingHook : MonoBehaviour {
         {
             if(Input.GetKeyDown(InputManager.Hook) && canHook && hookCooldown <= 0)
             {
+                soundPlayed = false; 
+                sound.PlayOneShot(fireHook, 0.3f);
+                ui.UseSkill(2);
                 if (spawnedClaw != null)
                 {
                     Destroy(spawnedClaw);
@@ -102,6 +113,12 @@ public class GrapplingHook : MonoBehaviour {
 
             if(Vector3.Distance(spawnedClaw.transform.position, hook.transform.position) < 0.1f)
             {
+                if(!soundPlayed)
+                {
+                    sound.PlayOneShot(hootHit, 0.5f);
+                    soundPlayed = true;
+                }
+                
                 if (hook.GetComponent<GrapplingHookScript>().destroyObject)
                 {
                     hook.GetComponent<GrapplingHookScript>().CreateSmoke();

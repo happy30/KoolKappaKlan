@@ -14,11 +14,13 @@ public class SmokeBomb : MonoBehaviour
     GameObject spawnedParticleObject;
 
     public PlayerController _playerController;
+    public UIManager ui;
 
     void Awake()
     {
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
         _playerController = GetComponent<PlayerController>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 	
 	// Update is called once per frame
@@ -28,6 +30,7 @@ public class SmokeBomb : MonoBehaviour
         {
             //Animatorplay blabla
             ThrowSmokeBomb();
+            ui.UseSkill(3);
             reloading = true;
         }
         if (reloading)
