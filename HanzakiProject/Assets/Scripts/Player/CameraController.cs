@@ -83,18 +83,23 @@ public class CameraController : MonoBehaviour
             if(hookObject == null)
             {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
+                //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraRot, followTime * Time.deltaTime);
+                transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, cameraRot.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, cameraRot.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, cameraRot.z, followTime * Time.deltaTime));
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(hookObject.transform.position.x, (hookObject.transform.position.y - player.transform.position.y) / 2  + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, hookObject.GetComponent<GrapplingHookScript>().cameraPos.position, followTime * Time.deltaTime);
+                //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles, followTime * Time.deltaTime);
+                transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.z, followTime * Time.deltaTime));
             }
             
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraRot, followTime * Time.deltaTime);
+            
         }
         else
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + 30, player.transform.position.z), followTime * Time.deltaTime);
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+            //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+            transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, 80, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, 0, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, 0, followTime * Time.deltaTime));
            
         }
         
@@ -109,11 +114,13 @@ public class CameraController : MonoBehaviour
         {
             //transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, cutsceneZ), followTime * Time.deltaTime);
             transform.position = Vector3.Lerp(transform.position, followThis.transform.position, followTime * Time.deltaTime);
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, followThis.transform.eulerAngles, followTime * Time.deltaTime);
+            //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, followThis.transform.eulerAngles, followTime * Time.deltaTime);
+            transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, followThis.transform.eulerAngles.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, followThis.transform.eulerAngles.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, followThis.transform.eulerAngles.z, followTime * Time.deltaTime));
         }
         else
         {
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+            //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+            transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, 30, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, 0, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, 0, followTime * Time.deltaTime));
             transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, followThis.transform.position.z -8f), followTime * Time.deltaTime);
         }      
     }

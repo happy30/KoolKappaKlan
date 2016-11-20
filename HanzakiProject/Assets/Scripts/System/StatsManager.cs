@@ -22,7 +22,7 @@ public class StatsManager : MonoBehaviour
     public void GetLife()
     {
         maxHealth += 2;
-        health++;
+        health += 2;
         GameObject.Find("Canvas").GetComponent<HeartScript>().DrawHearts();
     }
 
@@ -68,7 +68,6 @@ public class StatsManager : MonoBehaviour
     {
         katanaUnlocked = true;
         GameObject.Find("Player").GetComponent<Katana>().UpgradeWeapon();
-        GameObject.Find("Katana").GetComponent<Katana>().UpgradeWeapon();
         GameObject.Find("Canvas").GetComponent<UIManager>().UnlockIcons();
     }
 }

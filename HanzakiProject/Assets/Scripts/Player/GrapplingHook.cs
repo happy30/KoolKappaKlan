@@ -50,18 +50,19 @@ public class GrapplingHook : MonoBehaviour {
                 spawnedClaw.transform.LookAt(hook);
                 if(!grabbing)
                 {
-                    
                     grabbing = true;
                 }
                 else 
                 {
-                    _rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
-                    grabTimer = 0;
-                    grabbing = false;
-                    linePositions[0] = new Vector3(0, 0, 0);
-                    linePositions[1] = new Vector3(0, 0, 0);
-                    _line.SetPositions(linePositions);
-                    grabbing = false;
+                        Debug.Log("should hook");
+                        _rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
+                        grabTimer = 0;
+                        grabbing = false;
+                        linePositions[0] = new Vector3(0, 0, 0);
+                        linePositions[1] = new Vector3(0, 0, 0);
+                        _line.SetPositions(linePositions);
+                        grabbing = false;
+                    
                 }
                 
             }
@@ -97,24 +98,45 @@ public class GrapplingHook : MonoBehaviour {
             grabTimer += Time.deltaTime;
             hookCooldown = 3;
 
+            
+
             if(Vector3.Distance(spawnedClaw.transform.position, hook.transform.position) < 0.1f)
             {
-                _rb.velocity = (hook.transform.position - transform.position);
-                if (grabTimer < 1)
+                if (hook.GetComponent<GrapplingHookScript>().destroyObject)
                 {
-                    _rb.velocity = ((hook.transform.position - transform.position) * 2);
-                }
-                else
-                {
-                    _rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
-
+                    hook.GetComponent<GrapplingHookScript>().CreateSmoke();
+                    Destroy(hook.gameObject);
                     Destroy(spawnedClaw);
                     grabTimer = 0;
                     grabbing = false;
-                    linePositions[0] = new Vector3(0,0,0);
+                    linePositions[0] = new Vector3(0, 0, 0);
                     linePositions[1] = new Vector3(0, 0, 0);
                     _line.SetPositions(linePositions);
+                    Camera.main.GetComponent<CameraController>().hookObject = null;
+                    canHook = false;
+
                 }
+                else
+                {
+                    _rb.velocity = (hook.transform.position - transform.position);
+                    if (grabTimer < 1)
+                    {
+                        _rb.velocity = ((hook.transform.position - transform.position) * 2);
+                    }
+                    else
+                    {
+                        _rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
+
+                        Destroy(spawnedClaw);
+                        grabTimer = 0;
+                        grabbing = false;
+                        linePositions[0] = new Vector3(0, 0, 0);
+                        linePositions[1] = new Vector3(0, 0, 0);
+                        _line.SetPositions(linePositions);
+                    }
+                }
+
+                
             }
         }
         else
