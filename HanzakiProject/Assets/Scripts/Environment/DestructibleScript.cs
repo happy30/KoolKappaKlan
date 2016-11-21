@@ -7,7 +7,12 @@ public class DestructibleScript : MonoBehaviour
 {
     public GameObject particleObject;
     GameObject spawnedParticleObject;
+    GameObject self;
 
+    void Start()
+    {
+        self = gameObject;
+    }
 
     public void DestroyObject ()
     {
