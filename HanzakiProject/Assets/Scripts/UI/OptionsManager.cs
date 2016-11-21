@@ -22,6 +22,12 @@ public class OptionsManager : MonoBehaviour
     public Text grapplingHookKey;
     public Text smokeBombKey;
 
+    public Text jjumpKey;
+    public Text jslashKey;
+    public Text jshurikenKey;
+    public Text jgrapplingHookKey;
+    public Text jsmokeBombKey;
+
     public Text keyToChangeText;
 
     public KeyBinding keyBinding;
@@ -51,6 +57,8 @@ public class OptionsManager : MonoBehaviour
     public MainMenuController mainMenuController;
     CanvasGroup _canvasGroup;
     public float optionsAlpha;
+    bool vAxisInUse;
+    bool hAxisInUse;
 
     public OptionsSettings optionSettings;
 
@@ -65,7 +73,7 @@ public class OptionsManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(InputManager.Slash))
+        if(Input.GetKeyDown(InputManager.Slash) || Input.GetKeyDown(InputManager.JSlash))
         {
             if(cursorPos == CursorPositions.Jump)
             {
@@ -137,112 +145,199 @@ public class OptionsManager : MonoBehaviour
         }
         cursorArrow.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(cursorArrow.GetComponent<RectTransform>().anchoredPosition, new Vector2(cursorPositions[(int)cursorPos].anchoredPosition.x, cursorPositions[(int)cursorPos].anchoredPosition.y), cursorArrowSpeed * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.DownArrow)  && !cursorCantMove)
+        if(Input.GetAxisRaw("Vertical") != 0  && !cursorCantMove)
         {
-            if((int)cursorPos < 9)
+            if(!vAxisInUse && Input.GetAxisRaw("Vertical") < 0)
             {
-                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
-                if((int)cursorPos == 3)
+                vAxisInUse = true;
+                if ((int)cursorPos < 9)
                 {
-                    cursorPos = (CursorPositions)9;
-                }
-                else
-                {
-                    cursorPos++;
-                }
-                
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && !cursorCantMove)
-        {
-            if ((int)cursorPos > 0)
-            {
-                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
-                if ((int)cursorPos == 9)
-                {
-                    cursorPos = (CursorPositions)3;
-                }
-                else if((int)cursorPos == 4)
-                {
-                    cursorPos = (CursorPositions)0;
-                }
-                else
-                {
-                    cursorPos--;
+                    mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                    if ((int)cursorPos == 3)
+                    {
+                        cursorPos = (CursorPositions)9;
+                    }
+                    else
+                    {
+                        cursorPos++;
+                    }
+
                 }
             }
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !cursorCantMove)
-        {
-            if ((int)cursorPos < 4)
+            else if (!vAxisInUse && Input.GetAxisRaw("Vertical") > 0)
             {
-                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
-                cursorPos += 4;
+                vAxisInUse = true;
+                if ((int)cursorPos > 0)
+                {
+                    mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                    if ((int)cursorPos == 9)
+                    {
+                        cursorPos = (CursorPositions)3;
+                    }
+                    else if ((int)cursorPos == 4)
+                    {
+                        cursorPos = (CursorPositions)0;
+                    }
+                    else
+                    {
+                        cursorPos--;
+                    }
+                }
             }
+
         }
+        else if(Input.GetAxisRaw("Vertical") == 0)
+        {
+            vAxisInUse = false;
+        }
+
+        
+
+        if (Input.GetAxisRaw("Horizontal") != 0 && !cursorCantMove)
+        {
+            if(!hAxisInUse && Input.GetAxisRaw("Horizontal") > 0)
+            {
+                hAxisInUse = true;
+                if ((int)cursorPos < 4)
+                {
+                    mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                    cursorPos += 4;
+                }
+            }
+            else if (!hAxisInUse && Input.GetAxisRaw("Horizontal") < 0)
+            {
+
+
+                hAxisInUse = true;
+                if ((int)cursorPos > 3 && (int)cursorPos < 8)
+                {
+                    mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                    if ((int)cursorPos == 4)
+                    {
+                        cursorPos = (CursorPositions)1;
+                    }
+                    else
+                    {
+                        cursorPos -= 4;
+                    }
+
+                }
+                else if ((int)cursorPos == 8)
+                {
+                    mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
+                    cursorPos -= 5;
+                }
+            }
+
+        }
+        else if(Input.GetAxisRaw("Horizontal") == 0)
+        {
+            hAxisInUse = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftArrow) && !cursorCantMove)
         {
-            if ((int)cursorPos > 3 && (int)cursorPos < 8)
-            {
-                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
-                if ((int)cursorPos == 4)
-                {
-                    cursorPos = (CursorPositions)1;
-                }
-                else
-                {
-                    cursorPos -= 4;
-                }
-                
-            }
-            else if((int)cursorPos == 8)
-            {
-                mainMenuController.sound.PlayOneShot(mainMenuController.buttonHover);
-                cursorPos -= 5;
-            }
+            
         }
 
 
         if (PressAnyKeyPanel.activeSelf)
         {
+            bool joyKey = false;
             if(Input.anyKeyDown)
             {
+                
                 foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
                 {
+                    for(int i = 0; i < 20; i++)
+                    {
+                        //print(kcode.ToString());
+                        if(Input.GetKeyDown("joystick 1 button "+i))
+                        {
+                            joyKey = true;
+                        }
+                    }
+
+
+
                     if (Input.GetKeyDown(kcode))
                     {
                         if(keyBinding == KeyBinding.Jump)
                         {
-                            jumpKey.text = kcode.ToString();
-                            InputManager.JumpTD = kcode;
+                            if(!joyKey)
+                            {
+                                jumpKey.text = kcode.ToString();
+                                InputManager.JumpTD = kcode;
+                            }
+                            else
+                            {
+                                jjumpKey.text = kcode.ToString().Remove(0, 9);
+                                InputManager.JJumpTD = kcode;
+                            }
                             InputManager.SaveKeys();
                             Invoke("SmallDelayToClose", 0.05f);
                         }
                         else if (keyBinding == KeyBinding.Slash)
                         {
-                            slashKey.text = kcode.ToString();
-                            InputManager.Slash = kcode;
+                            if(!joyKey)
+                            {
+                                slashKey.text = kcode.ToString();
+                                InputManager.Slash = kcode;
+                            }
+                            else
+                            {
+                                jslashKey.text = kcode.ToString().Remove(0, 9);
+                                InputManager.JSlash = kcode;
+                            }
+                            
                             InputManager.SaveKeys();
                             Invoke("SmallDelayToClose", 0.05f);
                         }
                         else if (keyBinding == KeyBinding.Shuriken)
                         {
-                            shurikenKey.text = kcode.ToString();
-                            InputManager.Shuriken = kcode;
+                            if(!joyKey)
+                            {
+                                shurikenKey.text = kcode.ToString();
+                                InputManager.Shuriken = kcode;
+                            }
+                            else
+                            {
+                                jshurikenKey.text = kcode.ToString().Remove(0, 9);
+                                InputManager.JShuriken = kcode;
+                            }
+                            
                             InputManager.SaveKeys();
                             Invoke("SmallDelayToClose", 0.05f);
                         }
                         else if (keyBinding == KeyBinding.GrapplingHook)
                         {
-                            grapplingHookKey.text = kcode.ToString();
-                            InputManager.Hook = kcode;
+                            if(!joyKey)
+                            {
+                                grapplingHookKey.text = kcode.ToString();
+                                InputManager.Hook = kcode;
+                            }
+                            else
+                            {
+                                jgrapplingHookKey.text = kcode.ToString().Remove(0, 9);
+                                InputManager.JHook = kcode;
+                            }
+                            
                             InputManager.SaveKeys();
                             Invoke("SmallDelayToClose", 0.05f);
                         }
                         else if (keyBinding == KeyBinding.SmokeBomb)
                         {
-                            smokeBombKey.text = kcode.ToString();
-                            InputManager.SmokeBomb = kcode;
+                            if(!joyKey)
+                            {
+                                smokeBombKey.text = kcode.ToString();
+                                InputManager.SmokeBomb = kcode;
+                            }
+                            else
+                            {
+                                jsmokeBombKey.text = kcode.ToString().Remove(0, 9);
+                                InputManager.JSmokeBomb = kcode;
+                            }
+                            
                             InputManager.SaveKeys();
                             Invoke("SmallDelayToClose", 0.05f);
                         }
@@ -276,7 +371,14 @@ public class OptionsManager : MonoBehaviour
         shurikenKey.text = InputManager.Shuriken.ToString();
         grapplingHookKey.text = InputManager.Hook.ToString();
         smokeBombKey.text = InputManager.SmokeBomb.ToString();
-        if(optionSettings.displayHints)
+
+        jjumpKey.text = InputManager.JJumpTD.ToString().Remove(0, 9); 
+        jslashKey.text = InputManager.JSlash.ToString().Remove(0, 9);
+        jshurikenKey.text = InputManager.JShuriken.ToString().Remove(0, 9);
+        jgrapplingHookKey.text = InputManager.JHook.ToString().Remove(0, 9);
+        jsmokeBombKey.text = InputManager.JSmokeBomb.ToString().Remove(0, 9);
+
+        if (optionSettings.displayHints)
         {
             checkmark.GetComponent<Image>().enabled = true;
         }

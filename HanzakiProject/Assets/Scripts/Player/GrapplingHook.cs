@@ -48,7 +48,7 @@ public class GrapplingHook : MonoBehaviour {
         //Can use hook if it's enabled in statsmanager and hook nearby.
 	    if(stats.grapplingHookUnlocked)
         {
-            if(Input.GetKeyDown(InputManager.Hook) && canHook && hookCooldown <= 0)
+            if(Input.GetKeyDown(InputManager.Hook) && canHook && hookCooldown <= 0 || Input.GetKeyDown(InputManager.JHook) && canHook && hookCooldown <= 0)
             {
                 soundPlayed = false; 
                 sound.PlayOneShot(fireHook, 0.3f);
@@ -76,7 +76,7 @@ public class GrapplingHook : MonoBehaviour {
                 }
                 
             }
-            else if (Input.GetKeyDown(InputManager.Hook))
+            else if (Input.GetKeyDown(InputManager.Hook) || Input.GetKeyDown(InputManager.JHook))
             {
                 if(spawnedClaw != null)
                 {

@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour
     public AudioSource sound;
     public AudioClip smokeBombSound;
 
+    float lastTapFwdTime = 0;  // the time of the last tap that occurred
+    bool dblTapFwdReady = false;  // whether you you will execute a double-tap upon the next tap
+    bool walkingForward = false;
+    bool walkingBackward = false;
+    bool dblTapbwdReady = false;
+    float dblTapFwdTime  = .35f;
+
 
     //Gather components
     void Awake()
@@ -75,7 +82,8 @@ public class PlayerController : MonoBehaviour
         {
             SetMovement();
             Move();
-            CheckForDash();
+            //CheckForDash();
+            CheckForDash2();
         }
         
         CheckForWall();
@@ -99,7 +107,15 @@ public class PlayerController : MonoBehaviour
     //Change speed to runspeed if Shift is pressed
     void SetMovement()
     {
-        speed = Input.GetKey(KeyCode.LeftShift) ? stats.runSpeed : stats.walkSpeed;
+        
+        if(Input.GetAxisRaw("RunTrigger") != 0)
+        {
+            speed = stats.runSpeed;
+        }
+        else
+        {
+            speed = Input.GetKey(KeyCode.LeftShift) ? stats.runSpeed : stats.walkSpeed;
+        }
         if(!onSlipperyTile)
         {
             xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
@@ -131,46 +147,76 @@ public class PlayerController : MonoBehaviour
         playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
     }
 
-    void CheckForDash()
+
+    void CheckForDash2()
     {
-        if(levelType == LevelType.TD)
+        float horizontal = Input.GetAxisRaw("Horizontal");
+
+        if (Time.time > lastTapFwdTime + dblTapFwdTime)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            dblTapFwdReady = false;
+        }
+
+        if (dashCooldown <= 0)
+        {
+            if (horizontal > 0)
             {
-                CheckForDoubleTap(KeyCode.UpArrow);
-                lastKey = KeyCode.UpArrow;
+                if (!walkingForward)
+                {
+                    walkingForward = true;
+                    lastTapFwdTime = Time.time;
+                    if (dblTapFwdReady)
+                    {
+                        // Stop the other animations if necessary.
+                        Dash(dashSpeed);
+                        dashCooldown = 2f;
+                        ui.UseSkill(4);
+                    }
+                    else
+                    {
+                        dblTapFwdReady = true;
+                    }
+                }
+            }
+            if (horizontal < 0)
+            {
+                if (!walkingBackward)
+                {
+                    walkingBackward = true;
+                    lastTapFwdTime = Time.time;
+                    if (dblTapFwdReady)
+                    {
+                        // Stop the other animations if necessary.
+                        Dash(dashSpeed);
+                        dashCooldown = 2f;
+                        ui.UseSkill(4);
+                    }
+                    else
+                    {
+                        dblTapFwdReady = true;
+                    }
+                }
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (horizontal == 0)
             {
-                CheckForDoubleTap(KeyCode.DownArrow);
-                lastKey = KeyCode.DownArrow;
+            	walkingForward = false;
+                walkingBackward = false;
+            	// ^^ Idle animation Here
+            	print ("relaxing");
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            CheckForDoubleTap(KeyCode.RightArrow);
-            lastKey = KeyCode.RightArrow;
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            CheckForDoubleTap(KeyCode.LeftArrow);
-            lastKey = KeyCode.LeftArrow;
-        }
-
-        if (doubleTapTime < 0)
-        {
-            doubleTapTime = 0;
-            buttonCount = 0;
-        }
+            		
+            if (walkingForward)
+            {
+            	// ^^ walk animation Here
+            	print ("walking");
+            }
+        }	
         else
         {
-            doubleTapTime -= Time.deltaTime;
+            	print ("lunging!");
         }
-
-        if(dashCooldown > 0)
+        if (dashCooldown > 0)
         {
             dashCooldown -= Time.deltaTime;
         }
@@ -181,33 +227,88 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    /*
+   void CheckForDash()
+   {
+       if(levelType == LevelType.TD)
+       {
+           if (Input.GetKeyDown(KeyCode.UpArrow))
+           {
+               CheckForDoubleTap(KeyCode.UpArrow);
+               lastKey = KeyCode.UpArrow;
+           }
+
+           if (Input.GetKeyDown(KeyCode.DownArrow))
+           {
+               CheckForDoubleTap(KeyCode.DownArrow);
+               lastKey = KeyCode.DownArrow;
+           }
+       }
+
+       if (Input.GetKeyDown(KeyCode.RightArrow))
+       {
+           CheckForDoubleTap(KeyCode.RightArrow);
+           lastKey = KeyCode.RightArrow;
+       }
+
+       if (Input.GetKeyDown(KeyCode.LeftArrow))
+       {
+           CheckForDoubleTap(KeyCode.LeftArrow);
+           lastKey = KeyCode.LeftArrow;
+       }
+
+       if (doubleTapTime < 0)
+       {
+           doubleTapTime = 0;
+           buttonCount = 0;
+       }
+       else
+       {
+           doubleTapTime -= Time.deltaTime;
+       }
+
+       if(dashCooldown > 0)
+       {
+           dashCooldown -= Time.deltaTime;
+       }
+       else
+       {
+           dashCooldown = 0;
+       }
+   }
+
+
+
+
+
     void CheckForDoubleTap(KeyCode key)
+{
+    Debug.Log(key);
+    if(buttonCount == 1)
     {
-        Debug.Log(key);
-        if(buttonCount == 1)
+        if(lastKey == key)
         {
-            if(lastKey == key)
+            Debug.Log("dash!!");
+            if(dashCooldown <= 0)
             {
-                Debug.Log("dash!!");
-                if(dashCooldown <= 0)
-                {
-                    Dash(dashSpeed);
-                    dashCooldown = 2f;
-                    ui.UseSkill(4);
-                }
-                buttonCount = 0;
+                Dash(dashSpeed);
+                dashCooldown = 2f;
+                ui.UseSkill(4);
             }
-            else
-            {
-                buttonCount = 0;
-            }
+            buttonCount = 0;
         }
         else
         {
-            buttonCount++;
-            doubleTapTime = 0.5f;
+            buttonCount = 0;
         }
     }
+    else
+    {
+        buttonCount++;
+        doubleTapTime = 0.5f;
+    }
+}
+*/
 
     void CheckForSlipperyTile()
     {
@@ -274,7 +375,7 @@ public class PlayerController : MonoBehaviour
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
             transform.Translate(new Vector3(xMovement, 0, zMovement));
-            if (Input.GetKey(InputManager.Jump))
+            if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
             {
                 //Check if player is standing on Ground
                 if (IsTouching(2) != null)

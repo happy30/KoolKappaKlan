@@ -41,6 +41,7 @@ public class MainMenuController : MonoBehaviour
 
     public GameObject options;
     public LoadController _load;
+    public bool vAxisInUse;
 
     //Any key
     public GameObject pressAnyKeyObject;
@@ -89,14 +90,25 @@ public class MainMenuController : MonoBehaviour
     {
         if(cursorArrow.gameObject.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetAxisRaw("Vertical") != 0)
             {
-                SetCursorPosition((int)cursorAt + 1, true);
+                if (!vAxisInUse && Input.GetAxisRaw("Vertical") < 0)
+                {
+                    vAxisInUse = true;
+                    SetCursorPosition((int)cursorAt + 1, true);
+                }
+                else if (!vAxisInUse && Input.GetAxisRaw("Vertical") > 0)
+                {
+                    vAxisInUse = true;
+                    SetCursorPosition((int)cursorAt - 1, false);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+
+            if(Input.GetAxisRaw("Vertical") == 0)
             {
-                SetCursorPosition((int)cursorAt - 1, false);
+                vAxisInUse = false;
             }
+
 
             if (cursorAt == CursorAt.NewGame)
             {
@@ -128,7 +140,7 @@ public class MainMenuController : MonoBehaviour
             }
         } 
 
-        if(Input.GetKeyDown(InputManager.Slash) && cursorArrow.gameObject.activeSelf)
+        if(Input.GetKeyDown(InputManager.Slash) && cursorArrow.gameObject.activeSelf || Input.GetKeyDown(InputManager.JSlash) && cursorArrow.gameObject.activeSelf)
         {
             if(cursorAt == CursorAt.NewGame)
             {
