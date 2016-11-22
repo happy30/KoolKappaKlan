@@ -110,6 +110,9 @@
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\Water.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterTile.cs" />
+    <Compile Include="Assets\Cutscene_Blocks.cs" />
+    <Compile Include="Assets\Cutscene_BlocksInitiate.cs" />
+    <Compile Include="Assets\EndDemo.cs" />
     <Compile Include="Assets\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChaseSpawener.cs" />

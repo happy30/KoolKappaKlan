@@ -464,7 +464,8 @@ public class PlayerController : MonoBehaviour
             return true;
         }
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 1))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 1.1f))
+
         {
             if(hit.collider.tag == "Ground")
             {

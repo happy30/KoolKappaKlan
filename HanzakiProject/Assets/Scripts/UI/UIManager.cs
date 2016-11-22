@@ -41,6 +41,10 @@ public class UIManager : MonoBehaviour {
     public GameObject smokeBombIcon;
     public GameObject dashIcon;
 
+    public Animator[] refreshIcons;
+    public bool[] refreshed;
+    
+
     public GameObject[] lockedIcons;
 
     public Text mainQuestTitleText;
@@ -95,8 +99,9 @@ public class UIManager : MonoBehaviour {
     {
         //Katana
         if(activeIcons[0].fillAmount < 1f)
-        {
+        { 
             activeIcons[0].fillAmount += 1f / 0.5f * Time.deltaTime;
+
             if(katanaCD < 0.5f)
             {
                 katanaCD += Time.deltaTime;
@@ -104,8 +109,15 @@ public class UIManager : MonoBehaviour {
             else
             {
                 activeIcons[0].fillAmount = 1;
+                
             }
         }
+        else if(!refreshed[0])
+        {
+            refreshIcons[0].SetTrigger("Refresh");
+            refreshed[0] = true;
+        }
+
 
         //Shuriken
         if (activeIcons[1].fillAmount < 1f && stats.shurikenAmount > 0)
@@ -124,6 +136,11 @@ public class UIManager : MonoBehaviour {
         {
             activeIcons[1].fillAmount = 0;
         }
+        else if (!refreshed[1])
+        {
+            refreshIcons[1].SetTrigger("Refresh");
+            refreshed[1] = true;
+        }
 
         //GrapplingHook
         if (activeIcons[2].fillAmount < 1f && player.GetComponent<GrapplingHook>().canHook)
@@ -132,6 +149,16 @@ public class UIManager : MonoBehaviour {
             activeIcons[2].fillAmount = (hookCD / 3);
             
         }
+        else
+        {
+            if (!refreshed[2] && player.GetComponent<GrapplingHook>().canHook)
+            {
+                refreshIcons[2].SetTrigger("Refresh");
+                refreshed[2] = true;
+            }
+        }
+        
+
         if (hookCD < 3)
         {
             hookCD += Time.deltaTime;
@@ -140,11 +167,14 @@ public class UIManager : MonoBehaviour {
         {
             activeIcons[2].fillAmount = 1;
         }
+        
 
         if (!player.GetComponent<GrapplingHook>().canHook)
         {
             activeIcons[2].fillAmount = 0;
+            refreshed[2] = false;
         }
+        
 
         //SmokeBomb
         if (activeIcons[3].fillAmount < 1f && stats.smokeBombAmount > 0)
@@ -163,11 +193,21 @@ public class UIManager : MonoBehaviour {
         {
             activeIcons[3].fillAmount = 0;
         }
+        else if (!refreshed[3])
+        {
+            refreshIcons[3].SetTrigger("Refresh");
+            refreshed[3] = true;
+        }
 
         //Dash
         if (activeIcons[4].fillAmount < 1f)
         {
             activeIcons[4].fillAmount += 1f / 2f * Time.deltaTime;
+        }
+        else if (!refreshed[4])
+        {
+            refreshIcons[4].SetTrigger("Refresh");
+            refreshed[4] = true;
         }
 
     }
@@ -321,22 +361,27 @@ public class UIManager : MonoBehaviour {
         activeIcons[skill].fillAmount = 0;
         if(skill == 0)
         {
+            refreshed[0] = false;
             katanaCD = 0f;
         }
         else if(skill == 1)
         {
+            refreshed[1] = false;
             shurikenCD = 0f;
         }
         else if(skill ==2)
         {
+            refreshed[2] = false;
             hookCD = 0f;
         }
         else if (skill == 3)
         {
+            refreshed[3] = false;
             bombCD = 0f;
         }
         else if (skill == 4)
         {
+            refreshed[4] = false;
             dashCD = 0f;
         }
     }
