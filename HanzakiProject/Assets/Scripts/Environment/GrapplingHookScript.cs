@@ -40,6 +40,7 @@ public class GrapplingHookScript : MonoBehaviour
     {
         GameObject spawnedSmoke = (GameObject)Instantiate(smokeParticles, transform.position, Quaternion.identity);
         Destroy(spawnedSmoke, 2f);
+        GetComponent<Cutscene_BlocksInitiate>().Initiate();
     }
 
 }

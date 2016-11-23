@@ -32,7 +32,7 @@ public class Katana : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
+        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0 || Input.GetKeyDown(InputManager.JSlash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
         {
             Slash(attackPower);
             //Animator.playanimation
