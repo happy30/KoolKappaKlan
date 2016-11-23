@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:HanzakiProject/Assets/Art/Shared/HEART_PICKUP/Materials.meta
 guid: 59931fdda0b1d4e48b3de112a8d40e2a
 folderAsset: yes
 timeCreated: 1479902376
+=======
+guid: c7d09db39f7bd304d827b6f18ea535a5
+folderAsset: yes
+timeCreated: 1479910926
+>>>>>>> 9f1bbf295112dc9a9109cb00f31685d169bfd125:HanzakiProject/Assets/Art/Shared/HEART_PICKUP/Materials.meta
 licenseType: Free
 DefaultImporter:
   userData: 

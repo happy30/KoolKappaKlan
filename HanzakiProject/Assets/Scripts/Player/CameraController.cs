@@ -7,12 +7,24 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     public PlayerController playerController;
-    float cameraOffsetX;
+    
+    public float cameraOffsetX;
     public float cameraOffsetY;
 
     public float followTime;
     public bool inCutscene;
     public bool inPuzzle;
+    public enum CameraStance
+    {
+        Right,
+        Left,
+        Idle
+    };
+
+    public CameraStance stance;
+    public bool cameraProg;
+
+    float timer;
 
     public GameObject followObject;
     public GameObject hookObject;
@@ -66,15 +78,60 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.xMovement > 0.01)
         {
-            cameraOffsetX = 5;
+            if(stance != CameraStance.Right)
+            {
+                timer = 0;
+                cameraOffsetX = 5;
+                followTime = 0;
+                stance = CameraStance.Right;
+            }
+            else
+            {
+                if (timer < 0.7f)
+                {
+                    timer += Time.deltaTime;
+                    followTime = timer * 3;
+                }
+            }
         }
         else if (playerController.xMovement < -0.01)
         {
-            cameraOffsetX = -5;
+            if (stance != CameraStance.Left)
+            {
+                timer = 0;
+                cameraOffsetX = -5;
+                followTime = 0;
+                stance = CameraStance.Left;
+            }
+            else
+            {
+                if (timer < 0.7f)
+                {
+                    timer += Time.deltaTime;
+                    followTime = timer * 3;
+                }
+            }
+
         }
         else
         {
-            cameraOffsetX = 0;
+            if (stance != CameraStance.Idle)
+            {
+                timer = 0;
+                cameraOffsetX = 0;
+                followTime = 0;
+                stance = CameraStance.Idle;
+
+            }
+            else
+            {
+                if (timer < 0.7f)
+                {
+                    timer += Time.deltaTime;
+                    followTime = 1 + timer * 1.5f;
+                }
+            }
+
         }
         if(!inPuzzle)
         {
@@ -108,6 +165,7 @@ public class CameraController : MonoBehaviour
     //Focus the camera on an object
     public void FollowObject(GameObject followThis)
     {
+        followTime = 1.5f;
         if(playerController.levelType == PlayerController.LevelType.SS)
         {
             //transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, cutsceneZ), followTime * Time.deltaTime);
