@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 841fb8304eb69aa47a23b8d84109d4da
-timeCreated: 1479762325
-=======
 guid: 450ebb0da1024a9488ae47c40cd1ad9f
-timeCreated: 1479767141
->>>>>>> bf0b7e85707d3e9595409c1acac56f4aa2f3bc91
-licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -17,7 +10,7 @@ ModelImporter:
     4300000: Box001
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -40,11 +33,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 1
-=======
-    globalScale: 0.04
->>>>>>> bf0b7e85707d3e9595409c1acac56f4aa2f3bc91
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -63,7 +52,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
