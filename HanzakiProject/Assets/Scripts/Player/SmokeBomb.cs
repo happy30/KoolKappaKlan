@@ -26,7 +26,7 @@ public class SmokeBomb : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(InputManager.SmokeBomb) && stats.smokeBombUnlocked && stats.smokeBombAmount > 0 && !reloading)
+        if (Input.GetKey(InputManager.SmokeBomb) && stats.smokeBombUnlocked && stats.smokeBombAmount > 0 && !reloading || Input.GetKey(InputManager.JSmokeBomb) && stats.smokeBombUnlocked && stats.smokeBombAmount > 0 && !reloading)
         {
             //Animatorplay blabla
             ThrowSmokeBomb();

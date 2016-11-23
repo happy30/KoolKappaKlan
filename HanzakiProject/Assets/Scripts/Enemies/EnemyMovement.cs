@@ -180,6 +180,6 @@ public class EnemyMovement : MonoBehaviour
 
     void UpdatedHealth()
     {
-        image.sprite = spriteArray[health];
+        //image.sprite = spriteArray[health];
     }
 }
