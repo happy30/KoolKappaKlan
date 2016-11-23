@@ -66,7 +66,7 @@ public class CutsceneController : MonoBehaviour
                 }
             }
             //Each character will appear on screen one by one, if we click we speed up that process. If all characters are on-screen go to next line
-            if (Input.GetKeyDown(InputManager.Slash))
+            if (Input.GetKeyDown(InputManager.Slash) || Input.GetKeyDown(InputManager.JJumpTD))
             {
                 if (displayLine != fullDialogueLine)
                 {

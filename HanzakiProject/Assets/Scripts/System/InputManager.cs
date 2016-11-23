@@ -15,6 +15,14 @@ public class InputManager : MonoBehaviour
     public static KeyCode JumpSS = KeyCode.UpArrow;
     public static KeyCode JumpTD = KeyCode.Space;
 
+    public static KeyCode JSlash = KeyCode.Joystick1Button1;
+    public static KeyCode JShuriken = KeyCode.Joystick1Button2;
+    public static KeyCode JHook = KeyCode.Joystick1Button3;
+    public static KeyCode JSmokeBomb = KeyCode.Joystick1Button5;
+    public static KeyCode JJump;
+    public static KeyCode JJumpSS = KeyCode.Joystick1Button0;
+    public static KeyCode JJumpTD = KeyCode.Joystick1Button0;
+
 
     void Start()
     {
@@ -48,6 +56,31 @@ public class InputManager : MonoBehaviour
             JumpTD = (KeyCode)PlayerPrefs.GetInt("keyspace");
         }
 
+        if (PlayerPrefs.HasKey("jkeya"))
+        {
+            JSlash = (KeyCode)PlayerPrefs.GetInt("jkeya");
+        }
+        if (PlayerPrefs.HasKey("jkeyb"))
+        {
+            JShuriken = (KeyCode)PlayerPrefs.GetInt("jkeyb");
+        }
+        if (PlayerPrefs.HasKey("jkeyc"))
+        {
+            JHook = (KeyCode)PlayerPrefs.GetInt("jkeyc");
+        }
+        if (PlayerPrefs.HasKey("jkeyd"))
+        {
+            JSmokeBomb = (KeyCode)PlayerPrefs.GetInt("jkeyd");
+        }
+        if (PlayerPrefs.HasKey("jkeyup"))
+        {
+            JJumpSS = (KeyCode)PlayerPrefs.GetInt("jkeyup");
+        }
+        if (PlayerPrefs.HasKey("jkeyspace"))
+        {
+            JJumpTD = (KeyCode)PlayerPrefs.GetInt("jkeyspace");
+        }
+
         instance = this;
     }
 
@@ -58,6 +91,11 @@ public class InputManager : MonoBehaviour
         PlayerPrefs.SetString("keyc", Hook.ToString());
         PlayerPrefs.SetString("keyd", SmokeBomb.ToString());
         PlayerPrefs.SetString("keyspace", JumpTD.ToString());
+        PlayerPrefs.SetString("jkeya", JSlash.ToString());
+        PlayerPrefs.SetString("jkeyb", JShuriken.ToString());
+        PlayerPrefs.SetString("jkeyc", JHook.ToString());
+        PlayerPrefs.SetString("jkeyd", JSmokeBomb.ToString());
+        PlayerPrefs.SetString("jkeyspace", JJumpTD.ToString());
     }
 }
 

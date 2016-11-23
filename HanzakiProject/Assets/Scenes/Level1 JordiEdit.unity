@@ -6656,6 +6656,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hook: {fileID: 0}
   stats: {fileID: 0}
+  cameraPos: {fileID: 0}
+  destroyObject: 0
+  smokeParticles: {fileID: 0}
 --- !u!136 &532180614
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10677,6 +10680,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceCalculator: {fileID: 1533360982}
   distance: 0
+  playerZ: 0
+  startPlayerZ: 0
 --- !u!65 &899004993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14078,7 +14083,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b820c267ccba46b45a4915ae2a0faff7, type: 2}
+  - {fileID: 2100000, guid: 96386d82196a7d4409379cfc43377701, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

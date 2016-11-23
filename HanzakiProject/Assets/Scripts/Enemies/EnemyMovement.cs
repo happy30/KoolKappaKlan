@@ -164,7 +164,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void GetHit(int damageGet)
+    public void GetHit(int damageGet)
     {
         health -= damageGet;
         if (health <= 0)
@@ -180,6 +180,6 @@ public class EnemyMovement : MonoBehaviour
 
     void UpdatedHealth()
     {
-        image.sprite = spriteArray[health];
+        //image.sprite = spriteArray[health];
     }
 }

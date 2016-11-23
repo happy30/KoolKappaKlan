@@ -16,7 +16,7 @@ public class Katana : MonoBehaviour
     public Transform playerModel;
     public PlayerController playerController;
     public GameObject SlashedObject;
-
+    public Material katanaMaterial;
     public int attackPower = 1;
     public float dashPower;
     public float coolDown;
@@ -32,8 +32,9 @@ public class Katana : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
+        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0 || Input.GetKeyDown(InputManager.JSlash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
         {
+            Slash(attackPower);
             //Animator.playanimation
             playerController.Dash(dashPower);
             ui.UseSkill(0);
@@ -53,9 +54,10 @@ public class Katana : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(playerModel.position, playerModel.forward, out hit, 2))
         {
-            if(hit.collider.tag == "Enemy" || hit.collider.tag == "Destructible")
+            if(hit.collider.tag == "Enemy")
             {
                 SlashedObject = hit.collider.gameObject;
+                hit.collider.transform.parent.GetComponent<EnemyMovement>().GetHit(attackPower);
                 /*
                 if (SlashedObject.GetComponent<EnemyMovement>() != null)
                 {
@@ -67,7 +69,12 @@ public class Katana : MonoBehaviour
                 }
                 */
             }
+            else if (hit.collider.tag == "Destructible" && swordType == SwordType.Katana)
+            {
+                hit.collider.gameObject.GetComponent<DestructibleScript>().DestroyObject();
+            }
         }
+        
         else
         {
             SlashedObject = null;
@@ -77,6 +84,7 @@ public class Katana : MonoBehaviour
     public void UpgradeWeapon()
     {
         swordType = SwordType.Katana;
+        GameObject.FindWithTag("Katana").GetComponent<Renderer>().material = katanaMaterial;
         attackPower = 2;
     }
 

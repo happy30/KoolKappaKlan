@@ -68,11 +68,6 @@ public class ShurikenObject : MonoBehaviour
             model2.Rotate(0, 0, 0);
             model.Rotate(0, 0, 0);
             hit = true;
-
-            if(col.gameObject.tag == "Destructible")
-            {
-                col.gameObject.GetComponent<DestructibleScript>().DestroyObject();
-            }
         } 
     }
 }

@@ -323,7 +323,7 @@ GameObject:
   - 23: {fileID: 23000011155159566}
   m_Layer: 0
   m_Name: 3D_INT_MODL_BLADE
-  m_TagString: Untagged
+  m_TagString: Katana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,6 +810,7 @@ GameObject:
   - 114: {fileID: 114000010942075822}
   - 120: {fileID: 120000012180477432}
   - 114: {fileID: 114000012385697826}
+  - 82: {fileID: 82000011855599226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1335,7 +1336,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013027347028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.77, y: 7.83, z: -117.7}
+  m_LocalPosition: {x: -36.89, y: 0.99, z: -117.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1614,10 +1615,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014219683954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.08, y: -0.82, z: -0.056}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 4000014219278804}
   - {fileID: 4000010403822184}
@@ -2246,7 +2247,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 12e18ab58f8a9d844a963269db267336, type: 2}
+  - {fileID: 2100000, guid: 44d75787aeb2f7a4996d8df2e98c6909, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -2298,6 +2299,80 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!82 &82000011855599226
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013027347028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114000010942075822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2313,9 +2388,11 @@ MonoBehaviour:
   playerModel: {fileID: 4000010979179118}
   playerController: {fileID: 0}
   SlashedObject: {fileID: 0}
+  katanaMaterial: {fileID: 2100000, guid: 12e18ab58f8a9d844a963269db267336, type: 2}
   attackPower: 1
   dashPower: 5
   coolDown: 0
+  ui: {fileID: 0}
 --- !u!114 &114000011366069152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2333,6 +2410,7 @@ MonoBehaviour:
   reloading: 0
   shurikenObject: {fileID: 1000014094198870, guid: 76461566a07599a4a9a09611801220a1,
     type: 2}
+  ui: {fileID: 0}
 --- !u!114 &114000012385697826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2346,6 +2424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
   hook: {fileID: 0}
+  ui: {fileID: 0}
   claw: {fileID: 1000012151424750, guid: f7ac5a139a6cfa44fa101405b4258402, type: 2}
   clawSpeed: 50
   linePositions:
@@ -2353,6 +2432,10 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   canHook: 0
   hookCooldown: 0
+  sound: {fileID: 0}
+  fireHook: {fileID: 8300000, guid: 2c9e3e3d7747d0745b5e568d29f7fd7e, type: 3}
+  hootHit: {fileID: 8300000, guid: cd9d5786897b4f64d9bb2389170fb2c6, type: 3}
+  soundPlayed: 0
   playerModel: {fileID: 4000010979179118}
 --- !u!114 &114000012478805436
 MonoBehaviour:
@@ -2368,9 +2451,10 @@ MonoBehaviour:
   stats: {fileID: 0}
   reloading: 0
   reloadTimer: 0
-  particleObject: {fileID: 1000010726769364, guid: d7a6a1ad3d62a3d468a8909921f9e4db,
+  particleObject: {fileID: 1000011605007380, guid: d85a4b75537d4ef4d9f7de29ddb85630,
     type: 2}
   _playerController: {fileID: 114000014240909074}
+  ui: {fileID: 0}
 --- !u!114 &114000014240909074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2387,6 +2471,7 @@ MonoBehaviour:
   xMovement: 0
   zMovement: 0
   modelWidth: 0.5
+  modelHeight: 0.8
   onSlipperyTile: 0
   onSlipperyTileNearWall: 0
   buttonCount: 0
@@ -2394,9 +2479,13 @@ MonoBehaviour:
   doubleTapTime: 0
   dashSpeed: 12
   dashCooldown: 0
+  playerMat: {fileID: 2100000, guid: 8d7fe20544cf4084bb4d49a14dec019f, type: 2}
   playerRotation: {x: 0, y: 0, z: 0}
   invulnerable: 0
   invulnerableTime: 3
+  invulnerableEffect: 0
+  sound: {fileID: 0}
+  smokeBombSound: {fileID: 8300000, guid: befcdfa722f74e94c9f2468378d3d5df, type: 3}
 --- !u!120 &120000012180477432
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -2449,9 +2538,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.43, z: 0}
 --- !u!137 &137000012463148866
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2490,8 +2579,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: -0.21478271}
-    m_Extent: {x: 0.73023987, y: 1.3586264, z: 0.448555}
+    m_Center: {x: 0, y: 0, z: -0.21478653}
+    m_Extent: {x: 0.73023987, y: 1.3586261, z: 0.44855502}
   m_DirtyAABB: 0
 --- !u!183 &183000012966795400
 Cloth:

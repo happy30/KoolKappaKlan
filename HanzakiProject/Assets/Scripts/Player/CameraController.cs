@@ -31,8 +31,6 @@ public class CameraController : MonoBehaviour
 
         followTime = 1.5f;
 
-        followTime = 2.5f;
-
         if(playerController.levelType == PlayerController.LevelType.TD)
         {
             cameraOffsetY = 10;
@@ -82,13 +80,13 @@ public class CameraController : MonoBehaviour
         {
             if(hookObject == null)
             {
-                transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
+                transform.position = Vector3.Slerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
                 //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraRot, followTime * Time.deltaTime);
                 transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, cameraRot.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, cameraRot.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, cameraRot.z, followTime * Time.deltaTime));
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, hookObject.GetComponent<GrapplingHookScript>().cameraPos.position, followTime * Time.deltaTime);
+                transform.position = Vector3.Slerp(transform.position, hookObject.GetComponent<GrapplingHookScript>().cameraPos.position, followTime * Time.deltaTime);
                 //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles, followTime * Time.deltaTime);
                 transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, hookObject.GetComponent<GrapplingHookScript>().cameraPos.eulerAngles.z, followTime * Time.deltaTime));
             }
