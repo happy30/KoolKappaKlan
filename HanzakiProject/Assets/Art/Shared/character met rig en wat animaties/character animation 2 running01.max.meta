@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 9bab62a928e63664889587c1172d2f83
 timeCreated: 1479994646
 licenseType: Free
@@ -165,6 +166,14 @@ ModelImporter:
     7400000: Take 001
     9500000: //RootNode
     13700000: Hanzaki
+=======
+guid: d0f20396169d517418c5bb131c3ab648
+timeCreated: 1479994260
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName: {}
+>>>>>>> a11e232aed803c0484a9e81ba5f599a050b1eb87
   materials:
     importMaterials: 1
     materialName: 0
