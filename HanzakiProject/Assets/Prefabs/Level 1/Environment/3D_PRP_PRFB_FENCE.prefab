@@ -124,7 +124,7 @@ GameObject:
   - 33: {fileID: 33000011230359988}
   - 23: {fileID: 23000010129759292}
   m_Layer: 0
-  m_Name: 3D_PRP_PRFB_FENCE1
+  m_Name: 3D_PRP_PRFB_FENCE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

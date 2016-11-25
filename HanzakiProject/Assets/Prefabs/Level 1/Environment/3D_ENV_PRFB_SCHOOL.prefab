@@ -105,9 +105,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012272955144}
-  - 95: {fileID: 95000010159331182}
   m_Layer: 0
-  m_Name: school building rilana
+  m_Name: 3D_ENV_PRFB_SCHOOL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4245,20 +4244,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.68, y: 8.41, z: 1.79}
   m_Center: {x: 0.03, y: -0.12, z: 4.73}
---- !u!95 &95000010159331182
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010423175778}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ae7711f8f097004da7617bf96ba338c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
