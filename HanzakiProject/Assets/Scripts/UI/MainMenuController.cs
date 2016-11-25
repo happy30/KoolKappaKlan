@@ -51,6 +51,8 @@ public class MainMenuController : MonoBehaviour
     public AudioClip buttonHover;
     public AudioClip openMenu;
 
+
+
     public enum CursorAt
     {
         NewGame,
@@ -70,6 +72,7 @@ public class MainMenuController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        Time.timeScale = 1;
         cursorArrow.anchoredPosition = new Vector2(cursorArrow.anchoredPosition.x, buttons[0].anchoredPosition.y);
         cursorArrow.gameObject.SetActive(false);
         optionsLocationX = 1920;

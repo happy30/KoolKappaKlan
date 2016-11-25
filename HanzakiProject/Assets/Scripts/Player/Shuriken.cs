@@ -26,22 +26,26 @@ public class Shuriken : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetKey(InputManager.Shuriken) && stats.shurikenUnlocked && stats.shurikenAmount > 0 && !reloading || Input.GetKey(InputManager.JShuriken) && stats.shurikenUnlocked && stats.shurikenAmount > 0 && !reloading)
+        if(!ui.isPaused)
         {
-            //Animatorplay blabla
-            ThrowShuriken(attackPower);
-            ui.UseSkill(1);
-            reloading = true;   
-        }
-        if(reloading)
-        {
-            reloadTimer += Time.deltaTime;
-            if (reloadTimer > 1)
+            if (Input.GetKey(InputManager.Shuriken) && stats.shurikenUnlocked && stats.shurikenAmount > 0 && !reloading || Input.GetKey(InputManager.JShuriken) && stats.shurikenUnlocked && stats.shurikenAmount > 0 && !reloading)
             {
-                reloading = false;
-                reloadTimer = 0;
+                //Animatorplay blabla
+                ThrowShuriken(attackPower);
+                ui.UseSkill(1);
+                reloading = true;
+            }
+            if (reloading)
+            {
+                reloadTimer += Time.deltaTime;
+                if (reloadTimer > 1)
+                {
+                    reloading = false;
+                    reloadTimer = 0;
+                }
             }
         }
+	    
 	}
 
 
