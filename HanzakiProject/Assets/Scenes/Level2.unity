@@ -14699,7 +14699,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 685473163
+  randomSeed: 1192824934
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -16528,7 +16528,7 @@ ParticleSystem:
   moveWithTransform: 0
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 526110360
+  randomSeed: -1108407419
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -18165,8 +18165,8 @@ ParticleSystem:
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
-    maxCollisionShapes: 256
-    quality: 1
+    maxCollisionShapes: 1024
+    quality: 0
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
