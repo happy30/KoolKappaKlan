@@ -46,7 +46,7 @@ public class GrapplingHook : MonoBehaviour {
     void Update ()
     {
         //Can use hook if it's enabled in statsmanager and hook nearby.
-	    if(stats.grapplingHookUnlocked)
+	    if(stats.grapplingHookUnlocked && !ui.isPaused)
         {
             if(Input.GetKeyDown(InputManager.Hook) && canHook && hookCooldown <= 0 || Input.GetKeyDown(InputManager.JHook) && canHook && hookCooldown <= 0)
             {

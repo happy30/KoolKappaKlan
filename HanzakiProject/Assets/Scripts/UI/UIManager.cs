@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour {
 
+    //Puase
+    public bool isPaused;
+    public GameObject pauseMenu;
+
     public OptionsSettings options;
 
     public GameObject letterboxes;
@@ -19,7 +23,7 @@ public class UIManager : MonoBehaviour {
     public GameObject interactTextObject;
     public GameObject npcNameTextObject;
 
-    AudioSource _sound;
+    public AudioSource _sound;
 	public StatsManager stats;
     public QuestManager quests;
     public ProgressionManager prog;
@@ -56,6 +60,10 @@ public class UIManager : MonoBehaviour {
     public AudioClip questCompleted;
     public AudioClip unlockAbilitySound;
     public AudioClip pickUpSound;
+    public AudioClip buttonHover;
+    public AudioClip openMenu;
+    public AudioClip closeMenu;
+    public AudioClip scrollSound;
 
     public GameObject pickUpText;
     public GameObject unlockAbility;
@@ -68,6 +76,8 @@ public class UIManager : MonoBehaviour {
     float hookCD;
     float bombCD;
     float dashCD;
+
+    float storeSFXVolume;
 
 
 	
@@ -93,6 +103,35 @@ public class UIManager : MonoBehaviour {
     {
         CountConsumeables();
         SetSkillIcon();
+        CheckPause();
+    }
+
+    void CheckPause()
+    {
+        if(Input.GetButtonDown("Cancel"))
+        {
+            if(!pauseMenu.activeSelf)
+            {
+                Camera.main.GetComponent<AudioSource>().Pause();
+                storeSFXVolume = options.SFXVolume;
+                options.SFXVolume = 0;
+                isPaused = true;
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+                _sound.PlayOneShot(openMenu);
+            }
+            
+        }
+    }
+
+    public void UnPause()
+    {
+        options.SFXVolume = storeSFXVolume;
+        Camera.main.GetComponent<AudioSource>().Play();
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
+        _sound.PlayOneShot(closeMenu);
     }
 
     void SetSkillIcon()
