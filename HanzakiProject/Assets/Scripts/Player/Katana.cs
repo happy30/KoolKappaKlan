@@ -32,19 +32,23 @@ public class Katana : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0 || Input.GetKeyDown(InputManager.JSlash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
+        if(!ui.isPaused)
         {
-            Slash(attackPower);
-            //Animator.playanimation
-            playerController.Dash(dashPower);
-            ui.UseSkill(0);
-            coolDown = 0.5f;
-        }
+            if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0 || Input.GetKeyDown(InputManager.JSlash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
+            {
+                Slash(attackPower);
+                //Animator.playanimation
+                playerController.Dash(dashPower);
+                ui.UseSkill(0);
+                coolDown = 0.5f;
+            }
 
-        if(coolDown > 0)
-        {
-            coolDown -= Time.deltaTime;
+            if (coolDown > 0)
+            {
+                coolDown -= Time.deltaTime;
+            }
         }
+        
 
     }
 

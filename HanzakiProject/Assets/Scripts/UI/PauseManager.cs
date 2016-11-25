@@ -1,98 +1,128 @@
-﻿//PauseManager by Arne
+﻿//PauseManager by Arne & Jordi
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class PauseManager : MonoBehaviour {
-	
-	public GameObject pausedPanel;
-	public GameObject exitGamePanel;
-	public GameObject optionsManagerPanel;
-	public bool inExitMenu; //off is niet, on is wel
-	public bool inOptionsMenu; //off is niet, on is wel
-	public int menuStatus; //1 is options menu, 2 is exitgame menu
-	
-	
-	// Use this for initialization
-	void Awake () 
-	{
-		pausedPanel.SetActive(false);
-		menuStatus = 3;
-	}
-	// Update is called once per frame, BGM stops/resumes,window pop up,cursor shows/hides,extra info at pause?
-	void Update () 
-	{
-		if(Input.GetButtonDown("Cancel")) 
-		{
-			switch (menuStatus) 
-			{
-				
-			case 1:
-			
-				optionsManagerPanel.SetActive(false);
-				pausedPanel.SetActive(true);
-				menuStatus = 3;
-				break;
-				
-			case 2:
-			
-				exitGamePanel.SetActive(false);
-				pausedPanel.SetActive(true);
-				menuStatus = 3;
-				break;
-				
-			case 3:
-			
-				if(Time.timeScale == 1.0f)
-				{
-					Time.timeScale = 0.0f; //BGM should stop, window with settings and resume game, screen darker, cursor shows
-					pausedPanel.SetActive(true);
-				}
-				else 
-				{
-					Time.timeScale = 1.0f; //BGM continues where left off, window closes, Cursor hides again
-					pausedPanel.SetActive(false);
-				}
-				break;
-			}
-		}
-	}
-	//ResumeGame gets you back into the game
-	public void ResumeGame () 
-	{
-		pausedPanel.SetActive(false);
-		Time.timeScale = 1.0f; //BGM continues where left off, window closes, Cursor hides again
-		menuStatus = 3;
-	}
-	//OptionsMenu gets you to the options panel
-	public void OptionsMenu ()
-	{
-		optionsManagerPanel.SetActive(true);
-		pausedPanel.SetActive(false);
-		menuStatus = 1;
-	}
-	//OptionsBack gets you back to the previous screen
-	public void OptionsBack () 
-	{
-		optionsManagerPanel.SetActive(false);
-		pausedPanel.SetActive(true);
-		menuStatus = 3;
-	}
-	//ExitGameMenu gives you the option to leave or resume
-	public void ExitGameMenu ()
-	{
-		exitGamePanel.SetActive(true);
-		menuStatus = 2;
-	}
-	//ExitGameTrue goes to the main menu scene
-	public void ExitGameTrue () 
-	{
-		Application.LoadLevel(0);
-		Time.timeScale = 1.0f; //BGM continues where left off, window closes, Cursor hides again
-		menuStatus = 3;
-	}
-	//ExitGameFalse gets you back to the previous screen
-	public void ExitGameFalse ()
-	{
-		exitGamePanel.SetActive(false);
-	}
+public class PauseManager : MonoBehaviour
+{
+	public enum CursorAt
+    {
+        Continue,
+        MainMenu,
+        ExitGame
+    };
+    public CursorAt cursorAt;
+
+    public GameObject cursor;
+    public Vector3 cursorPos;
+    public float cursorSpeed;
+    public UIManager ui;
+    public bool vAxisInUse;
+    public bool optionsOpen;
+    public GameObject options;
+    public RectTransform cursorArrow;
+
+    public GameObject scrollObject;
+    public GameObject scroll;
+
+    public GameObject optionsScrollObject;
+    public GameObject optionsScroll;
+
+    public LoadController load;
+
+
+    public Text[] itemsInList;
+
+    void Awake()
+    {
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
+        load = GameObject.Find("Canvas").GetComponent<LoadController>();
+    }
+
+    void Start()
+    {
+        cursorAt = CursorAt.Continue;
+        Time.timeScale = 0;
+    }
+
+    void Update()
+    {
+        cursor.GetComponent<RectTransform>().anchoredPosition = cursorPos;
+        if (Input.GetAxisRaw("Vertical") != 0)
+        {
+            if (!vAxisInUse && Input.GetAxisRaw("Vertical") < 0)
+            {
+                vAxisInUse = true;
+                if((int)cursorAt < 2)
+                {
+                    ui._sound.PlayOneShot(ui.buttonHover);
+                    cursorAt++;
+                }
+            }
+            else if (!vAxisInUse && Input.GetAxisRaw("Vertical") > 0)
+            {
+                vAxisInUse = true;
+                if ((int)cursorAt > 0)
+                {
+                    ui._sound.PlayOneShot(ui.buttonHover);
+                    cursorAt--;
+                }
+            }
+        }
+        else
+        {
+            vAxisInUse = false;
+        }
+
+        if(Input.GetButtonDown("Cancel"))
+        {
+            Continue();
+        }
+
+
+        if(Input.GetKeyDown(InputManager.Slash) || Input.GetKeyDown(InputManager.JSlash))
+        {
+            if(cursorAt == CursorAt.Continue)
+            {
+                Continue();
+            }
+            else if(cursorAt == CursorAt.MainMenu)
+            {
+                load.LoadScene("MainMenu2");
+            }
+            else if (cursorAt == CursorAt.ExitGame)
+            {
+                Application.Quit();
+            }
+        }
+
+
+        if(cursorAt == CursorAt.Continue)
+        {
+            itemsInList[0].color = new Color(233f / 255f, 1, 131f / 255f);
+            itemsInList[2].color = Color.white;
+            itemsInList[1].color = Color.white;
+            cursorPos = new Vector3(0, 140, 0);
+        }
+        if (cursorAt == CursorAt.MainMenu)
+        {
+            itemsInList[1].color = new Color(233f / 255f, 1, 131f / 255f);
+            itemsInList[0].color = Color.white;
+            itemsInList[2].color = Color.white;
+            cursorPos = new Vector3(0, 60, 0);
+        }
+        if (cursorAt == CursorAt.ExitGame)
+        {
+            itemsInList[2].color = new Color(233f / 255f, 1, 131f / 255f);
+            itemsInList[1].color = Color.white;
+            itemsInList[0].color = Color.white;
+            cursorPos = new Vector3(0, -20, 0);
+        }
+    }
+
+    public void Continue()
+    {
+        cursorAt = CursorAt.Continue;
+        ui.UnPause();
+    }
 }
