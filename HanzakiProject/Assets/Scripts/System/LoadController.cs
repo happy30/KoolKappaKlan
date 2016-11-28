@@ -7,28 +7,29 @@ using UnityEngine.UI;
 
 public class LoadController : MonoBehaviour
 {
-
+    //Load this interface before loading...
     public GameObject loadingInterface;
-    public float xPos;
+
+    //Sprite and rotatingspeed
     public RectTransform loadSprite;
     public float rotateSpeed;
+
+    //Slider for progress
     public Slider progressBar;
+
+    //async
     AsyncOperation async;
 
     //Load the scene
     public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadLevel(sceneName));
+        StartCoroutine(StartASync(sceneName));
         loadingInterface.SetActive(true);
-        //loadSprite = GameObject.Find("Canvas").GetComponent<UIManager>().loadingPiggy;
-        //progressBar = GameObject.Find("Canvas").GetComponent<UIManager>().progressBar;
-        //loadingInterface.SetActive(true);
     }
 
-    public IEnumerator LoadLevel(string level)
+    IEnumerator StartASync(string level)
     {
         async = SceneManager.LoadSceneAsync(level);
-        
         if (loadingInterface != null)
         {
             loadingInterface.SetActive(false);
@@ -36,27 +37,19 @@ public class LoadController : MonoBehaviour
         yield return async;
     }
 
-    /*
-    internal void LoadScene(object mainMenu)
-    {
-        throw new NotImplementedException();
-    }
-
-    */
-
     void Update()
     {
         if (async != null)
         {
+            //Loading bar (Slider)
             progressBar.value = (float)async.progress;
-            //we can have a loading bar here
+
+            //Sprite to move alongside the progress of the slider with rotation
             if (loadSprite != null)
             {
                 loadSprite.anchoredPosition = new Vector2(((float)async.progress * 1750) - 870, loadSprite.anchoredPosition.y);
                 loadSprite.Rotate(new Vector3(0, 0, rotateSpeed * Time.deltaTime));
             }
         }
-
-
     }
 }
