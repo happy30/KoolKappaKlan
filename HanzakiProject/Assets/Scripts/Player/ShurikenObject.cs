@@ -52,7 +52,7 @@ public class ShurikenObject : MonoBehaviour
     {
         if(!hit)
         {
-            transform.Translate(shurikenDirection * projectileSpeed * Time.deltaTime);
+            transform.Translate(new Vector3(shurikenDirection.x * projectileSpeed * Time.deltaTime, shurikenDirection.z * projectileSpeed * Time.deltaTime, shurikenDirection.y * projectileSpeed * Time.deltaTime));
             model2.Rotate(0, 0, 2000 * Time.deltaTime);
             model.Rotate(200 * Time.deltaTime, 0, 0);
         }
