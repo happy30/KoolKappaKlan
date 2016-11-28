@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float modelHeight;
     bool inAir;
 
+    public Vector3 walkTowards;
+    public Vector3 lookPos;
+
     public bool onSlipperyTile;
     public bool onSlipperyTileNearWall;
 
@@ -53,8 +56,10 @@ public class PlayerController : MonoBehaviour
 
     float lastTapFwdTime = 0;  // the time of the last tap that occurred
     bool dblTapFwdReady = false;  // whether you you will execute a double-tap upon the next tap
-    bool walkingForward = false;
-    bool walkingBackward = false;
+    bool walkingRight = false;
+    bool walkingLeft = false;
+    bool walkingUp = false;
+    bool walkingDown = false;
     bool dblTapbwdReady = false;
     float dblTapFwdTime  = .35f;
 
@@ -83,7 +88,8 @@ public class PlayerController : MonoBehaviour
             SetMovement();
             Move();
             //CheckForDash();
-            CheckForDash2();
+            //CheckForDash2();
+            CheckForDash3();
         }
         
         CheckForWall();
@@ -118,39 +124,50 @@ public class PlayerController : MonoBehaviour
         }
         if(!onSlipperyTile)
         {
-            xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
-            if (xMovement > 0)
+            if(levelType == LevelType.SS)
             {
-                playerRotation = new Vector3(0, 90, 0);
-                zMovement = 0;
-            }
-            if (xMovement < 0)
-            {
-                playerRotation = new Vector3(0, 270, 0);
-                zMovement = 0;
-            }
-            if (levelType == LevelType.TD)
-            {
-                zMovement = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
-                if (zMovement > 0)
+                xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+                if (xMovement > 0)
                 {
-                    playerRotation = new Vector3(0, 0, 0);
-                    xMovement = 0;
+                    playerRotation = new Vector3(0, 90, 0);
+                    zMovement = 0;
                 }
-                if (zMovement < 0)
+                if (xMovement < 0)
                 {
-                    playerRotation = new Vector3(0, 180, 0);
-                    xMovement = 0;
+                    playerRotation = new Vector3(0, 270, 0);
+                    zMovement = 0;
                 }
+                playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
+            }
+            
+            else if (levelType == LevelType.TD)
+            {
+                if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+                {
+                    walkTowards = transform.position;
+                }
+                else
+                {
+                    walkTowards = new Vector3(transform.position.x + Input.GetAxis("Horizontal"), transform.position.y, transform.position.z + Input.GetAxis("Vertical"));
+                }
+
+
+                
             }
         }
-        playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
+        
     }
 
 
-    void CheckForDash2()
+    void CheckForDash3()
+    {
+
+    }
+
+    /*void CheckForDash2()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
         if (Time.time > lastTapFwdTime + dblTapFwdTime)
         {
@@ -161,9 +178,9 @@ public class PlayerController : MonoBehaviour
         {
             if (horizontal > 0)
             {
-                if (!walkingForward)
+                if (!walkingRight)
                 {
-                    walkingForward = true;
+                    walkingRight = true;
                     lastTapFwdTime = Time.time;
                     if (dblTapFwdReady)
                     {
@@ -180,9 +197,9 @@ public class PlayerController : MonoBehaviour
             }
             if (horizontal < 0)
             {
-                if (!walkingBackward)
+                if (!walkingLeft)
                 {
-                    walkingBackward = true;
+                    walkingLeft = true;
                     lastTapFwdTime = Time.time;
                     if (dblTapFwdReady)
                     {
@@ -198,18 +215,61 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            if (vertical > 0)
+            {
+                if (!walkingUp)
+                {
+                    walkingUp = true;
+                    lastTapFwdTime = Time.time;
+                    if (dblTapFwdReady)
+                    {
+                        // Stop the other animations if necessary.
+                        Dash(dashSpeed);
+                        dashCooldown = 2f;
+                        ui.UseSkill(4);
+                    }
+                    else
+                    {
+                        dblTapFwdReady = true;
+                    }
+                }
+            }
+            if (vertical < 0)
+            {
+                if (!walkingUp)
+                {
+                    walkingDown = true;
+                    lastTapFwdTime = Time.time;
+                    if (dblTapFwdReady)
+                    {
+                        // Stop the other animations if necessary.
+                        
+                    }
+                    else
+                    {
+                        dblTapFwdReady = true;
+                    }
+                }
+            }
+
+
             if (horizontal == 0)
             {
-            	walkingForward = false;
-                walkingBackward = false;
+            	walkingRight = false;
+                walkingLeft = false;
             	// ^^ Idle animation Here
-            	print ("relaxing");
             }
-            		
-            if (walkingForward)
+
+            if (vertical == 0)
+            {
+                walkingUp = false;
+                walkingDown = false;
+                // ^^ Idle animation Here
+            }
+
+            if (walkingRight)
             {
             	// ^^ walk animation Here
-            	print ("walking");
             }
         }	
         else
@@ -227,7 +287,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    /*
+ 
    void CheckForDash()
    {
        if(levelType == LevelType.TD)
@@ -362,7 +422,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(float distance)
     {
-        _rb.velocity = playerModel.transform.forward * distance;
+        _rb.velocity = new Vector3(playerModel.transform.forward.x * distance, 0, playerModel.transform.forward.y * distance);
     }
     public void Dash(float distance, float height)
     {
@@ -374,7 +434,24 @@ public class PlayerController : MonoBehaviour
     {
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
-            transform.Translate(new Vector3(xMovement, 0, zMovement));
+            if(levelType == LevelType.SS)
+            {
+                transform.Translate(new Vector3(xMovement, 0, zMovement));
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
+                if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+                {
+                    lookPos = walkTowards - transform.position;
+                }
+                
+                lookPos.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, rotation, 50f * Time.deltaTime);
+                
+            }
+            
             if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
             {
                 //Check if player is standing on Ground
