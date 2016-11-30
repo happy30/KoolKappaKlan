@@ -110,10 +110,6 @@
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\Water.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterTile.cs" />
-    <Compile Include="Assets\Cutscene_Blocks.cs" />
-    <Compile Include="Assets\Cutscene_BlocksInitiate.cs" />
-    <Compile Include="Assets\EndDemo.cs" />
-    <Compile Include="Assets\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChaseSpawener.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChasing.cs" />
@@ -121,13 +117,14 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySight.cs" />
     <Compile Include="Assets\Scripts\Environment\CameraChanger.cs" />
+    <Compile Include="Assets\Scripts\Environment\Cutscene_Blocks.cs" />
+    <Compile Include="Assets\Scripts\Environment\Cutscene_BlocksInitiate.cs" />
     <Compile Include="Assets\Scripts\Environment\DestructibleScript.cs" />
     <Compile Include="Assets\Scripts\Environment\GrapplingHookScript.cs" />
     <Compile Include="Assets\Scripts\Environment\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\Environment\LocationEnter.cs" />
+    <Compile Include="Assets\Scripts\Environment\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
-    <Compile Include="Assets\Scripts\Environment\WaterController.cs" />
-    <Compile Include="Assets\Scripts\Environment\WaterOffset.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHook.cs" />
@@ -155,6 +152,7 @@
     <Compile Include="Assets\Scripts\System\XmlManager.cs" />
     <Compile Include="Assets\Scripts\UI\AbilityHotkey.cs" />
     <Compile Include="Assets\Scripts\UI\CutsceneController.cs" />
+    <Compile Include="Assets\Scripts\UI\EndDemo.cs" />
     <Compile Include="Assets\Scripts\UI\IntroCutsceneScript.cs" />
     <Compile Include="Assets\Scripts\UI\LoopBGM.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuController.cs" />
