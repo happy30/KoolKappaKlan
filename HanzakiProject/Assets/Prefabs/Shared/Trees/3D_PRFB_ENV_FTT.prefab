@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000013967118270}
   - 33: {fileID: 33000014156985768}
   - 23: {fileID: 23000012642841488}
+  - 136: {fileID: 136000012378956022}
   m_Layer: 0
   m_Name: 3D_PRFB_ENV_FTT
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011468116272}
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: 115.1737, y: 9.24, z: 150.83}
+  m_LocalPosition: {x: 16.5, y: 11.3, z: 156.9}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_Children: []
@@ -77,3 +78,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011468116272}
   m_Mesh: {fileID: 4300000, guid: 49733bb7517518247b257cdf431690c3, type: 3}
+--- !u!136 &136000012378956022
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011468116272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.7
+  m_Height: 26
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.014335573, z: 12.355699}
