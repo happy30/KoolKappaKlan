@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 5.5.0f3:2.2.0.0
-=======
-5.4.3f1:2.3.0.0
->>>>>>> fdfc54783b04184eed7c8441403f03e6d2471340
 StandaloneWindows
 D:/Unity/Editor/Data/Managed/UnityEngine.dll
 D:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll
