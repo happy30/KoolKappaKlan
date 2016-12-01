@@ -1,16 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/PersonalScenes/AliekeScene.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/Level1.unity
-=======
-<<<<<<< HEAD
-- path: Assets/Scenes/PersonalScenes/AliekeScene.unity
-=======
-- path: Assets/Scenes/Level1.unity
->>>>>>> 03ebb069524dd6ab45c98d76c2385daf0d0d2bbf
->>>>>>> a4107d02cca93c9ba3a3706b1ca3a10dbe3ce490
->>>>>>> abd507f87a9efe1058a98e85448cea447124f2ed
   isLoaded: 1
   isActive: 1
