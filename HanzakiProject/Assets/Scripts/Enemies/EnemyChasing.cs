@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EnemyChasing : MonoBehaviour {
-    NavMeshAgent agent;
+    UnityEngine.AI.NavMeshAgent agent;
     public Transform target;
     public int damage;
     private Animator anim;
@@ -10,7 +10,7 @@ public class EnemyChasing : MonoBehaviour {
 
 	void Awake()
     {
-	    agent = GetComponent<NavMeshAgent>();
+	    agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
 	}
 	

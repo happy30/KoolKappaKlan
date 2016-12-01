@@ -6,7 +6,7 @@ public class EnemyBoss : MonoBehaviour {
     private RaycastHit hit;
     public float rayDis;
     private bool attackMode;
-    private NavMeshAgent agent;
+    private UnityEngine.AI.NavMeshAgent agent;
     private Animator anim;
     public Transform player;
 
@@ -21,7 +21,7 @@ public class EnemyBoss : MonoBehaviour {
     private float animTimer;
 
     void Awake () {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
 	}
 	

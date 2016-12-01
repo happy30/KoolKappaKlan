@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource sound;
     public AudioClip smokeBombSound;
 
+    /*
     float lastTapFwdTime = 0;  // the time of the last tap that occurred
     bool dblTapFwdReady = false;  // whether you you will execute a double-tap upon the next tap
     bool walkingRight = false;
@@ -62,6 +63,12 @@ public class PlayerController : MonoBehaviour
     bool walkingDown = false;
     bool dblTapbwdReady = false;
     float dblTapFwdTime  = .35f;
+    */
+
+    public bool hasTapped;
+    public float tapTimer;
+    public float angle;
+    public int lastDirection;
 
 
     //Gather components
@@ -161,10 +168,97 @@ public class PlayerController : MonoBehaviour
 
     void CheckForDash3()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        float xhorizontal = Input.GetAxisRaw("Horizontal");
+        float xvertical = Input.GetAxisRaw("Vertical");
+
+        angle = Mathf.Atan2(xhorizontal, xvertical) * Mathf.Rad2Deg;
+
+        if (dashCooldown <= 0)
+        {
+            if(xhorizontal == 45)
+            {
+                
+            }
+
+        }
+        else
+        {
+           if(dashCooldown > 0 )
+           {
+                dashCooldown -= Time.deltaTime;
+           }
+        }
+
+
+        
+    }
+
+
+        /*
+        if(dashCooldown <= 0)
+        {
+            tapTimer += Time.deltaTime;
+            if (hasTapped)
+            {
+                
+                if (horizontal > 0.8f || vertical > 0.8f || horizontal < -0.8f || vertical < -0.8f)
+                {
+                    if (angle > lastDirection - 30f && angle < lastDirection + 30f)
+                    {
+                        if (tapTimer < 0.4f)
+                        {
+                            Dash(dashSpeed);
+                            dashCooldown = 2f;
+                            ui.UseSkill(4);
+                            hasTapped = false;
+                            tapTimer = 0;
+                        }
+                        else
+                        {
+                            tapTimer = 0;
+                            hasTapped = false;
+                        }
+
+                    }
+                    else
+                    {
+                        hasTapped = false;
+                        tapTimer = 0;
+                    }
+
+                }
+            }
+            else
+            {
+                if (horizontal > 0.8f || vertical > 0.8f || horizontal < -0.8f || vertical < -0.8f)
+                {
+                    lastDirection = angle;
+                    print(lastDirection);
+                    isMoving = true;
+ 
+                }
+                else if(isMoving)
+                {
+                    hasTapped = true;
+                    tapTimer = 0;
+                }
+            }
+        }
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            dashCooldown = 0;
+        }
 
     }
 
-    /*void CheckForDash2()
+    void CheckForDash2()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");

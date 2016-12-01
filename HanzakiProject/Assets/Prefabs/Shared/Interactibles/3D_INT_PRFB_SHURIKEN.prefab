@@ -89,7 +89,7 @@ GameObject:
   - 54: {fileID: 54000012659511238}
   - 65: {fileID: 65000011431405220}
   m_Layer: 0
-  m_Name: 3D_INT_PRFB_SHUR2
+  m_Name: 3D_INT_PRFB_SHURIKEN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,6 +380,7 @@ MonoBehaviour:
   attackPower: 1
   projectileSpeed: 15
   player: {fileID: 4000010979179118, guid: 720fe15f77b7b204e811a33376149cf5, type: 2}
+  playerController: {fileID: 0}
   model: {fileID: 4000013314846718}
   model2: {fileID: 4000010567602830}
   hit: 0

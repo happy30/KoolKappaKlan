@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform player;
-    NavMeshAgent agent;
+    UnityEngine.AI.NavMeshAgent agent;
     enum States {Idle, Patrol, Chasing, Attacking}
     States enemyStates;
 
@@ -42,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyStates = States.Patrol;
         anim = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         image = healthSprite.GetComponent<Image>();
     }
 
