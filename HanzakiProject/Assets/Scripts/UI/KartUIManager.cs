@@ -24,8 +24,8 @@ public class KartUIManager : MonoBehaviour {
     public Text player1Round;
     public Text player2Round;
 
-    public Text rank1;
-    public Text rank2;
+    public string rank1;
+    public string rank2;
 
 
     void DrawMinimap()
@@ -36,12 +36,12 @@ public class KartUIManager : MonoBehaviour {
     public void SortRanks()
     {
         if (stats.player1Checkpoints > stats.player2Checkpoints){
-            player1Standing = rank1;
-            player2Standing = rank2;
+           // player1Standing = 
+          //  player2Standing = 
         }
         else{
-            player1Standing = rank2;
-            player2Standing = rank1;
+           // player1Standing = 
+           // player2Standing = 
         }
       //  DrawRanks();
     }
