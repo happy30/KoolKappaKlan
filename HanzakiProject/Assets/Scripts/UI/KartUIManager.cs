@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class KartUIManager : MonoBehaviour {
 
-    public Image katanaIcon;
-    public Image bombIcon;
-    public Image hookIcon;
-    public Image boxIcon;
-    public Image shurikenIcon;
+    public Sprite katanaIcon;
+    public Sprite bombIcon;
+    public Sprite hookIcon;
+    public Sprite boxIcon;
+    public Sprite shurikenIcon;
 
-    public Image heldItem;
-    public Image emptyItem;
+    public Sprite heldItem;
+    public Sprite emptyItem;
 
-    public Text player1Place;
-    public Text player2Place;
+    public Sprite player1Standing;
+    public Sprite player2Standing;
+
+    public Text player1Round;
+    public Text player2Round;
 
     void DrawMinimap()
     {
@@ -34,11 +37,11 @@ public class KartUIManager : MonoBehaviour {
 
     void DrawHeldItem(Image itemGot)
     {
-        heldItem = itemGot;
+        //heldItem = itemGot;
     }
 
     void HeldItemUsed()
     {
-        heldItem = emptyItem;
+       // heldItem = emptyItem;
     }
 }
