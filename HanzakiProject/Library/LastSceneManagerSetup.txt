@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Scenes/PersonalScenes/Level2Jordi.unity
+  isLoaded: 1
+  isActive: 1
