@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/Scenes/Level2.unity
+=======
 - path: Assets/Scenes/ArneScene.unity
+>>>>>>> d35cc87280edd742d5587848eece0daeebf202dd
   isLoaded: 1
   isActive: 1
