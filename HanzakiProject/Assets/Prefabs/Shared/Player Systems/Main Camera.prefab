@@ -16,20 +16,20 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010880212082}
-  - 20: {fileID: 20000012672029892}
-  - 92: {fileID: 92000010122687526}
-  - 124: {fileID: 124000011739225896}
-  - 81: {fileID: 81000010427582462}
-  - 114: {fileID: 114000011962638484}
-  - 114: {fileID: 114000013652030802}
-  - 114: {fileID: 114000013194655002}
-  - 114: {fileID: 114000013872839930}
-  - 82: {fileID: 82000013779603392}
-  - 114: {fileID: 114000012459468868}
-  - 114: {fileID: 114000011030176896}
+  - component: {fileID: 4000010880212082}
+  - component: {fileID: 20000012672029892}
+  - component: {fileID: 92000010122687526}
+  - component: {fileID: 124000011739225896}
+  - component: {fileID: 81000010427582462}
+  - component: {fileID: 114000011962638484}
+  - component: {fileID: 114758740053311150}
+  - component: {fileID: 114561233271583428}
+  - component: {fileID: 114114100928640298}
+  - component: {fileID: 82282879755323436}
+  - component: {fileID: 114100188927638536}
+  - component: {fileID: 114929637274746518}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -43,13 +43,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012402827316}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.08, y: 12.17, z: 214.91}
+  m_LocalRotation: {x: 0.01745245, y: 0, z: 0, w: 0.99984777}
+  m_LocalPosition: {x: -41, y: 2.3, z: -128}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 2, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2, y: 0, z: 0}
 --- !u!20 &20000012672029892
 Camera:
   m_ObjectHideFlags: 1
@@ -67,7 +67,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -75,11 +75,11 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294966783
-  m_RenderingPath: -1
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -91,7 +91,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012402827316}
   m_Enabled: 1
---- !u!82 &82000013779603392
+--- !u!82 &82282879755323436
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -100,13 +100,14 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d66ba0ef99c89394985744d466847fb0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d2b2e55be4345d94287a562dedcbbaee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
+  SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -119,12 +120,14 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
+    - serializedVersion: 2
+      time: 1
       value: 0
       inSlope: 0
       outSlope: 0
@@ -135,7 +138,8 @@ AudioSource:
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -146,7 +150,8 @@ AudioSource:
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -157,7 +162,8 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - serializedVersion: 2
+      time: 0
       value: 1
       inSlope: 0
       outSlope: 0
@@ -172,20 +178,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012402827316}
   m_Enabled: 1
---- !u!114 &114000011030176896
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012402827316}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243a781cad112c75d0008dfa8d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shader: {fileID: 4800000, guid: daf9781cad112c75d0008dfa8d76c639, type: 3}
-  textureRamp: {fileID: 0}
-  rampOffset: 0
 --- !u!114 &114000011962638484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,17 +192,17 @@ MonoBehaviour:
   player: {fileID: 0}
   playerController: {fileID: 0}
   cameraOffsetX: 0
-  cameraOffsetY: 1
-  followTime: 1.5
+  cameraOffsetY: 4
+  followTime: 0
   inCutscene: 0
   inPuzzle: 0
   stance: 0
   cameraProg: 0
   followObject: {fileID: 0}
   hookObject: {fileID: 0}
-  cutsceneZ: -129
+  cutsceneZ: 0
   cameraRot: {x: 0, y: 0, z: 0}
---- !u!114 &114000012459468868
+--- !u!114 &114100188927638536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -223,7 +215,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopEnd: 81.75
   loopDuration: 71.55
---- !u!114 &114000013194655002
+--- !u!114 &114114100928640298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012402827316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 2
+  screenBlendMode: 0
+  sunTransform: {fileID: 0}
+  radialBlurIterations: 3
+  sunColor: {r: 0.9411765, g: 0.5562354, b: 0.28419843, a: 1}
+  sunThreshold: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 1}
+  sunShaftBlurRadius: 1
+  sunShaftIntensity: 1
+  maxRadius: 1.25
+  useDepthTexture: 1
+  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
+  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
+--- !u!114 &114561233271583428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012402827316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f19108706fdce9469603d07980eb8ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blendMode: 3
+  intensity: 1
+  texture: {fileID: 0}
+  overlayShader: {fileID: 4800000, guid: 8c81db0e527d24acc9bcec04e87781bd, type: 3}
+--- !u!114 &114758740053311150
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -264,44 +294,20 @@ MonoBehaviour:
     type: 3}
   brightPassFilterShader: {fileID: 4800000, guid: 186c4c0d31e314f049595dcbaf4ca129,
     type: 3}
---- !u!114 &114000013652030802
+--- !u!114 &114929637274746518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012402827316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f19108706fdce9469603d07980eb8ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 243a781cad112c75d0008dfa8d76c639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blendMode: 3
-  intensity: 1
-  texture: {fileID: 0}
-  overlayShader: {fileID: 4800000, guid: 8c81db0e527d24acc9bcec04e87781bd, type: 3}
---- !u!114 &114000013872839930
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012402827316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolution: 2
-  screenBlendMode: 0
-  sunTransform: {fileID: 0}
-  radialBlurIterations: 2
-  sunColor: {r: 1, g: 0.73333335, b: 0.3019608, a: 1}
-  sunThreshold: {r: 0.6911765, g: 0.6911765, b: 0.6911765, a: 1}
-  sunShaftBlurRadius: 1
-  sunShaftIntensity: 1
-  maxRadius: 1.25
-  useDepthTexture: 1
-  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
-  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
+  shader: {fileID: 4800000, guid: daf9781cad112c75d0008dfa8d76c639, type: 3}
+  textureRamp: {fileID: 0}
+  rampOffset: 0
 --- !u!124 &124000011739225896
 Behaviour:
   m_ObjectHideFlags: 1
