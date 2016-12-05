@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource sound;
     public AudioClip smokeBombSound;
 
+    /*
     float lastTapFwdTime = 0;  // the time of the last tap that occurred
     bool dblTapFwdReady = false;  // whether you you will execute a double-tap upon the next tap
     bool walkingRight = false;
@@ -62,6 +63,15 @@ public class PlayerController : MonoBehaviour
     bool walkingDown = false;
     bool dblTapbwdReady = false;
     float dblTapFwdTime  = .35f;
+    */
+
+    public bool hasTapped;
+    public int tapCounter;
+    public float tapTimer2;
+    public float tapTimer;
+    public float angle;
+    public float lastDirection;
+    public bool isMoving;
 
 
     //Gather components
@@ -148,7 +158,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    walkTowards = new Vector3(transform.position.x + Input.GetAxis("Horizontal"), transform.position.y, transform.position.z + Input.GetAxis("Vertical"));
+                    walkTowards = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal"), transform.position.y, transform.position.z + Input.GetAxisRaw("Vertical"));
                 }
 
 
@@ -161,10 +171,155 @@ public class PlayerController : MonoBehaviour
 
     void CheckForDash3()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        float xhorizontal = Input.GetAxisRaw("Horizontal");
+        float xvertical = Input.GetAxisRaw("Vertical");
+
+        angle = Mathf.Atan2(xhorizontal, xvertical) * Mathf.Rad2Deg;
+
+        if (dashCooldown <= 0)
+        {
+            if(xvertical != 0 || xhorizontal != 0)
+            {
+                if(!hasTapped)
+                {
+                    lastDirection = angle;
+                    isMoving = true;
+                }
+            }
+
+            if(isMoving)
+            {
+                if (tapTimer2 > 0)
+                {
+                    tapTimer2 -= Time.deltaTime;
+
+                    if (xvertical == 0 && xhorizontal == 0)
+                    {
+                        if (tapTimer2 > 0)
+                        {
+                            hasTapped = true;
+                        }
+                        else
+                        {
+                            isMoving = false;
+                        }
+                    }
+                }
+                else
+                {
+                    hasTapped = false;
+                }
+            }
+            else
+            {
+                tapTimer2 = 0.3f;
+            }
+
+            if(hasTapped)
+            {
+                if(tapTimer > 0)
+                {
+                    tapTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    hasTapped = false;
+                }
+                if (xvertical != 0 || xhorizontal != 0)
+                {
+                    if (angle == lastDirection)
+                    {
+                        Dash(dashSpeed);
+                        dashCooldown = 2f;
+                        ui.UseSkill(4);
+                        hasTapped = false;
+                        tapTimer = 0;
+                    }
+                    else
+                    {
+                        hasTapped = false;
+                    }
+                }
+            }
+        }
+        else
+        {
+           if(dashCooldown > 0 )
+           {
+                dashCooldown -= Time.deltaTime;
+           }
+        }
+
+
+        
+    }
+
+
+        /*
+        if(dashCooldown <= 0)
+        {
+            tapTimer += Time.deltaTime;
+            if (hasTapped)
+            {
+                
+                if (horizontal > 0.8f || vertical > 0.8f || horizontal < -0.8f || vertical < -0.8f)
+                {
+                    if (angle > lastDirection - 30f && angle < lastDirection + 30f)
+                    {
+                        if (tapTimer < 0.4f)
+                        {
+                            Dash(dashSpeed);
+                            dashCooldown = 2f;
+                            ui.UseSkill(4);
+                            hasTapped = false;
+                            tapTimer = 0;
+                        }
+                        else
+                        {
+                            tapTimer = 0;
+                            hasTapped = false;
+                        }
+
+                    }
+                    else
+                    {
+                        hasTapped = false;
+                        tapTimer = 0;
+                    }
+
+                }
+            }
+            else
+            {
+                if (horizontal > 0.8f || vertical > 0.8f || horizontal < -0.8f || vertical < -0.8f)
+                {
+                    lastDirection = angle;
+                    print(lastDirection);
+                    isMoving = true;
+ 
+                }
+                else if(isMoving)
+                {
+                    hasTapped = true;
+                    tapTimer = 0;
+                }
+            }
+        }
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            dashCooldown = 0;
+        }
 
     }
 
-    /*void CheckForDash2()
+    void CheckForDash2()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -422,7 +577,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(float distance)
     {
-        _rb.velocity = new Vector3(playerModel.transform.forward.x * distance, 0, playerModel.transform.forward.y * distance);
+        _rb.velocity = new Vector3(playerModel.transform.forward.x * distance, 0, playerModel.transform.forward.z * distance);
     }
     public void Dash(float distance, float height)
     {
@@ -448,7 +603,7 @@ public class PlayerController : MonoBehaviour
                 
                 lookPos.y = 0;
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
-                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, rotation, 50f * Time.deltaTime);
+                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, rotation, 9f * Time.deltaTime);
                 
             }
             

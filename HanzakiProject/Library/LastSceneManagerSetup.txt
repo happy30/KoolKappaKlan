@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Level2.unity
+=======
+<<<<<<< HEAD
+- path: Assets/Scenes/PersonalScenes/Level2Jordi.unity
+=======
+- path: Assets/Scenes/KappaKartTerrain.unity
+>>>>>>> 83eb7a1c37f02de39f0c88c324538c4153d20b28
+>>>>>>> b9a537471582e2f154874e4295a4c4f5463b6624
   isLoaded: 1
   isActive: 1

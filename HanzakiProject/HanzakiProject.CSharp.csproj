@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -155,11 +149,13 @@
     <Compile Include="Assets\Scripts\Player\SmokeBomb.cs" />
     <Compile Include="Assets\Scripts\System\AutoSavePoint.cs" />
     <Compile Include="Assets\Scripts\System\BGMPlayer.cs" />
+    <Compile Include="Assets\Scripts\System\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\System\Cutscene_FollowBabyKappa.cs" />
     <Compile Include="Assets\Scripts\System\DataManager.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\HeartScript.cs" />
     <Compile Include="Assets\Scripts\System\InputManager.cs" />
+    <Compile Include="Assets\Scripts\System\KartGameManager.cs" />
     <Compile Include="Assets\Scripts\System\LoadController.cs" />
     <Compile Include="Assets\Scripts\System\OptionsSettings.cs" />
     <Compile Include="Assets\Scripts\System\PlayerSpawner.cs" />
@@ -172,6 +168,7 @@
     <Compile Include="Assets\Scripts\UI\CutsceneController.cs" />
     <Compile Include="Assets\Scripts\UI\EndDemo.cs" />
     <Compile Include="Assets\Scripts\UI\IntroCutsceneScript.cs" />
+    <Compile Include="Assets\Scripts\UI\KartUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\LoopBGM.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuManager.cs" />
