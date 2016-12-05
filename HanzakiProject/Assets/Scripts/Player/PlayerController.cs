@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     public float angle;
     public float lastDirection;
     public bool isMoving;
+    bool nogeen;
 
 
     //Gather components
@@ -136,7 +137,7 @@ public class PlayerController : MonoBehaviour
         {
             if(levelType == LevelType.SS)
             {
-                xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+                xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
                 if (xMovement > 0)
                 {
                     playerRotation = new Vector3(0, 90, 0);
@@ -152,7 +153,7 @@ public class PlayerController : MonoBehaviour
             
             else if (levelType == LevelType.TD)
             {
-                if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+                if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
                 {
                     walkTowards = transform.position;
                 }
@@ -181,41 +182,21 @@ public class PlayerController : MonoBehaviour
 
         if (dashCooldown <= 0)
         {
-            if(xvertical != 0 || xhorizontal != 0)
+            if (vertical != 0 || horizontal != 0)
             {
-                if(!hasTapped)
+                if (!isMoving && !hasTapped)
                 {
                     lastDirection = angle;
                     isMoving = true;
-                }
-            }
-
-            if(isMoving)
-            {
-                if (tapTimer2 > 0)
-                {
-                    tapTimer2 -= Time.deltaTime;
-
-                    if (xvertical == 0 && xhorizontal == 0)
-                    {
-                        if (tapTimer2 > 0)
-                        {
-                            hasTapped = true;
-                        }
-                        else
-                        {
-                            isMoving = false;
-                        }
-                    }
-                }
-                else
-                {
-                    hasTapped = false;
+                    hasTapped = true;
+                    tapTimer = 0.3f;
+                    nogeen = false;
                 }
             }
             else
             {
-                tapTimer2 = 0.3f;
+                isMoving = false;
+                nogeen = true;
             }
 
             if(hasTapped)
@@ -223,14 +204,7 @@ public class PlayerController : MonoBehaviour
                 if(tapTimer > 0)
                 {
                     tapTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    hasTapped = false;
-                }
-                if (xvertical != 0 || xhorizontal != 0)
-                {
-                    if (angle == lastDirection)
+                    if(angle < lastDirection + 30 && angle > lastDirection - 30 && nogeen)
                     {
                         Dash(dashSpeed);
                         dashCooldown = 2f;
@@ -238,19 +212,25 @@ public class PlayerController : MonoBehaviour
                         hasTapped = false;
                         tapTimer = 0;
                     }
-                    else
-                    {
-                        hasTapped = false;
-                    }
                 }
+                else
+                {
+                    hasTapped = false;
+                }
+                
             }
+            
         }
+
+
         else
         {
-           if(dashCooldown > 0 )
-           {
+            if (dashCooldown > 0)
+            {
                 dashCooldown -= Time.deltaTime;
-           }
+                tapTimer = 0;
+                isMoving = true;
+            }
         }
 
 
@@ -596,15 +576,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
-                if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+                if(Input.GetAxis("Horizontal") > 0.05f || Input.GetAxis("Horizontal") < -0.05f || Input.GetAxis("Vertical") > 0.05 || Input.GetAxis("Vertical") < -0.05)
                 {
-                    lookPos = walkTowards - transform.position;
+                    lookPos = walkTowards - transform.position + playerModel.transform.forward * 0.05f;
                 }
-                
                 lookPos.y = 0;
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
-                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, rotation, 9f * Time.deltaTime);
-                
+                playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, rotation, 9f * Time.deltaTime);
             }
             
             if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
