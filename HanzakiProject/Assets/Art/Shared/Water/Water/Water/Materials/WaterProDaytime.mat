@@ -162,10 +162,10 @@ Material:
       second: 0.02
     - first:
         name: _ReflDistort
-      second: 1
+      second: 0.5
     - first:
         name: _RefrDistort
-      second: 1
+      second: 0.5
     - first:
         name: _Shininess
       second: 200
