@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:HanzakiProject/Assets/Art/Shared/PAR_FOOTSTEPDUST.meta
 guid: f24dded53b330e843b86f5b24cf674a2
 folderAsset: yes
 timeCreated: 1480945776
+=======
+guid: bbc113fade32a9946af4a0c5616e861d
+folderAsset: yes
+timeCreated: 1480945390
+>>>>>>> 6d3d2552ae52bb341cdab3c9eda744eee709212c:HanzakiProject/Assets/Art/Shared/PAR_FOOTSTEPDUST.meta
 licenseType: Free
 DefaultImporter:
   userData: 
