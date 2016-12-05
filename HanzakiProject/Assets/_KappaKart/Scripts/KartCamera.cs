@@ -17,7 +17,7 @@ public class KartCamera : MonoBehaviour {
 	
 	private float sensitivityX = 4.0f;
 	private float sensitivityY = 1.0f;
-	//private float followSpeed = 45f;
+	private float followSpeed = 45f;
 	
 	
 	// Use this for initialization
@@ -42,7 +42,8 @@ public class KartCamera : MonoBehaviour {
 	}*/
 	public void FollowKart () 
 	{
-		camTransform.LookAt(kartNumber);
+		//camTransform.LookAt(kartNumber);
+		transform.position = Vector3.Lerp(transform.position, kartNumber.position, followSpeed * Time.deltaTime);
 		
 	}
 }
