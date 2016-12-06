@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -143,6 +137,7 @@
     <Compile Include="Assets\Scripts\Environment\LocationEnter.cs" />
     <Compile Include="Assets\Scripts\Environment\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\ViewPortChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHook.cs" />
@@ -184,6 +179,8 @@
     <Compile Include="Assets\Scripts\UI\PauseManager.cs" />
     <Compile Include="Assets\Scripts\UI\RotateScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartCamera.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\TestKartMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\Level1\ignore.txt" />
