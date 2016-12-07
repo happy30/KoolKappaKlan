@@ -43,7 +43,12 @@ public class CameraController : MonoBehaviour
 
         followTime = 1.5f;
 
-        if(playerController.levelType == PlayerController.LevelType.TD)
+        SetUp();
+    }
+	
+    public void SetUp()
+    {
+        if (playerController.levelType == PlayerController.LevelType.TD)
         {
             cameraOffsetY = 10;
             cameraRot = new Vector3(30, 0, 0);
@@ -51,10 +56,11 @@ public class CameraController : MonoBehaviour
         else
         {
             cameraOffsetY = 1;
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            //transform.eulerAngles = new Vector3(0, 0, 0);
+            cameraRot = new Vector3(0, 0, 0);
         }
     }
-	
+
 	// Update is called once per frame
 	void Update ()
     {

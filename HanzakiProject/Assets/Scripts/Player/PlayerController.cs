@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void ChangeControlsDependingOnLevelType()
+    public void ChangeControlsDependingOnLevelType()
     {
         if (levelType == LevelType.SS)
         {
@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
             
             else if (levelType == LevelType.TD)
             {
+                xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
                 if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
                 {
                     walkTowards = transform.position;
@@ -161,8 +162,6 @@ public class PlayerController : MonoBehaviour
                 {
                     walkTowards = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal"), transform.position.y, transform.position.z + Input.GetAxisRaw("Vertical"));
                 }
-
-
                 
             }
         }
@@ -232,8 +231,6 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
             }
         }
-
-
         
     }
 

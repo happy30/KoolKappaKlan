@@ -143,6 +143,7 @@
     <Compile Include="Assets\Scripts\Environment\LocationEnter.cs" />
     <Compile Include="Assets\Scripts\Environment\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\ViewPortChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHook.cs" />
