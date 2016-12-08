@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: texture Bamboo
+  m_Name: texture stepping stone
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -48,15 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-<<<<<<< HEAD
-        m_Texture: {fileID: 2800000, guid: f11b17db38184864bbfa0a9f8e4160da, type: 3}
-=======
-<<<<<<< HEAD
-        m_Texture: {fileID: 2800000, guid: fb57517e88a62274d9764b4397811ac3, type: 3}
-=======
-        m_Texture: {fileID: 2800000, guid: 11d5e1606fea81a47890acc3e6a10f26, type: 3}
->>>>>>> ec49a21764d5646c42192a2c52985c003c95f42f
->>>>>>> 61eade755c7701355c009454df94d59312c22250
+        m_Texture: {fileID: 2800000, guid: 2245686ef56caf8459d4156309b38221, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:

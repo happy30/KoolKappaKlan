@@ -7,17 +7,18 @@ public class KartCamera : MonoBehaviour {
 
 	public Transform camTransform;
 	public Transform kartNumber;
+	public Transform kart;
 	
-	private Camera cam;
+	Camera cam;
 	
-	private float distance = 10f;
-	private float currentX = 0.0f;
-	private float currentY = 0.0f;
-	private float height = 5f;
+	public float distance;
+	float currentX = 0.0f;
+	float currentY = 0.0f;
+	public float height;
 	
-	private float sensitivityX = 4.0f;
-	private float sensitivityY = 1.0f;
-	private float followSpeed = 45f;
+	float sensitivityX = 4.0f;
+	float sensitivityY = 1.0f;
+	public float followSpeed;
 	
 	
 	// Use this for initialization
@@ -43,7 +44,8 @@ public class KartCamera : MonoBehaviour {
 	public void FollowKart () 
 	{
 		//camTransform.LookAt(kartNumber);
-		transform.position = Vector3.Lerp(transform.position, kartNumber.position, followSpeed * Time.deltaTime);
+		transform.position = Vector3.Lerp(transform.position, new Vector3(kartNumber.position.x + (kartNumber.forward.x * -distance), kartNumber.position.y + height, kartNumber.position.z + (kartNumber.forward.z * -distance)), followSpeed * Time.deltaTime);
+		transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
 		
 	}
 }
