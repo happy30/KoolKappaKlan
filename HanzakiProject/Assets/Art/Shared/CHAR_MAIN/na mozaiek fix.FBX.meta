@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 84267d90e964b4647b5623b3accee5e3
+guid: a6cd12da58d230e48bd09db8e31dcc1e
+timeCreated: 1481219975
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -7,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder001
+    4300000: zz
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -33,7 +36,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
