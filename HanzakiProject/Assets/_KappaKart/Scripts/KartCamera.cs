@@ -28,22 +28,13 @@ public class KartCamera : MonoBehaviour {
 		cam = Camera.main;
 		
 	}
-	
 	// Update is called once per frame
 	void Update () 
 	{
 		FollowKart();
 	}
-	/*public void LateUpdate () 
-	{
-		Vector3 dir = new Vector3(0,0,-distance);
-		Quaternion rotation = Quaternion.Euler(currentX,currentY,0);
-		camTransform.position = kartNumber.position + rotation * dir;
-		camTransform.LookAt(kartNumber.position);
-	}*/
 	public void FollowKart () 
 	{
-		//camTransform.LookAt(kartNumber);
 		transform.position = Vector3.Lerp(transform.position, new Vector3(kartNumber.position.x + (kartNumber.forward.x * -distance), kartNumber.position.y + height, kartNumber.position.z + (kartNumber.forward.z * -distance)), followSpeed * Time.deltaTime);
 		transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
 		

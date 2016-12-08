@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 6d751f137c571e94bac836bc8d6b99ca
+guid: c5c480103f2546c47aaf193ec7d2162b
+timeCreated: 1481208042
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -7,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: OilTank001
+    4300000: zz
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -33,7 +36,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
