@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public float modelHeight;
     bool inAir;
 
+    public float rotationOffset;
+
     public Vector3 walkTowards;
     public Vector3 lookPos;
 
@@ -140,12 +142,12 @@ public class PlayerController : MonoBehaviour
                 xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
                 if (xMovement > 0)
                 {
-                    playerRotation = new Vector3(0, 90, 0);
+                    playerRotation = new Vector3(0, 90 + rotationOffset, 0);
                     zMovement = 0;
                 }
                 if (xMovement < 0)
                 {
-                    playerRotation = new Vector3(0, 270, 0);
+                    playerRotation = new Vector3(0, 270 + rotationOffset, 0);
                     zMovement = 0;
                 }
                 playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
@@ -568,6 +570,7 @@ public class PlayerController : MonoBehaviour
         {
             if(levelType == LevelType.SS)
             {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x,  rotationOffset, transform.eulerAngles.z);
                 transform.Translate(new Vector3(xMovement, 0, zMovement));
             }
             else
