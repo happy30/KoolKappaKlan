@@ -73,7 +73,10 @@ public class PickUpScript : MonoBehaviour
             if (pickUpTypes == PickUpTypes.Katana)
             {
                 stats.AddKatana();
+                quests.NextTask();
+                ui.SetQuestsText();
                 Destroy(gameObject);
+                
             }
         }
     }
