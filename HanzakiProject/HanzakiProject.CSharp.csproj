@@ -163,6 +163,7 @@
     <Compile Include="Assets\Scripts\System\ProgressionManager.cs" />
     <Compile Include="Assets\Scripts\System\QuestClass.cs" />
     <Compile Include="Assets\Scripts\System\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\System\Renamer.cs" />
     <Compile Include="Assets\Scripts\System\StatsManager.cs" />
     <Compile Include="Assets\Scripts\System\XmlManager.cs" />
     <Compile Include="Assets\Scripts\UI\AbilityHotkey.cs" />
