@@ -7,7 +7,6 @@ public class KartCamera : MonoBehaviour {
 
 	public Transform camTransform;
 	public Transform kartNumber;
-	public Transform kart;
 	
 	Camera cam;
 	
@@ -26,17 +25,33 @@ public class KartCamera : MonoBehaviour {
 	{
 		camTransform = transform;
 		cam = Camera.main;
-		
 	}
 	// Update is called once per frame
 	void Update () 
 	{
+		if(Input.GetKey(InputManager.Hook)){
+			LookBehindKart();
+		}
+		
 		FollowKart();
 	}
 	public void FollowKart () 
 	{
-		transform.position = Vector3.Lerp(transform.position, new Vector3(kartNumber.position.x + (kartNumber.forward.x * -distance), kartNumber.position.y + height, kartNumber.position.z + (kartNumber.forward.z * -distance)), followSpeed * Time.deltaTime);
-		transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+		Vector3 lookPos = new Vector3(
+			kartNumber.position.x + (kartNumber.forward.x * -distance),
+			kartNumber.position.y + height,
+			kartNumber.position.z + (kartNumber.forward.z * -distance));
+		
+		transform.position = Vector3.Lerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+		
+		
+		transform.eulerAngles = new Vector3(
+			Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+			Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime), 
+			Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+	}	
+	public void LookBehindKart () 
+	{
 		
 	}
 }
