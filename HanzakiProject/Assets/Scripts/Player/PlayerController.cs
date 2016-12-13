@@ -222,8 +222,6 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
-
         else
         {
             if (dashCooldown > 0)
