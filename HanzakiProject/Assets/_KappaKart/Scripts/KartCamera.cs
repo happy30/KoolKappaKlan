@@ -29,11 +29,14 @@ public class KartCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetKey(InputManager.Hook)){
+		if(Input.GetKey(InputManager.Hook))
+        {
 			LookBehindKart();
 		}
-		
-		FollowKart();
+        if (!Input.GetKey(InputManager.Hook))
+        {
+            FollowKart();
+        }
 	}
 	public void FollowKart () 
 	{
@@ -52,6 +55,17 @@ public class KartCamera : MonoBehaviour {
 	}	
 	public void LookBehindKart () 
 	{
-		
-	}
+        Vector3 lookPos = new Vector3(
+            kartNumber.position.x + (kartNumber.forward.x * +distance),
+            kartNumber.position.y + height,
+            kartNumber.position.z + (kartNumber.forward.z * +distance));
+
+        transform.position = Vector3.Lerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+
+
+        transform.eulerAngles = new Vector3(
+            Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y + 180, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+    }
 }
