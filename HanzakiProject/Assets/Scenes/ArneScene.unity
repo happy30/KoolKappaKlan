@@ -355,7 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shurikenCount: 0
-  shurikenObject: {fileID: 100000, guid: 804c5c8cdc0f2e34388125ce8fcdb6e5, type: 3}
+  shurikenSpeed: 0
+  shurikenObject: {fileID: 1683549437746458, guid: b09aff952ddae8546baca0c9d4a8a264,
+    type: 2}
 --- !u!54 &199612440
 Rigidbody:
   m_ObjectHideFlags: 0
