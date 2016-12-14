@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class KartController : MonoBehaviour
 {
-    public enum ItemType { None, Shuriken, Bomb, Hook, Katana, Box}
+    public enum ItemType { None, Hook, Shuriken, Katana, Box, Bomb, SecondNone }
     public ItemType heldItem;
 
     public bool raceStarted;
     public int nextCheckPoint;
+    public int playerPos;
+    public GameObject otherPlayer;
 
     public float normalSpeed;
     public float boostSpeed;
@@ -26,6 +28,14 @@ public class KartController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
+    }
+
+    void Update()
+    {
+        if(otherPlayer.GetComponent<KartController>().nextCheckPoint < nextCheckPoint)
+        {
+
+        }
     }
     void FixedUpdate()
     {
@@ -61,31 +71,32 @@ public class KartController : MonoBehaviour
                 rotation = a.y - rotateSpeed;
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
-        }       
-    }
-
-    void Boost()
-    {
-        normalSpeed = normalSpeed + boostSpeed;
-    }
-
-    void Slow()
-    {
-        _rb.drag = 1f;
+        }   
     }
 
     void OnTriggerEnter(Collider col)
     {
         switch (col.tag)
         {
-            case "Destructible":
-                heldItem = (ItemType)Random.Range(1, 5);
+            case "ItemBox":
+                if (heldItem == ItemType.None)
+                {
+                    if (playerPos < 2) // if Number 1
+                    {
+                        heldItem = (ItemType)Random.Range(1, 5);
+                    }
+                    else //  if Number 2
+                    {
+                        heldItem = (ItemType)Random.Range(2, 6);
+                    }
+
+                }            
                 break;
             case "Boost":
-                Boost();
+                normalSpeed = normalSpeed + boostSpeed;
                 break;
             case "OffRoad":
-                Slow();
+                _rb.drag = 1f;
                 break;
         }
     }
@@ -93,11 +104,34 @@ public class KartController : MonoBehaviour
     {
         switch (col.tag)
         {
+            case "ItemBox":
+                GetItem();
+                break;
             case "Boost":
-                FixedUpdate();
+                normalSpeed = normalSpeed - boostSpeed;
+                break;
+            case "OffRoad":
+                _rb.drag = 0f;
                 break;
         }
     }
+
+    void GotHit()
+    {
+
+    }
+
+    void GetItem()
+    {
+
+    }
+
+    void UseItem()
+    {
+
+    }
+
+
 }
 
 
