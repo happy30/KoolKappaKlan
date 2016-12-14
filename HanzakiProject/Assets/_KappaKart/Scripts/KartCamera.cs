@@ -27,7 +27,7 @@ public class KartCamera : MonoBehaviour {
 		cam = Camera.main;
 	}
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
 		if(Input.GetKey(InputManager.Hook))
         {
@@ -45,7 +45,7 @@ public class KartCamera : MonoBehaviour {
 			kartNumber.position.y + height,
 			kartNumber.position.z + (kartNumber.forward.z * -distance));
 		
-		transform.position = Vector3.Lerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+		transform.position = Vector3.Slerp(transform.position, lookPos, followSpeed * Time.deltaTime);
 		
 		
 		transform.eulerAngles = new Vector3(

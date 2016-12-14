@@ -1,20 +1,33 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: bdd6c81ebe8c4924eadc3c99b97a4916
-=======
-guid: 143ee1afbd291724cb73136ca3456860
->>>>>>> 0d2f9fa9ba115cfac7f0a92c8efb154b1378115f
+guid: e12137a552ead224d98dbf2ac8f05b9e
+timeCreated: 1476190715
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Knife002
+    100004: Knife003
+    100006: Knife1
     400000: //RootNode
+    400002: Knife002
+    400004: Knife003
+    400006: Knife1
     2300000: //RootNode
+    2300002: Knife002
+    2300004: Knife003
+    2300006: Knife1
     3300000: //RootNode
-    4300000: Plane
+    3300002: Knife002
+    3300004: Knife003
+    3300006: Knife1
+    4300000: shurikun
+    4300002: Knife003
+    4300004: Knife002
+    4300006: Knife1
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -37,7 +50,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -73,7 +86,7 @@ ModelImporter:
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

@@ -14,6 +14,9 @@ TagManager:
   - Rock
   - Destructible
   - Katana
+  - ItemBox
+  - Boost
+  - OffRoad
   layers:
   - Default
   - TransparentFX
