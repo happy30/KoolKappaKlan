@@ -1,7 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: bdd6c81ebe8c4924eadc3c99b97a4916
-timeCreated: 1481637145
-licenseType: Free
+=======
+guid: 143ee1afbd291724cb73136ca3456860
+>>>>>>> 9caf93744e99222b7752009c5fb5ab08f3bdbc5d
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -10,6 +12,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Plane
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,7 +37,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -72,7 +75,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
