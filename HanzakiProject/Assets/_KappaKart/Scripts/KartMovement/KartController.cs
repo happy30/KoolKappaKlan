@@ -11,7 +11,7 @@ public class KartController : MonoBehaviour
     public bool raceStarted;
     public int nextCheckPoint;
     public int playerPos;
-    public GameObject otherPlayer;
+   // public GameObject otherPlayer;
 
     public float normalSpeed;
     public float boostSpeed;
@@ -20,6 +20,7 @@ public class KartController : MonoBehaviour
     private bool mayTurn;
 
     public float rotateSpeed;
+    public float restoreRotationSpeed;
 
     private Rigidbody _rb;
 
@@ -32,15 +33,21 @@ public class KartController : MonoBehaviour
 
     void Update()
     {
-        if(otherPlayer.GetComponent<KartController>().nextCheckPoint < nextCheckPoint)
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        RaycastHit hit;
+        if(!Physics.Raycast(transform.position, -transform.up, out hit, 1.5f))
         {
-
+            print("IN AIIR");
+            transform.eulerAngles = new Vector3(
+                Mathf.LerpAngle(transform.eulerAngles.x, 0, restoreRotationSpeed * Time.deltaTime),
+                transform.eulerAngles.y,
+                0);
         }
     }
     void FixedUpdate()
     {
-        VehicleMove();       
-	}
+        VehicleMove();
+    }
 
     void VehicleMove()
     {
@@ -71,7 +78,12 @@ public class KartController : MonoBehaviour
                 rotation = a.y - rotateSpeed;
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
-        }   
+        }
+    }
+
+    void CheckFloor()
+    {
+
     }
 
     void OnTriggerEnter(Collider col)
@@ -90,7 +102,7 @@ public class KartController : MonoBehaviour
                         heldItem = (ItemType)Random.Range(2, 6);
                     }
 
-                }            
+                }
                 break;
             case "Boost":
                 normalSpeed = normalSpeed + boostSpeed;
@@ -116,22 +128,13 @@ public class KartController : MonoBehaviour
         }
     }
 
-    void GotHit()
-    {
-
-    }
-
     void GetItem()
     {
 
     }
 
-    void UseItem()
-    {
-
-    }
-
-
 }
+
+
 
 
