@@ -6,6 +6,7 @@ using UnityEngine;
 public class KartShuriken : MonoBehaviour {
 
     public int shurikenCount;
+    public bool shurikenThrow;
 
     public float shurikenSpeed;
     public GameObject shurikenObject;
@@ -26,10 +27,10 @@ public class KartShuriken : MonoBehaviour {
     public void ShurikenAttack ()
     {
         if (Input.GetKey(InputManager.Shuriken))
-        {
+        {    
             GameObject clone;
             clone = Instantiate(shurikenObject, transform.position, transform.rotation);
-            //clone.GetComponent.rigidbody.AddForce(clone.transform.forward * shurikenSpeed);
+            //clone.rigidbody.AddForce(clone.transform.forward * shurikenSpeed);
         }
     }
 }
