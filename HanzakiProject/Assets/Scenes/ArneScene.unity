@@ -258,9 +258,10 @@ GameObject:
   - component: {fileID: 199612436}
   - component: {fileID: 199612435}
   - component: {fileID: 199612434}
-  - component: {fileID: 199612438}
   - component: {fileID: 199612439}
   - component: {fileID: 199612440}
+  - component: {fileID: 199612438}
+  - component: {fileID: 199612441}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -338,11 +339,20 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 199612433}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4d9798503e09645859ab18e76dc6e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 089e66183424d3042a47655dbfc1394b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heldItem: 0
+  raceStarted: 1
+  nextCheckPoint: 1
+  playerPos: 0
+  otherPlayer: {fileID: 1163303101}
+  normalSpeed: 5
+  boostSpeed: 10
+  backSpeed: 3
+  rotateSpeed: 10
 --- !u!114 &199612439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shurikenCount: 0
+  shurikenThrow: 0
   shurikenSpeed: 0
   shurikenObject: {fileID: 1683549437746458, guid: b09aff952ddae8546baca0c9d4a8a264,
     type: 2}
@@ -373,6 +384,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &199612441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 199612433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4d9798503e09645859ab18e76dc6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241294211
 GameObject:
   m_ObjectHideFlags: 0
