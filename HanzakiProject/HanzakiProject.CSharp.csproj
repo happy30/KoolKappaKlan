@@ -182,6 +182,7 @@
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartCamera.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartMovement\KartController.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartMovement\TestVehicleGround.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartShuriken.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\TestKartMovement.cs" />
   </ItemGroup>
