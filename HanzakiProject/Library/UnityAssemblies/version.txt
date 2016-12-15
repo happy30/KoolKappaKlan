@@ -1,5 +1,6 @@
-5.5.0f3:2.2.0.0
+5.5.0f3:2.3.0.0
 StandaloneWindows
+<<<<<<< HEAD
 D:/Unity/Editor/Data/Managed/UnityEngine.dll
 D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
@@ -8,3 +9,31 @@ D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.
 D:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
 D:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
 D:/Unity/Editor/Data/Managed/UnityEditor.dll
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e1c99e827451afe2fcb15807b5b814d643c3e1c3
+C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
+C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
+<<<<<<< HEAD
+C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
+=======
+D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
+D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
+D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
+>>>>>>> 2f12a9655165bb1f706f99f52fc22615da718b9c
+=======
+C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
+>>>>>>> e1c99e827451afe2fcb15807b5b814d643c3e1c3
+>>>>>>> f954c56f1cf5b904b641009c606c3f521919444d
