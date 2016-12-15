@@ -22,6 +22,10 @@ public class KartController : MonoBehaviour
     public float rotateSpeed;
     public float restoreRotationSpeed;
 
+    public float hoverHeight;
+    public float hoverForce;
+    public float hoverDamp;
+
     private Rigidbody _rb;
 
 
@@ -34,8 +38,14 @@ public class KartController : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+    }
+    void FixedUpdate()
+    {
+        VehicleMove();
+
+        
         RaycastHit hit;
-        if(!Physics.Raycast(transform.position, -transform.up, out hit, 1.5f))
+        if (!Physics.Raycast(transform.position, -transform.up, out hit, 1.5f))
         {
             print("IN AIIR");
             transform.eulerAngles = new Vector3(
@@ -43,10 +53,24 @@ public class KartController : MonoBehaviour
                 transform.eulerAngles.y,
                 0);
         }
-    }
-    void FixedUpdate()
-    {
-        VehicleMove();
+        else
+        {
+            transform.eulerAngles = new Vector3(
+             Mathf.LerpAngle(transform.eulerAngles.x, 0, restoreRotationSpeed * 0.2f * Time.deltaTime),
+             transform.eulerAngles.y,
+             0);
+        }
+            Ray downRay = new Ray(transform.position, -Vector3.up);
+            if (Physics.Raycast(downRay, out hit))
+            {
+                float hoverError = hoverHeight - hit.distance;
+                if (hoverError > 0)
+                {
+                    float upwardSpeed = _rb.velocity.y;
+                    float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
+                    _rb.AddForce(lift * Vector3.up);
+                }
+            }
     }
 
     void VehicleMove()
