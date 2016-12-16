@@ -11,10 +11,10 @@ FBXHeaderExtension:  {
 		Year: 2016
 		Month: 12
 		Day: 16
-		Hour: 15
-		Minute: 5
-		Second: 33
-		Millisecond: 768
+		Hour: 16
+		Minute: 7
+		Second: 57
+		Millisecond: 324
 	}
 	Creator: "FBX SDK/FBX Plugins version 2015.0"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -30,19 +30,19 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Marc\Desktop\kappaKart.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Marc\Desktop\kappaKart.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Marc\Desktop\KoolKappaKlan\HanzakiProject\Assets\_KappaKart\Models\Kart\kappaKart.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Marc\Desktop\KoolKappaKlan\HanzakiProject\Assets\_KappaKart\Models\Kart\kappaKart.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2014"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "16/12/2016 14:05:33.764"
-			P: "Original|FileName", "KString", "", "", "C:\Users\Marc\Desktop\kappaKart.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "16/12/2016 15:07:57.322"
+			P: "Original|FileName", "KString", "", "", "C:\Users\Marc\Desktop\KoolKappaKlan\HanzakiProject\Assets\_KappaKart\Models\Kart\kappaKart.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2014"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "16/12/2016 14:05:33.764"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "16/12/2016 15:07:57.322"
 		}
 	}
 }
@@ -60,7 +60,7 @@ GlobalSettings:  {
 		P: "UnitScaleFactor", "double", "Number", "",1
 		P: "OriginalUnitScaleFactor", "double", "Number", "",1
 		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
-		P: "DefaultCamera", "KString", "", "", "Producer Back"
+		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
 		P: "TimeMode", "enum", "", "",6
 		P: "TimeProtocol", "enum", "", "",2
 		P: "SnapOnFrameMode", "enum", "", "",0
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 1282449552, "", "Scene" {
+	Document: 972408800, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -255,7 +255,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1976620096, "Geometry::", "Mesh" {
+	Geometry: 1960652704, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.0235294117647059,0.529411764705882,0.0235294117647059
 		}
@@ -404,7 +404,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1976619552, "Geometry::", "Mesh" {
+	Geometry: 1960662496, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0,0,0
 		}
@@ -500,7 +500,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1976611936, "Geometry::", "Mesh" {
+	Geometry: 1960668480, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0,0,0
 		}
@@ -592,7 +592,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1976616832, "Geometry::", "Mesh" {
+	Geometry: 1960663584, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.109803921568627,0.109803921568627,0.694117647058824
 		}
@@ -655,7 +655,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1976632608, "Geometry::", "Mesh" {
+	Geometry: 1960664128, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.690196078431373,0.101960784313725,0.101960784313725
 		}
@@ -725,7 +725,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1976608672, "Geometry::", "Mesh" {
+	Geometry: 1960669568, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.882352941176471,0.345098039215686,0.780392156862745
 		}
@@ -788,86 +788,93 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2175545504, "Model::kart", "Mesh" {
+	Model: 1965195904, "Model::kart", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
 			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",15.0998268127441,-4.08731842041016,5.97225189208984
+			P: "GeometricRotation", "Vector3D", "Vector", "",90.0000076293945,-0,0
+			P: "GeometricScaling", "Vector3D", "Vector", "",1,0.999999701976776,0.999999701976776
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-57.4723892211914,50.8302612304688,1.81657719622308e-006
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",90.0000093346676,-0,0
 			P: "MaxHandle", "int", "Integer", "UH",5
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2175549888, "Model::back weels", "Mesh" {
+	Model: 1965204672, "Model::back weels", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",0,2.87238685814373e-006,17.6305847167969
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",9.52365875244141,-1.45038604736328,13.3332567214966
+			P: "Lcl Translation", "Lcl Translation", "", "A",24.6234836578369,0.210010528564453,4.5218620300293
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",90.0000093346676,-0,0
 			P: "MaxHandle", "int", "Integer", "UH",13
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2175521392, "Model::front weels", "Mesh" {
+	Model: 1965198096, "Model::front weels", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",0,1.11939971247921e-006,6.87082624435425
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-37.5657958984375,-5.63818740844727,2.88116455078125
+			P: "Lcl Translation", "Lcl Translation", "", "A",-22.465970993042,-0.0976557731628418,0.334064483642578
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",90.0000093346676,-0,0
 			P: "MaxHandle", "int", "Integer", "UH",10
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2175552080, "Model::stick", "Mesh" {
+	Model: 1965200288, "Model::stick", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",-7.74004433878872e-007,-0.340889692306519,-4.31536722183228
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-26.1536254882813,6.24335861206055,-3.82643127441406
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-22.6471392087739,89.999982013911,0
+			P: "Lcl Translation", "Lcl Translation", "", "A",-7.20243453979492,-0.26088809967041,14.1918678283691
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",67.3528636821079,-2.73207566800489e-005,90.0000025044781
 			P: "MaxHandle", "int", "Integer", "UH",19
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2175525776, "Model::weel", "Mesh" {
+	Model: 1965202480, "Model::weel", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-0.011962890625,0.174919128417969,6.42124557495117
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",7.85753896522474,-0.683455913061463,2.50601371456751
+			P: "Lcl Translation", "Lcl Translation", "", "A",-0.0119636654853821,-0.165973663330078,2.10587453842163
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",7.85753939524116,-0.683455977314366,2.50601345829982
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.416077554225922,0.416077554225922,0.416077584028244
 			P: "MaxHandle", "int", "Integer", "UH",21
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 2175523584, "Model::chair", "Mesh" {
+	Model: 1965211248, "Model::chair", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "GeometricTranslation", "Vector3D", "Vector", "",-1.78188979625702,0,0.155895113945007
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",-6.99595642089844,-3.24234008789063,-3.9051399230957
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",-90.0000093346675,-0,4.99999913495193
+			P: "Lcl Translation", "Lcl Translation", "", "A",9.8925666809082,-0.182178020477295,2.72991180419922
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",0,-4.99999870968955,0
 			P: "MaxHandle", "int", "Integer", "UH",22
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1735381872, "Material::kart", "" {
+	Material: 1969065968, "Material::kart", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -889,7 +896,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1735378512, "Material::weels", "" {
+	Material: 1969067888, "Material::weels", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -911,7 +918,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1735383312, "Material::stick", "" {
+	Material: 1969070288, "Material::stick", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -933,7 +940,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1735380912, "Material::stearing weel", "" {
+	Material: 1969068368, "Material::stearing weel", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -955,7 +962,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1735383792, "Material::seat", "" {
+	Material: 1969071248, "Material::seat", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -977,13 +984,13 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	AnimationStack: 1978748656, "AnimStack::Take 001", "" {
+	AnimationStack: 2082772144, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 1733111392, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 1292240480, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -993,61 +1000,61 @@ Objects:  {
 Connections:  {
 	
 	;Model::kart, Model::RootNode
-	C: "OO",2175545504,0
+	C: "OO",1965195904,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1733111392,1978748656
+	C: "OO",1292240480,2082772144
 	
 	;Model::back weels, Model::kart
-	C: "OO",2175549888,2175545504
+	C: "OO",1965204672,1965195904
 	
 	;Model::front weels, Model::kart
-	C: "OO",2175521392,2175545504
+	C: "OO",1965198096,1965195904
 	
 	;Model::stick, Model::kart
-	C: "OO",2175552080,2175545504
+	C: "OO",1965200288,1965195904
 	
 	;Model::chair, Model::kart
-	C: "OO",2175523584,2175545504
+	C: "OO",1965211248,1965195904
 	
 	;Geometry::, Model::kart
-	C: "OO",1976620096,2175545504
+	C: "OO",1960652704,1965195904
 	
 	;Material::kart, Model::kart
-	C: "OO",1735381872,2175545504
+	C: "OO",1969065968,1965195904
 	
 	;Geometry::, Model::back weels
-	C: "OO",1976619552,2175549888
+	C: "OO",1960662496,1965204672
 	
 	;Material::weels, Model::back weels
-	C: "OO",1735378512,2175549888
+	C: "OO",1969067888,1965204672
 	
 	;Geometry::, Model::front weels
-	C: "OO",1976611936,2175521392
+	C: "OO",1960668480,1965198096
 	
 	;Material::weels, Model::front weels
-	C: "OO",1735378512,2175521392
+	C: "OO",1969067888,1965198096
 	
 	;Model::weel, Model::stick
-	C: "OO",2175525776,2175552080
+	C: "OO",1965202480,1965200288
 	
 	;Geometry::, Model::stick
-	C: "OO",1976616832,2175552080
+	C: "OO",1960663584,1965200288
 	
 	;Material::stick, Model::stick
-	C: "OO",1735383312,2175552080
+	C: "OO",1969070288,1965200288
 	
 	;Geometry::, Model::weel
-	C: "OO",1976632608,2175525776
+	C: "OO",1960664128,1965202480
 	
 	;Material::stearing weel, Model::weel
-	C: "OO",1735380912,2175525776
+	C: "OO",1969068368,1965202480
 	
 	;Geometry::, Model::chair
-	C: "OO",1976608672,2175523584
+	C: "OO",1960669568,1965211248
 	
 	;Material::seat, Model::chair
-	C: "OO",1735383792,2175523584
+	C: "OO",1969071248,1965211248
 }
 ;Takes section
 ;----------------------------------------------------
