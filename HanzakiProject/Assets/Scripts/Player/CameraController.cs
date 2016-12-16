@@ -158,7 +158,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + 30, player.transform.position.z), followTime * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + 20, player.transform.position.z), followTime * Time.deltaTime);
             //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
             transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, 80, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, 0, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, 0, followTime * Time.deltaTime));
            
