@@ -79,8 +79,8 @@ public class KartController : MonoBehaviour
         float y = Input.GetAxis("Vertical");
 
         // Front Back
-        _rb.velocity += y * transform.forward * normalSpeed * Time.deltaTime;
-
+        _rb.velocity += y * transform.forward.normalized * normalSpeed * Time.deltaTime;
+        // de turning is wel smexy genoeg tho 
         // Turning
         if (y == 0)
         {
