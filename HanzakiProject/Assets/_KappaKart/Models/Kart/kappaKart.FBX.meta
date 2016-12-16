@@ -1,13 +1,40 @@
 fileFormatVersion: 2
-guid: d4a3103a3cf8bde4dbb0dce97edf7bfe
+guid: d2cd379f5dbf4574294d9a8328c5d513
+timeCreated: 1481899280
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Paal1
+    100000: back weels
+    100002: chair
+    100004: front weels
+    100006: //RootNode
+    100008: stick
+    100010: weel
+    400000: back weels
+    400002: chair
+    400004: front weels
+    400006: //RootNode
+    400008: stick
+    400010: weel
+    2300000: back weels
+    2300002: chair
+    2300004: front weels
+    2300006: //RootNode
+    2300008: stick
+    2300010: weel
+    3300000: back weels
+    3300002: chair
+    3300004: front weels
+    3300006: //RootNode
+    3300008: stick
+    3300010: weel
+    4300000: kart
+    4300002: back weels
+    4300004: front weels
+    4300006: stick
+    4300008: weel
+    4300010: chair
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -33,7 +60,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
