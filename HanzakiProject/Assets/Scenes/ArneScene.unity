@@ -364,8 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a635efc9c1a452d40ae99541739606b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shurikenCount: 0
-  shurikenThrow: 0
+  shurikenCount: 5
+  throwShuriken: 0
   shurikenSpeed: 0
   shurikenObject: {fileID: 1683549437746458, guid: b09aff952ddae8546baca0c9d4a8a264,
     type: 2}
