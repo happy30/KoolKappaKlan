@@ -11,7 +11,7 @@ public class KartController : MonoBehaviour
     public bool raceStarted;
     public int nextCheckPoint;
     public int playerPos;
-    public GameObject otherPlayer;
+   // public GameObject otherPlayer;
 
     public float normalSpeed;
     public float boostSpeed;
@@ -20,6 +20,11 @@ public class KartController : MonoBehaviour
     private bool mayTurn;
 
     public float rotateSpeed;
+    public float restoreRotationSpeed;
+
+    public float hoverHeight;
+    public float hoverForce;
+    public float hoverDamp;
 
     private Rigidbody _rb;
 
@@ -32,15 +37,41 @@ public class KartController : MonoBehaviour
 
     void Update()
     {
-        if(otherPlayer.GetComponent<KartController>().nextCheckPoint < nextCheckPoint)
-        {
-
-        }
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
     }
     void FixedUpdate()
     {
-        VehicleMove();       
-	}
+        VehicleMove();
+
+        
+        RaycastHit hit;
+        if (!Physics.Raycast(transform.position, -transform.up, out hit, 1.5f))
+        {
+            print("IN AIIR");
+            transform.eulerAngles = new Vector3(
+                Mathf.LerpAngle(transform.eulerAngles.x, 0, restoreRotationSpeed * Time.deltaTime),
+                transform.eulerAngles.y,
+                0);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(
+             Mathf.LerpAngle(transform.eulerAngles.x, 0, restoreRotationSpeed * 0.2f * Time.deltaTime),
+             transform.eulerAngles.y,
+             0);
+        }
+            Ray downRay = new Ray(transform.position, -Vector3.up);
+            if (Physics.Raycast(downRay, out hit))
+            {
+                float hoverError = hoverHeight - hit.distance;
+                if (hoverError > 0)
+                {
+                    float upwardSpeed = _rb.velocity.y;
+                    float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
+                    _rb.AddForce(lift * Vector3.up);
+                }
+            }
+    }
 
     void VehicleMove()
     {
@@ -71,7 +102,12 @@ public class KartController : MonoBehaviour
                 rotation = a.y - rotateSpeed;
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
-        }   
+        }
+    }
+
+    void CheckFloor()
+    {
+
     }
 
     void OnTriggerEnter(Collider col)
@@ -90,7 +126,7 @@ public class KartController : MonoBehaviour
                         heldItem = (ItemType)Random.Range(2, 6);
                     }
 
-                }            
+                }
                 break;
             case "Boost":
                 normalSpeed = normalSpeed + boostSpeed;
@@ -116,22 +152,13 @@ public class KartController : MonoBehaviour
         }
     }
 
-    void GotHit()
-    {
-
-    }
-
     void GetItem()
     {
 
     }
 
-    void UseItem()
-    {
-
-    }
-
-
 }
+
+
 
 
