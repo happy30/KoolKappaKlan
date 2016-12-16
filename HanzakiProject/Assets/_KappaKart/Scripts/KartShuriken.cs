@@ -12,7 +12,7 @@ public class KartShuriken : MonoBehaviour {
     public GameObject shurikenObject;
 
     public float nextShot = 0.0f;
-    public float interval = 0.4f;
+    public float interval = 0.8f;
 
 	// Use this for initialization
 	void Start () {
@@ -41,7 +41,8 @@ public class KartShuriken : MonoBehaviour {
                 {
                     nextShot = Time.time + interval;
                     GameObject clone;
-                    clone = Instantiate(shurikenObject, transform.position, transform.rotation);
+                    clone = Instantiate(shurikenObject, transform.position + (transform.forward * 2), transform.rotation);
+                    clone.GetComponent<Rigidbody>().AddForce(clone.transform.forward * shurikenSpeed);
                     shurikenCount = shurikenCount - 1;
                 }
             }
@@ -52,7 +53,7 @@ public class KartShuriken : MonoBehaviour {
             {
                 GameObject clone;
                 clone = Instantiate(shurikenObject, transform.position, transform.rotation);
-                //clone.rigidbody.AddForce(clone.transform.forward * shurikenSpeed);
+                clone.rigidbody.AddForce(clone.transform.forward * shurikenSpeed);
                 shurikenCount = shurikenCount - 1;
                 throwShuriken = true;
             }
