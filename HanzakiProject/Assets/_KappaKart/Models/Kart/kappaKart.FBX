@@ -10,11 +10,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2016
 		Month: 12
-		Day: 16
-		Hour: 16
-		Minute: 7
-		Second: 57
-		Millisecond: 324
+		Day: 19
+		Hour: 14
+		Minute: 37
+		Second: 52
+		Millisecond: 875
 	}
 	Creator: "FBX SDK/FBX Plugins version 2015.0"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -36,23 +36,23 @@ FBXHeaderExtension:  {
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2014"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "16/12/2016 15:07:57.322"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "19/12/2016 13:37:52.874"
 			P: "Original|FileName", "KString", "", "", "C:\Users\Marc\Desktop\KoolKappaKlan\HanzakiProject\Assets\_KappaKart\Models\Kart\kappaKart.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2014"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "16/12/2016 15:07:57.322"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "19/12/2016 13:37:52.874"
 		}
 	}
 }
 GlobalSettings:  {
 	Version: 1000
 	Properties70:  {
-		P: "UpAxis", "int", "Integer", "",1
+		P: "UpAxis", "int", "Integer", "",2
 		P: "UpAxisSign", "int", "Integer", "",1
-		P: "FrontAxis", "int", "Integer", "",2
-		P: "FrontAxisSign", "int", "Integer", "",1
+		P: "FrontAxis", "int", "Integer", "",1
+		P: "FrontAxisSign", "int", "Integer", "",-1
 		P: "CoordAxis", "int", "Integer", "",0
 		P: "CoordAxisSign", "int", "Integer", "",1
 		P: "OriginalUpAxis", "int", "Integer", "",2
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 972408800, "", "Scene" {
+	Document: 1962737824, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -255,7 +255,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 1960652704, "Geometry::", "Mesh" {
+	Geometry: 1821724432, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.0235294117647059,0.529411764705882,0.0235294117647059
 		}
@@ -404,7 +404,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1960662496, "Geometry::", "Mesh" {
+	Geometry: 1821724976, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0,0,0
 		}
@@ -500,7 +500,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1960668480, "Geometry::", "Mesh" {
+	Geometry: 1821700496, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0,0,0
 		}
@@ -592,7 +592,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1960663584, "Geometry::", "Mesh" {
+	Geometry: 1821669488, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.109803921568627,0.109803921568627,0.694117647058824
 		}
@@ -655,7 +655,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1960664128, "Geometry::", "Mesh" {
+	Geometry: 1821694512, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.690196078431373,0.101960784313725,0.101960784313725
 		}
@@ -725,7 +725,7 @@ Objects:  {
 			}
 		}
 	}
-	Geometry: 1960669568, "Geometry::", "Mesh" {
+	Geometry: 1821683632, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.882352941176471,0.345098039215686,0.780392156862745
 		}
@@ -788,23 +788,22 @@ Objects:  {
 			}
 		}
 	}
-	Model: 1965195904, "Model::kart", "Mesh" {
+	Model: 1970451840, "Model::kart", "Mesh" {
 		Version: 232
 		Properties70:  {
-			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
-			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "GeometricTranslation", "Vector3D", "Vector", "",15.0998268127441,-4.08731842041016,5.97225189208984
 			P: "GeometricRotation", "Vector3D", "Vector", "",90.0000076293945,-0,0
 			P: "GeometricScaling", "Vector3D", "Vector", "",1,0.999999701976776,0.999999701976776
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",0,-0,-90.0000025044781
 			P: "MaxHandle", "int", "Integer", "UH",5
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1965204672, "Model::back weels", "Mesh" {
+	Model: 1970454032, "Model::back weels", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -818,7 +817,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1965198096, "Model::front weels", "Mesh" {
+	Model: 1970440880, "Model::front weels", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -832,7 +831,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1965200288, "Model::stick", "Mesh" {
+	Model: 1970447456, "Model::stick", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -846,21 +845,21 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1965202480, "Model::weel", "Mesh" {
+	Model: 1970438688, "Model::weel", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
 			P: "Lcl Translation", "Lcl Translation", "", "A",-0.0119636654853821,-0.165973663330078,2.10587453842163
-			P: "Lcl Rotation", "Lcl Rotation", "", "A",7.85753939524116,-0.683455977314366,2.50601345829982
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",7.8575393936041,-0.683455977314366,2.50601345829982
 			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.416077554225922,0.416077554225922,0.416077584028244
 			P: "MaxHandle", "int", "Integer", "UH",21
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Model: 1965211248, "Model::chair", "Mesh" {
+	Model: 1970456224, "Model::chair", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "InheritType", "enum", "", "",1
@@ -874,7 +873,7 @@ Objects:  {
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 1969065968, "Material::kart", "" {
+	Material: 1831383264, "Material::kart", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -896,7 +895,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1969067888, "Material::weels", "" {
+	Material: 1831383744, "Material::weels", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -918,7 +917,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1969070288, "Material::stick", "" {
+	Material: 1831385664, "Material::stick", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -940,7 +939,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1969068368, "Material::stearing weel", "" {
+	Material: 1831386144, "Material::stearing weel", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -962,7 +961,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 1969071248, "Material::seat", "" {
+	Material: 1831387104, "Material::seat", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -984,13 +983,13 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	AnimationStack: 2082772144, "AnimStack::Take 001", "" {
+	AnimationStack: 1961785776, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
 		}
 	}
-	AnimationLayer: 1292240480, "AnimLayer::BaseLayer", "" {
+	AnimationLayer: 1957531232, "AnimLayer::BaseLayer", "" {
 	}
 }
 
@@ -1000,61 +999,61 @@ Objects:  {
 Connections:  {
 	
 	;Model::kart, Model::RootNode
-	C: "OO",1965195904,0
+	C: "OO",1970451840,0
 	
 	;AnimLayer::BaseLayer, AnimStack::Take 001
-	C: "OO",1292240480,2082772144
+	C: "OO",1957531232,1961785776
 	
 	;Model::back weels, Model::kart
-	C: "OO",1965204672,1965195904
+	C: "OO",1970454032,1970451840
 	
 	;Model::front weels, Model::kart
-	C: "OO",1965198096,1965195904
+	C: "OO",1970440880,1970451840
 	
 	;Model::stick, Model::kart
-	C: "OO",1965200288,1965195904
+	C: "OO",1970447456,1970451840
 	
 	;Model::chair, Model::kart
-	C: "OO",1965211248,1965195904
+	C: "OO",1970456224,1970451840
 	
 	;Geometry::, Model::kart
-	C: "OO",1960652704,1965195904
+	C: "OO",1821724432,1970451840
 	
 	;Material::kart, Model::kart
-	C: "OO",1969065968,1965195904
+	C: "OO",1831383264,1970451840
 	
 	;Geometry::, Model::back weels
-	C: "OO",1960662496,1965204672
+	C: "OO",1821724976,1970454032
 	
 	;Material::weels, Model::back weels
-	C: "OO",1969067888,1965204672
+	C: "OO",1831383744,1970454032
 	
 	;Geometry::, Model::front weels
-	C: "OO",1960668480,1965198096
+	C: "OO",1821700496,1970440880
 	
 	;Material::weels, Model::front weels
-	C: "OO",1969067888,1965198096
+	C: "OO",1831383744,1970440880
 	
 	;Model::weel, Model::stick
-	C: "OO",1965202480,1965200288
+	C: "OO",1970438688,1970447456
 	
 	;Geometry::, Model::stick
-	C: "OO",1960663584,1965200288
+	C: "OO",1821669488,1970447456
 	
 	;Material::stick, Model::stick
-	C: "OO",1969070288,1965200288
+	C: "OO",1831385664,1970447456
 	
 	;Geometry::, Model::weel
-	C: "OO",1960664128,1965202480
+	C: "OO",1821694512,1970438688
 	
 	;Material::stearing weel, Model::weel
-	C: "OO",1969068368,1965202480
+	C: "OO",1831386144,1970438688
 	
 	;Geometry::, Model::chair
-	C: "OO",1960669568,1965211248
+	C: "OO",1821683632,1970456224
 	
 	;Material::seat, Model::chair
-	C: "OO",1969071248,1965211248
+	C: "OO",1831387104,1970456224
 }
 ;Takes section
 ;----------------------------------------------------
