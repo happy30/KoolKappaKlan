@@ -181,6 +181,7 @@
     <Compile Include="Assets\Scripts\UI\PauseManager.cs" />
     <Compile Include="Assets\Scripts\UI\RotateScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+    <Compile Include="Assets\SlashScript.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartCamera.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartMovement\KartController.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\KartMovement\TestVehicleGround.cs" />

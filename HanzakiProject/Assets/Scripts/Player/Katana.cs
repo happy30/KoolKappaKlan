@@ -21,6 +21,8 @@ public class Katana : MonoBehaviour
     public float dashPower;
     public float coolDown;
 
+    public Animator anim;
+
     public UIManager ui;
 
     void Awake()
@@ -36,11 +38,10 @@ public class Katana : MonoBehaviour
         {
             if (Input.GetKeyDown(InputManager.Slash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0 || Input.GetKeyDown(InputManager.JSlash) && !Camera.main.GetComponent<CameraController>().inCutscene && coolDown <= 0)
             {
-                Slash(attackPower);
-                //Animator.playanimation
-                playerController.Dash(dashPower);
+                //Slash(attackPower);
+                playerController.anim.SetBool("Attack", true);
                 ui.UseSkill(0);
-                coolDown = 0.5f;
+                coolDown = 1.5f;
             }
 
             if (coolDown > 0)
@@ -53,8 +54,10 @@ public class Katana : MonoBehaviour
     }
 
 
-    void Slash(int attackMultiplier)
+
+    public void Slash(int attackMultiplier)
     {
+        playerController.anim.SetBool("Attack", false);
         RaycastHit hit;
         if(Physics.Raycast(playerModel.position, playerModel.forward, out hit, 2))
         {
