@@ -10,6 +10,8 @@ public class CameraController : MonoBehaviour
     
     public float cameraOffsetX;
     public float cameraOffsetY;
+    public float cameraOffsetZ;
+    public float distance;
 
     public float followTime;
     public bool inCutscene;
@@ -20,6 +22,8 @@ public class CameraController : MonoBehaviour
         Left,
         Idle
     };
+
+    public Vector3 additionalCameraOffset;
 
     public CameraStance stance;
     public bool cameraProg;
@@ -32,6 +36,7 @@ public class CameraController : MonoBehaviour
     public float cutsceneZ;
 
     public Vector3 cameraRot;
+    Vector3 cameraPos;
 
 
 	// Use this for initialization
@@ -50,14 +55,14 @@ public class CameraController : MonoBehaviour
     {
         if (playerController.levelType == PlayerController.LevelType.TD)
         {
-            cameraOffsetY = 10;
-            cameraRot = new Vector3(30, 0, 0);
+            cameraOffsetY = 14;
+            cameraRot = new Vector3(45, 0, 0);
         }
         else
         {
             cameraOffsetY = 1;
             //transform.eulerAngles = new Vector3(0, 0, 0);
-            cameraRot = new Vector3(0, 0, 0);
+            cameraRot = new Vector3(0, player.GetComponent<PlayerController>().rotationOffset, 0);
         }
     }
 
@@ -87,7 +92,8 @@ public class CameraController : MonoBehaviour
             if(stance != CameraStance.Right)
             {
                 timer = 0;
-                cameraOffsetX = 5;
+                //cameraOffsetX = 5;
+                additionalCameraOffset = player.transform.right * 5f;
                 followTime = 0;
                 stance = CameraStance.Right;
             }
@@ -105,7 +111,8 @@ public class CameraController : MonoBehaviour
             if (stance != CameraStance.Left)
             {
                 timer = 0;
-                cameraOffsetX = -5;
+                //cameraOffsetX = -5;
+                additionalCameraOffset = player.transform.right * -5f;
                 followTime = 0;
                 stance = CameraStance.Left;
             }
@@ -124,7 +131,8 @@ public class CameraController : MonoBehaviour
             if (stance != CameraStance.Idle)
             {
                 timer = 0;
-                cameraOffsetX = 0;
+                //cameraOffsetX = 0;
+                additionalCameraOffset = new Vector3(0, 0, 0);
                 followTime = 0;
                 stance = CameraStance.Idle;
 
@@ -143,9 +151,25 @@ public class CameraController : MonoBehaviour
         {
             if(hookObject == null)
             {
-                transform.position = Vector3.Slerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
+                //transform.position = Vector3.Slerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
                 //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraRot, followTime * Time.deltaTime);
-                transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, cameraRot.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, cameraRot.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, cameraRot.z, followTime * Time.deltaTime));
+
+                if(player.GetComponent<PlayerController>().levelType == PlayerController.LevelType.SS)
+                {
+                    cameraPos = new Vector3(
+                    player.transform.position.x + (player.transform.forward.x * -distance),
+                    player.transform.position.y + cameraOffsetY,
+                    player.transform.position.z + (player.transform.forward.z * -distance));
+
+                    transform.position = Vector3.Slerp(transform.position, cameraPos + additionalCameraOffset, followTime * Time.deltaTime);
+                    transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, cameraRot.x, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.y, cameraRot.y, followTime * Time.deltaTime), Mathf.LerpAngle(transform.eulerAngles.z, cameraRot.z, followTime * Time.deltaTime));
+                }
+                else
+                {
+                    transform.position = Vector3.Slerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z -14f), followTime * Time.deltaTime);
+                    transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, cameraRot, followTime * Time.deltaTime);
+                }
+
             }
             else
             {
