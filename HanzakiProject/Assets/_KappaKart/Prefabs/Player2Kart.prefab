@@ -191,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 1245698144127790}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 237.58018, y: 14.166, z: 402.15295}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4517923709229792}
   - {fileID: 4888564511915256}
@@ -495,3 +495,5 @@ MonoBehaviour:
   hoverHeight: 6
   hoverForce: 5
   hoverDamp: 0.5
+  horizontal: Kart2Horizontal
+  vertical: Kart2Vertical
