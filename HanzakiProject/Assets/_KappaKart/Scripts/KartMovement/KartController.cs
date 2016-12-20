@@ -26,6 +26,10 @@ public class KartController : MonoBehaviour
     public float hoverForce;
     public float hoverDamp;
 
+
+    public string verticalSpeed;
+    public string horizontalRot;
+
     private Rigidbody _rb;
 
 
@@ -38,6 +42,7 @@ public class KartController : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+        Debug.Log(Input.GetJoystickNames() + " is moved");
     }
     void FixedUpdate()
     {
@@ -75,14 +80,15 @@ public class KartController : MonoBehaviour
 
     void VehicleMove()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float ySpeed = Input.GetAxis(verticalSpeed);
+        float xRot = Input.GetAxis(horizontalRot);
+
 
         // Front Back
-        _rb.velocity += y * transform.forward.normalized * normalSpeed * Time.deltaTime;
-        // de turning is wel smexy genoeg tho 
+        _rb.velocity += ySpeed * transform.forward * normalSpeed * Time.deltaTime;
+
         // Turning
-        if (y == 0)
+        if (ySpeed == 0)
         {
             mayTurn = false;
         }
@@ -92,12 +98,12 @@ public class KartController : MonoBehaviour
             Vector3 a = transform.eulerAngles;
 
             float rotation = 0;
-            if (x > 0)
+            if (xRot > 0)
             {
                 rotation = a.y + rotateSpeed;
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
-            else if (x < 0)
+            else if (xRot < 0)
             {
                 rotation = a.y - rotateSpeed;
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
