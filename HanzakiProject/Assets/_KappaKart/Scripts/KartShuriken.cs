@@ -14,18 +14,24 @@ public class KartShuriken : MonoBehaviour {
     public float nextShot = 0.0f;
     public float interval = 0.8f;
 
+
+    public float distance;
+    public float groundDistance = 2.0f;
+    public Vector3 downScan;    //Scans downwards for ground distance
+
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+     
+    }
 	// Update is called once per frame
 	void FixedUpdate () {
         Move();
         ShurikenAttack();
 	}
-    public void Move ()
+    public void Move()
     {
-
+       
     }
     public void ShurikenAttack ()
     {
