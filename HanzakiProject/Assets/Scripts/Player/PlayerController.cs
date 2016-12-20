@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float modelWidth;
     public float modelHeight;
     bool inAir;
+    public bool[] hasCollided;
 
     public float rotationOffset;
 
@@ -151,11 +152,17 @@ public class PlayerController : MonoBehaviour
                     zMovement = 0;
                 }
                 playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
+
+                //playerModel.transform.eulerAngles = new Vector3(
+                //    Mathf.LerpAngle(transform.eulerAngles.x, playerRotation.x, 9f * Time.deltaTime),
+                //   Mathf.LerpAngle(transform.eulerAngles.y, playerRotation.y, 9f * Time.deltaTime),
+                //    Mathf.LerpAngle(transform.eulerAngles.z, playerRotation.z, 9f * Time.deltaTime));
             }
             
             else if (levelType == LevelType.TD)
             {
                 xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+                //zMovement = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
                 if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
                 {
                     walkTowards = transform.position;
@@ -573,7 +580,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
+                if(!CheckIfCollided())
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
+                }
+                
                 if(Input.GetAxis("Horizontal") > 0.05f || Input.GetAxis("Horizontal") < -0.05f || Input.GetAxis("Vertical") > 0.05 || Input.GetAxis("Vertical") < -0.05)
                 {
                     lookPos = walkTowards - transform.position + playerModel.transform.forward * 0.05f;
@@ -629,17 +640,6 @@ public class PlayerController : MonoBehaviour
                 {
                     zMovement = 0;
                 }
-            }
-            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), -transform.forward, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), -transform.forward, out hit, modelWidth))
-            {
-                if (zMovement < 0)
-                {
-                    zMovement = 0;
-                }
-            }
-            if(Physics.Raycast(playerModel.transform.position, playerModel.transform.forward, out hit, modelWidth))
-            {
-                onSlipperyTileNearWall = true;
             }
         }
     }
@@ -762,6 +762,19 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+
+    bool CheckIfCollided()
+    {
+        for (int i = 0; i < hasCollided.Length; i++)
+        {
+            if (hasCollided[i])
+            {
+                return true;
+            }
+        }
+        return false;
+                
     }
 
     void OnCollisionEnter(Collision col)
