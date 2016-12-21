@@ -30,6 +30,9 @@ public class KartController : MonoBehaviour
     public string verticalSpeed;
     public string horizontalRot;
 
+    public string gasButton;
+    public string reverseButton;
+
     private Rigidbody _rb;
 
 
@@ -85,30 +88,30 @@ public class KartController : MonoBehaviour
 
 
         // Front Back
-        _rb.velocity += ySpeed * transform.forward * normalSpeed * Time.deltaTime;
+        if (Input.GetButton(gasButton))
+        {
+            _rb.velocity += transform.forward * normalSpeed * Time.deltaTime;
+        }
+        if (Input.GetButton(reverseButton))
+        {
+            _rb.velocity -= transform.forward * normalSpeed * Time.deltaTime;
+        }
+
 
         // Turning
-        if (ySpeed == 0)
-        {
-            mayTurn = false;
-        }
-        else
-        {
-            mayTurn = true;
-            Vector3 a = transform.eulerAngles;
+        Vector3 a = transform.eulerAngles;
 
             float rotation = 0;
             if (xRot > 0)
             {
-                rotation = a.y + rotateSpeed;
+                rotation = a.y + rotateSpeed * Input.GetAxis(horizontalRot);
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
             else if (xRot < 0)
             {
-                rotation = a.y - rotateSpeed;
+                rotation = a.y - rotateSpeed * -Input.GetAxis(horizontalRot);
                 transform.eulerAngles = new Vector3(a.x, rotation, a.z);
             }
-        }
     }
 
     void CheckFloor()
