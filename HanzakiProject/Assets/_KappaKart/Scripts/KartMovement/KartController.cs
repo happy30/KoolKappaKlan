@@ -13,6 +13,7 @@ public class KartController : MonoBehaviour
     public int playerPos;
    // public GameObject otherPlayer;
 
+    public float speed;
     public float normalSpeed;
     public float boostSpeed;
 
@@ -33,11 +34,16 @@ public class KartController : MonoBehaviour
     public string gasButton;
     public string reverseButton;
 
+    private RaycastHit hit;
+    public float rayDis;
+    public Texture[] materialArray;
+
     private Rigidbody _rb;
 
 
     void Start()
     {
+        speed = normalSpeed;
         _rb = GetComponent<Rigidbody>();
 
     }
@@ -45,17 +51,14 @@ public class KartController : MonoBehaviour
     void Update()
     {
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
-        Debug.Log(Input.GetJoystickNames() + " is moved");
     }
     void FixedUpdate()
     {
         VehicleMove();
 
-        
         RaycastHit hit;
         if (!Physics.Raycast(transform.position, -transform.up, out hit, 1.5f))
         {
-            print("IN AIIR");
             transform.eulerAngles = new Vector3(
                 Mathf.LerpAngle(transform.eulerAngles.x, 0, restoreRotationSpeed * Time.deltaTime),
                 transform.eulerAngles.y,
@@ -85,16 +88,22 @@ public class KartController : MonoBehaviour
     {
         float ySpeed = Input.GetAxis(verticalSpeed);
         float xRot = Input.GetAxis(horizontalRot);
+        bool aButton = Input.GetButton(gasButton);
+        bool bButton = Input.GetButton(reverseButton);
 
+        if(Physics.Raycast(transform.position,-transform.up,out hit, rayDis))
+        {
+            CheckFloor(hit);
+        }
 
         // Front Back
-        if (Input.GetButton(gasButton))
+        if (aButton)
         {
-            _rb.velocity += transform.forward * normalSpeed * Time.deltaTime;
+            _rb.velocity += transform.forward * speed * Time.deltaTime;
         }
-        if (Input.GetButton(reverseButton))
+        if (bButton)
         {
-            _rb.velocity -= transform.forward * normalSpeed * Time.deltaTime;
+            _rb.velocity -= transform.forward * speed * Time.deltaTime;
         }
 
 
@@ -114,8 +123,15 @@ public class KartController : MonoBehaviour
             }
     }
 
-    void CheckFloor()
+    void CheckFloor(RaycastHit hit)
     {
+       /* if ( )
+        {            speed = normalSpeed;
+            _rb.drag = 1;
+        }
+        else{
+            _rb.drag = 5;
+        }*/
 
     }
 
@@ -138,7 +154,7 @@ public class KartController : MonoBehaviour
                 }
                 break;
             case "Boost":
-                normalSpeed = normalSpeed + boostSpeed;
+                speed = speed + boostSpeed;
                 break;
             case "OffRoad":
                 _rb.drag = 1f;
@@ -153,7 +169,7 @@ public class KartController : MonoBehaviour
                 GetItem();
                 break;
             case "Boost":
-                normalSpeed = normalSpeed - boostSpeed;
+                speed = speed - boostSpeed;
                 break;
             case "OffRoad":
                 _rb.drag = 0f;

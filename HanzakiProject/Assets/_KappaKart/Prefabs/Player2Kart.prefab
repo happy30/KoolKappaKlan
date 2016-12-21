@@ -487,6 +487,7 @@ MonoBehaviour:
   raceStarted: 0
   nextCheckPoint: 0
   playerPos: 1
+  speed: 0
   normalSpeed: 40
   boostSpeed: 20
   backSpeed: 0
@@ -495,7 +496,9 @@ MonoBehaviour:
   hoverHeight: 6
   hoverForce: 5
   hoverDamp: 0.5
-  verticalSpeed: Kart2VerticalSpeed
-  horizontalRot: Kart2HorizontalRot
-  gasButton: AButton
-  reverseButton: BButton
+  verticalSpeed: Kart1VerticalSpeed
+  horizontalRot: Kart1HorizontalRot
+  gasButton: AButton1
+  reverseButton: BButton1
+  rayDis: 1
+  materialArray: []
