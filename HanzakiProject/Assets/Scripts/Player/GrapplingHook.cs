@@ -142,7 +142,15 @@ public class GrapplingHook : MonoBehaviour {
                     }
                     else
                     {
-                        _rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
+                        if(GetComponent<PlayerController>().xMovement >= 0)
+                        {
+                            //_rb.velocity = (playerModel.transform.forward * 5) + new Vector3(0, 10, 0);
+                            _rb.velocity = (transform.right * 5) + new Vector3(0, 10, 0);
+                        }
+                        else if(GetComponent<PlayerController>().xMovement < 0)
+                        {
+                            _rb.velocity = (transform.right * -5) + new Vector3(0, 10, 0);
+                        }
 
                         Destroy(spawnedClaw);
                         grabTimer = 0;
