@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     GameObject playerModel;
     OptionsSettings optionsSettings;
 
+    public Animator anim;
+
     //What Level
     public enum LevelType
     {
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
     public bool invulnerableEffect;
     public AudioSource sound;
     public AudioClip smokeBombSound;
+
+    public float jumpCD;
 
     /*
     float lastTapFwdTime = 0;  // the time of the last tap that occurred
@@ -571,6 +575,50 @@ public class PlayerController : MonoBehaviour
     //Move the player and let it jump
     void Move()
     {
+
+        //ANIMATION
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            if (speed == stats.runSpeed)
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+            }
+            else if (speed == stats.walkSpeed)
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Walking", true);
+            }
+        }
+        else if(levelType == LevelType.SS)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", false);
+        }
+
+        //ANIMATION
+        if (Input.GetAxisRaw("Vertical") != 0 && levelType == LevelType.TD)
+        {
+            if (speed == stats.runSpeed)
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+            }
+            else if (speed == stats.walkSpeed)
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Walking", true);
+            }
+        }
+        else if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && levelType == LevelType.TD)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", false);
+        }
+
+
+
+
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
             if(levelType == LevelType.SS)
@@ -594,21 +642,34 @@ public class PlayerController : MonoBehaviour
                 playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, rotation, 9f * Time.deltaTime);
             }
             
-            if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
+            if(!CheckIfJumping())
             {
-                //Check if player is standing on Ground
-                if (IsTouching(2) != null)
+                anim.SetBool("Jump", false);
+            }
+
+            if(jumpCD <= 0)
+            {
+                if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
                 {
-                    if (IsTouching(2).tag == "Ground")
+                    //Check if player is standing on Ground
+                    if (IsTouching(2) != null)
                     {
-                        Debug.Log("jump");
-                        if (!CheckIfJumping() && !inAir)
+                        if (IsTouching(2).tag == "Ground")
                         {
-                            Jump();
+                            Debug.Log("jump");
+                            if (!CheckIfJumping() && !inAir)
+                            {
+                                Jump();
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                jumpCD -= Time.deltaTime;
+            }
+            
         }
     }
 
@@ -663,6 +724,8 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         _rb.velocity = new Vector3(0, jumpHeight, 0);
+        anim.SetBool("Jump", true);
+        jumpCD = 0.7f;
     }
 
     public bool CheckIfJumping()
