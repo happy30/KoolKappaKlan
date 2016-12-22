@@ -83,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         playerDistance = Vector3.Distance(player.position, transform.position);
-        if (gameObject.GetComponent<EnemySight>().playerInView == true && playerDistance < outOfRange && enemyStates != States.Attacking && player.GetComponent<PlayerController>().invulnerable == false)
+        if (GetComponentInChildren<EnemySight>().playerInView == true && playerDistance < outOfRange && enemyStates != States.Attacking && player.GetComponent<PlayerController>().invulnerable == false)
         {
             enemyStates = States.Chasing;
         }
