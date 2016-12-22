@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     GameObject playerModel;
     OptionsSettings optionsSettings;
 
+    public Animator anim;
+
     //What Level
     public enum LevelType
     {
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour
     public float modelWidth;
     public float modelHeight;
     bool inAir;
+    public bool[] hasCollided;
+
+    public float rotationOffset;
 
     public Vector3 walkTowards;
     public Vector3 lookPos;
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
     public bool invulnerableEffect;
     public AudioSource sound;
     public AudioClip smokeBombSound;
+
+    public float jumpCD;
 
     /*
     float lastTapFwdTime = 0;  // the time of the last tap that occurred
@@ -109,7 +116,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void ChangeControlsDependingOnLevelType()
+    public void ChangeControlsDependingOnLevelType()
     {
         if (levelType == LevelType.SS)
         {
@@ -140,19 +147,26 @@ public class PlayerController : MonoBehaviour
                 xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
                 if (xMovement > 0)
                 {
-                    playerRotation = new Vector3(0, 90, 0);
+                    playerRotation = new Vector3(0, 90 + rotationOffset, 0);
                     zMovement = 0;
                 }
                 if (xMovement < 0)
                 {
-                    playerRotation = new Vector3(0, 270, 0);
+                    playerRotation = new Vector3(0, 270 + rotationOffset, 0);
                     zMovement = 0;
                 }
                 playerModel.transform.eulerAngles = Vector3.Lerp(playerModel.transform.eulerAngles, playerRotation, 9f * Time.deltaTime);
+
+                //playerModel.transform.eulerAngles = new Vector3(
+                //    Mathf.LerpAngle(transform.eulerAngles.x, playerRotation.x, 9f * Time.deltaTime),
+                //   Mathf.LerpAngle(transform.eulerAngles.y, playerRotation.y, 9f * Time.deltaTime),
+                //    Mathf.LerpAngle(transform.eulerAngles.z, playerRotation.z, 9f * Time.deltaTime));
             }
             
             else if (levelType == LevelType.TD)
             {
+                xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+                //zMovement = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
                 if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
                 {
                     walkTowards = transform.position;
@@ -161,8 +175,6 @@ public class PlayerController : MonoBehaviour
                 {
                     walkTowards = new Vector3(transform.position.x + Input.GetAxisRaw("Horizontal"), transform.position.y, transform.position.z + Input.GetAxisRaw("Vertical"));
                 }
-
-
                 
             }
         }
@@ -221,8 +233,6 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
-
         else
         {
             if (dashCooldown > 0)
@@ -232,8 +242,6 @@ public class PlayerController : MonoBehaviour
                 isMoving = true;
             }
         }
-
-
         
     }
 
@@ -567,15 +575,64 @@ public class PlayerController : MonoBehaviour
     //Move the player and let it jump
     void Move()
     {
+
+        //ANIMATION
+        if (Input.GetAxisRaw("Horizontal") != 0)
+        {
+            if (speed == stats.runSpeed)
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+            }
+            else if (speed == stats.walkSpeed)
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Walking", true);
+            }
+        }
+        else if(levelType == LevelType.SS)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", false);
+        }
+
+        //ANIMATION
+        if (Input.GetAxisRaw("Vertical") != 0 && levelType == LevelType.TD)
+        {
+            if (speed == stats.runSpeed)
+            {
+                anim.SetBool("Walking", false);
+                anim.SetBool("Running", true);
+            }
+            else if (speed == stats.walkSpeed)
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Walking", true);
+            }
+        }
+        else if(Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && levelType == LevelType.TD)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", false);
+        }
+
+
+
+
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
             if(levelType == LevelType.SS)
             {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x,  rotationOffset, transform.eulerAngles.z);
                 transform.Translate(new Vector3(xMovement, 0, zMovement));
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
+                if(!CheckIfCollided())
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, walkTowards, speed * Time.deltaTime);
+                }
+                
                 if(Input.GetAxis("Horizontal") > 0.05f || Input.GetAxis("Horizontal") < -0.05f || Input.GetAxis("Vertical") > 0.05 || Input.GetAxis("Vertical") < -0.05)
                 {
                     lookPos = walkTowards - transform.position + playerModel.transform.forward * 0.05f;
@@ -585,21 +642,34 @@ public class PlayerController : MonoBehaviour
                 playerModel.transform.rotation = Quaternion.Lerp(playerModel.transform.rotation, rotation, 9f * Time.deltaTime);
             }
             
-            if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
+            if(!CheckIfJumping())
             {
-                //Check if player is standing on Ground
-                if (IsTouching(2) != null)
+                anim.SetBool("Jump", false);
+            }
+
+            if(jumpCD <= 0)
+            {
+                if (Input.GetKey(InputManager.Jump) || Input.GetKey(InputManager.JJump) || Input.GetKey(InputManager.JJumpTD))
                 {
-                    if (IsTouching(2).tag == "Ground")
+                    //Check if player is standing on Ground
+                    if (IsTouching(2) != null)
                     {
-                        Debug.Log("jump");
-                        if (!CheckIfJumping() && !inAir)
+                        if (IsTouching(2).tag == "Ground")
                         {
-                            Jump();
+                            Debug.Log("jump");
+                            if (!CheckIfJumping() && !inAir)
+                            {
+                                Jump();
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                jumpCD -= Time.deltaTime;
+            }
+            
         }
     }
 
@@ -632,17 +702,6 @@ public class PlayerController : MonoBehaviour
                     zMovement = 0;
                 }
             }
-            if (Physics.Raycast(new Vector3(transform.position.x, transform.position.y - modelHeight, transform.position.z), -transform.forward, out hit, modelWidth) || Physics.Raycast(new Vector3(transform.position.x, transform.position.y + (modelHeight * 1.7f), transform.position.z), -transform.forward, out hit, modelWidth))
-            {
-                if (zMovement < 0)
-                {
-                    zMovement = 0;
-                }
-            }
-            if(Physics.Raycast(playerModel.transform.position, playerModel.transform.forward, out hit, modelWidth))
-            {
-                onSlipperyTileNearWall = true;
-            }
         }
     }
 
@@ -665,6 +724,8 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         _rb.velocity = new Vector3(0, jumpHeight, 0);
+        anim.SetBool("Jump", true);
+        jumpCD = 0.7f;
     }
 
     public bool CheckIfJumping()
@@ -764,6 +825,19 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+
+    bool CheckIfCollided()
+    {
+        for (int i = 0; i < hasCollided.Length; i++)
+        {
+            if (hasCollided[i])
+            {
+                return true;
+            }
+        }
+        return false;
+                
     }
 
     void OnCollisionEnter(Collision col)

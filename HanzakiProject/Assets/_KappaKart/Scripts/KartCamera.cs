@@ -8,16 +8,16 @@ public class KartCamera : MonoBehaviour {
 	public Transform camTransform;
 	public Transform kartNumber;
 	
-	private Camera cam;
+	Camera cam;
 	
-	private float distance = 10f;
-	private float currentX = 0.0f;
-	private float currentY = 0.0f;
-	private float height = 5f;
+	public float distance;
+	float currentX = 0.0f;
+	float currentY = 0.0f;
+	public float height;
 	
-	private float sensitivityX = 4.0f;
-	private float sensitivityY = 1.0f;
-	private float followSpeed = 45f;
+	float sensitivityX = 4.0f;
+	float sensitivityY = 1.0f;
+	public float followSpeed;
 	
 	
 	// Use this for initialization
@@ -25,25 +25,62 @@ public class KartCamera : MonoBehaviour {
 	{
 		camTransform = transform;
 		cam = Camera.main;
-		
 	}
-	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
 	{
-		FollowKart();
+		if(Input.GetKey(InputManager.Hook))
+        {
+			LookBehindKart();
+		}
+        if (!Input.GetKey(InputManager.Hook))
+        {
+            FollowKart();
+        }
 	}
-	/*public void LateUpdate () 
-	{
-		Vector3 dir = new Vector3(0,0,-distance);
-		Quaternion rotation = Quaternion.Euler(currentX,currentY,0);
-		camTransform.position = kartNumber.position + rotation * dir;
-		camTransform.LookAt(kartNumber.position);
-	}*/
 	public void FollowKart () 
 	{
-		//camTransform.LookAt(kartNumber);
-		transform.position = Vector3.Lerp(transform.position, kartNumber.position, followSpeed * Time.deltaTime);
+		Vector3 lookPos = new Vector3(
+			kartNumber.position.x + (kartNumber.forward.x * -distance),
+			kartNumber.position.y + height,
+			kartNumber.position.z + (kartNumber.forward.z * -distance));
 		
-	}
+		transform.position = Vector3.Slerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+		
+		
+		transform.eulerAngles = new Vector3(
+			Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+			Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime), 
+			Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+	}	
+	public void LookBehindKart () 
+	{
+        Vector3 lookPos = new Vector3(
+            kartNumber.position.x + (kartNumber.forward.x * +distance),
+            kartNumber.position.y + height,
+            kartNumber.position.z + (kartNumber.forward.z * +distance));
+
+        transform.position = Vector3.Lerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+
+
+        transform.eulerAngles = new Vector3(
+            Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y + 180, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+    }
+    public void OnTriggerEnter (Collider infoColl)
+    {
+        Vector3 lookPos = new Vector3(
+            kartNumber.position.x + (kartNumber.forward.x * -distance),
+            kartNumber.position.y + height - 5,
+            kartNumber.position.z + (kartNumber.forward.z * -distance));
+
+        transform.position = Vector3.Slerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+
+
+        transform.eulerAngles = new Vector3(
+            Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+    }
 }

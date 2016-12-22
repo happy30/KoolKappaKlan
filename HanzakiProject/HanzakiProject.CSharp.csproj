@@ -122,6 +122,7 @@
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\Water.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterBase.cs" />
     <Compile Include="Assets\Art\Shared\Water\Water\Water\Scripts\WaterTile.cs" />
+    <Compile Include="Assets\CollisionChecker.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChaseSpawener.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChasing.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Assets\Scripts\Environment\LocationEnter.cs" />
     <Compile Include="Assets\Scripts\Environment\MainMenuCameraScript.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\ViewPortChanger.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHook.cs" />
@@ -162,6 +164,7 @@
     <Compile Include="Assets\Scripts\System\ProgressionManager.cs" />
     <Compile Include="Assets\Scripts\System\QuestClass.cs" />
     <Compile Include="Assets\Scripts\System\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\System\Renamer.cs" />
     <Compile Include="Assets\Scripts\System\StatsManager.cs" />
     <Compile Include="Assets\Scripts\System\XmlManager.cs" />
     <Compile Include="Assets\Scripts\UI\AbilityHotkey.cs" />
@@ -178,8 +181,18 @@
     <Compile Include="Assets\Scripts\UI\PauseManager.cs" />
     <Compile Include="Assets\Scripts\UI\RotateScript.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\_KappaKart\Scripts\KartCamera.cs" />
     <Compile Include="Assets\_KappaKart\Scripts\TestKartMovement.cs" />
+=======
+    <Compile Include="Assets\SlashScript.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartCamera.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartMovement\KartController.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartMovement\TestVehicleGround.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\KartShuriken.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\TestKartMovement.cs" />
+    <Compile Include="Assets\_KappaKart\Scripts\UI\KartMainMenu.cs" />
+>>>>>>> de4d20ec81ab6ef5605d13f924d4cddd84b691b4
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\Level1\ignore.txt" />
