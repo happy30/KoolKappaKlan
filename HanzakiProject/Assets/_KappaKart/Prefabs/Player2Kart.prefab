@@ -436,7 +436,7 @@ Rigidbody:
   m_GameObject: {fileID: 1245698144127790}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -487,13 +487,18 @@ MonoBehaviour:
   raceStarted: 0
   nextCheckPoint: 0
   playerPos: 1
-  normalSpeed: 35
+  speed: 0
+  normalSpeed: 40
   boostSpeed: 20
   backSpeed: 0
-  rotateSpeed: 3
+  rotateSpeed: 5
   restoreRotationSpeed: 20
   hoverHeight: 6
   hoverForce: 5
   hoverDamp: 0.5
-  horizontal: Kart2Horizontal
-  vertical: Kart2Vertical
+  verticalSpeed: Kart1VerticalSpeed
+  horizontalRot: Kart1HorizontalRot
+  gasButton: AButton1
+  reverseButton: BButton1
+  rayDis: 1
+  materialArray: []

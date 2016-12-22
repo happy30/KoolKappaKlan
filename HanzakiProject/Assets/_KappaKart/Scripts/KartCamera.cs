@@ -68,4 +68,19 @@ public class KartCamera : MonoBehaviour {
             Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y + 180, followSpeed * Time.deltaTime),
             Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
     }
+    public void OnTriggerEnter (Collider infoColl)
+    {
+        Vector3 lookPos = new Vector3(
+            kartNumber.position.x + (kartNumber.forward.x * -distance),
+            kartNumber.position.y + height - 5,
+            kartNumber.position.z + (kartNumber.forward.z * -distance));
+
+        transform.position = Vector3.Slerp(transform.position, lookPos, followSpeed * Time.deltaTime);
+
+
+        transform.eulerAngles = new Vector3(
+            Mathf.LerpAngle(transform.eulerAngles.x, kartNumber.eulerAngles.x + 20, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.y, kartNumber.eulerAngles.y, followSpeed * Time.deltaTime),
+            Mathf.LerpAngle(transform.eulerAngles.z, kartNumber.eulerAngles.z, followSpeed * Time.deltaTime));
+    }
 }
