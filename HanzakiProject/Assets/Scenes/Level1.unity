@@ -28027,6 +28027,11 @@ Prefab:
       propertyPath: sunTransform
       value: 
       objectReference: {fileID: 533185230}
+    - target: {fileID: 114000011962638484, guid: 7e7bf49afb501d044a94a36b2bab423c,
+        type: 2}
+      propertyPath: distance
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e7bf49afb501d044a94a36b2bab423c, type: 2}
   m_IsPrefabParent: 0
@@ -33268,6 +33273,7 @@ MonoBehaviour:
   attackPower: 1
   dashPower: 5
   coolDown: 0
+  anim: {fileID: 0}
   ui: {fileID: 0}
 --- !u!114 &1659802594
 MonoBehaviour:
@@ -33300,12 +33306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d9259235fc78a4fa1ba8606b885d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   levelType: 0
   jumpHeight: 10
   xMovement: 0
   zMovement: 0
   modelWidth: 0.5
   modelHeight: 0.8
+  hasCollided: 
   rotationOffset: 0
   walkTowards: {x: 0, y: 0, z: 0}
   lookPos: {x: 0, y: 0, z: 0}
@@ -33323,6 +33331,7 @@ MonoBehaviour:
   invulnerableEffect: 0
   sound: {fileID: 0}
   smokeBombSound: {fileID: 8300000, guid: befcdfa722f74e94c9f2468378d3d5df, type: 3}
+  jumpCD: 0
   hasTapped: 0
   tapCounter: 0
   tapTimer2: 0
