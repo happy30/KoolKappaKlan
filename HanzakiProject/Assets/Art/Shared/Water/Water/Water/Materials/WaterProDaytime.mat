@@ -190,7 +190,7 @@ Material:
     m_Colors:
     - first:
         name: WaveSpeed
-      second: {r: -30, g: 6, b: -25, a: -6}
+      second: {r: -15, g: 6, b: -25, a: -6}
     - first:
         name: _AnimationDirection
       second: {r: 1, g: 1, b: 1, a: 1}

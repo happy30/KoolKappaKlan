@@ -2,6 +2,9 @@
 StandaloneWindows
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> de4d20ec81ab6ef5605d13f924d4cddd84b691b4
 C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
@@ -11,6 +14,9 @@ C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEng
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll
+<<<<<<< HEAD
+C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
+=======
 <<<<<<< HEAD
 C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
 =======
@@ -46,3 +52,4 @@ D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll
 >>>>>>> 8d50c32a880c53162743a52246e2ddcd781e3a78
 >>>>>>> b848f63cf0e33ef340c8cef6ddbf76813f128430
 >>>>>>> fe5c5687f9ee2ba8febb9ee530cc80e60d44d015
+>>>>>>> de4d20ec81ab6ef5605d13f924d4cddd84b691b4
