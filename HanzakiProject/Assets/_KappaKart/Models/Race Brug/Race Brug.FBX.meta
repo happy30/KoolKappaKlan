@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 15397bf6f71968c409c4c32a9924658e
+timeCreated: 1482408159
+licenseType: Free
+=======
 guid: b8b48f993d8a19749a5474ebb3e85e9b
+>>>>>>> 5b4782185b7950205ca8545c7c15f64e61bb1ad4
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -8,7 +14,10 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: race brug
+<<<<<<< HEAD
+=======
     9500000: //RootNode
+>>>>>>> 5b4782185b7950205ca8545c7c15f64e61bb1ad4
   materials:
     importMaterials: 1
     materialName: 0
@@ -71,7 +80,11 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+<<<<<<< HEAD
+  animationType: 0
+=======
   animationType: 2
+>>>>>>> 5b4782185b7950205ca8545c7c15f64e61bb1ad4
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

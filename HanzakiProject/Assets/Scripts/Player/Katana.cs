@@ -59,10 +59,11 @@ public class Katana : MonoBehaviour
     {
         playerController.anim.SetBool("Attack", false);
         RaycastHit hit;
-        if(Physics.Raycast(playerModel.position, playerModel.forward, out hit, 2))
+        if(Physics.Raycast(new Vector3(playerModel.position.x, playerModel.position.y - 1f, playerModel.position.z), new Vector3(playerModel.forward.x, playerModel.forward.y -1f, playerModel.forward.z), out hit, 2))
         {
             if(hit.collider.tag == "Enemy")
             {
+                print("hit enemy");
                 SlashedObject = hit.collider.gameObject;
                 hit.collider.transform.parent.GetComponent<EnemyMovement>().GetHit(attackPower);
                 /*

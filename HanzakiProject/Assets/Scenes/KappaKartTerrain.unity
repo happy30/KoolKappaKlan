@@ -44848,6 +44848,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 23608762849753884, guid: d7fc01bbbda79c74e9d38ba28e7d677b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a4170fa0b05e1b4082ef273e21cbeda, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7fc01bbbda79c74e9d38ba28e7d677b, type: 2}
   m_IsPrefabParent: 0
@@ -71510,6 +71515,11 @@ Prefab:
       propertyPath: m_Name
       value: Brug (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 23608762849753884, guid: d7fc01bbbda79c74e9d38ba28e7d677b,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a4170fa0b05e1b4082ef273e21cbeda, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7fc01bbbda79c74e9d38ba28e7d677b, type: 2}
   m_IsPrefabParent: 0

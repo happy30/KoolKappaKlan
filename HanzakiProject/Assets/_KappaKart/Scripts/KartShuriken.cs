@@ -15,14 +15,19 @@ public class KartShuriken : MonoBehaviour {
     public float interval = 0.8f;
 
 
-    public float distance;
-    public float groundDistance = 2.0f;
-    public Vector3 downScan;    //Scans downwards for ground distance
+    public float moveForce = 1.0F;
+    public float rotateTorque = 1.0F;
+    public float hoverHeight = 4.0F;
+    public float hoverForce = 5.0F;
+    public float hoverDamp = 0.5F;
+    public Rigidbody rb;
 
 
-	// Use this for initialization
-	void Start () {
-     
+    // Use this for initialization
+    void Start () {
+        rb = GetComponent<Rigidbody>();
+        rb.drag = 0.5F;
+        rb.angularDrag = 0.5F;
     }
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -31,7 +36,20 @@ public class KartShuriken : MonoBehaviour {
 	}
     public void Move()
     {
-       
+        /*rb.AddForce(Input.GetAxis("Vertical") * moveForce * transform.forward);
+        rb.AddTorque(Input.GetAxis("Horizontal") * rotateTorque * Vector3.up);
+        RaycastHit hit;
+        Ray downRay = new Ray(transform.position, -Vector3.up);
+        if (Physics.Raycast(downRay, out hit))
+        {
+            float hoverError = hoverHeight - hit.distance;
+            if (hoverError > 0)
+            {
+                float upwardSpeed = rb.velocity.y;
+                float lift = hoverError * hoverForce - upwardSpeed * hoverDamp;
+                rb.AddForce(lift * Vector3.up);
+            }
+        }*/
     }
     public void ShurikenAttack ()
     {
